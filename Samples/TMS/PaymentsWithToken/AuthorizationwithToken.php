@@ -2,8 +2,8 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function CreatePaymentsInstruments()
 {

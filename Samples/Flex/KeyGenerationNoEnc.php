@@ -2,28 +2,33 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
-function SampleGenerateKeyNoEnc()
+function KeyGenerationNoEnc($flag)
 {
 	$commonElement = new CyberSource\ExternalConfig();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\KeyGenerationApi($apiclient);
 	$flexRequestArr = [
-	'encryptionType' => "None",
+		'encryptionType' => "None",
 	];
 	$flexRequest = new CyberSource\Model\KeyParameters($flexRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->generatePublicKey($flexRequest);
-		print_r($api_response);
-		//$publicKey = openssl_pkey_get_public($api_response); 
-		//echo "<pre>";print_r($publicKey);
-		//$pub = openssl_pkey_get_details($publicKey);
-		//echo $pub['key']; 
-		//die("success");
+		$keyId = $api_response[0]['keyId'];
+		$publicKey = $api_response[0]['der']['publicKey'];
+		if($flag == true){
+			$returnData = [$keyId, $publicKey];
+			return $returnData;
+		}else {
+			print_r($api_response);
+			include_once '../cybersource-rest-samples-php/Samples/Flex/CoreServices/TokenizeCard.php';
+	  		$id = TokenizeCard($keyId, $publicKey);
+		}
+		
 
 	} catch (Exception $e) {
 		print_r($e->getresponseBody());
@@ -33,8 +38,8 @@ function SampleGenerateKeyNoEnc()
 
 // Call Sample Code
 if(!defined('DO NOT RUN SAMPLE')){
-    echo "Get Customer Sample Code\n";
-	SampleGenerateKeyNoEnc();
+    echo "KeyGenerationNoEnc Sample Code is Processing\n";
+	KeyGenerationNoEnc(false);
 }
 
 ?>	

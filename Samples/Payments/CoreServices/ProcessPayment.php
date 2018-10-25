@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function ProcessPayment($flag)
 {
@@ -77,8 +77,8 @@ function ProcessPayment($flag)
     
     if($flag ==true){
       //Returning the ID
-      echo "Fetching Payment ID: ".$api_response['id']."\n";
-      return $api_response['id'];
+      echo "Fetching Payment ID: ".$api_response[0]['id']."\n";
+      return $api_response[0]['id'];
     }
     else {
       print_r($api_response);

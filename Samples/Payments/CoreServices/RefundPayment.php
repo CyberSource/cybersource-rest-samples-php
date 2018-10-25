@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function RefundPayment($flag)
 {
@@ -9,7 +9,7 @@ function RefundPayment($flag)
   $config = $commonElement->ConnectionHost();
   $apiclient = new CyberSource\ApiClient($config);
   $api_instance = new CyberSource\Api\RefundApi($apiclient);
-  include_once '../CybersourceRestSamplesPHP/Samples/Payments/CoreServices/ProcessPayment.php';
+  include_once '../cybersource-rest-samples-php/Samples/Payments/CoreServices/ProcessPayment.php';
   $id = ProcessPayment(true);
   $cliRefInfoArr = [
     "code" => "test_refund_payment"
@@ -38,8 +38,8 @@ function RefundPayment($flag)
     $api_response = $api_instance->refundPayment($paymentRequest, $id);
     if($flag ==true){
       //Returning the ID
-      echo "Fetching Refund Payment ID: ".$api_response['id']."\n";
-      return $api_response['id'];
+      echo "Fetching Refund Payment ID: ".$api_response[0]['id']."\n";
+      return $api_response[0]['id'];
     }
     else {
       print_r($api_response);

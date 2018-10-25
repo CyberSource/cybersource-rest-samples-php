@@ -2,8 +2,8 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function GenerateKey()
 {
@@ -18,7 +18,8 @@ function GenerateKey()
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->generatePublicKey($flexRequest);
-		echo "<pre>";print_r($api_response);
+		print_r($api_response);
+		
 
 	} catch (Exception $e) {
 		print_r($e->getresponseBody());

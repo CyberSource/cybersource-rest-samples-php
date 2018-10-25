@@ -5,9 +5,9 @@ class Verifier
 	public function verifySignature($publicKey, $postParam)
 	{
 		$dataString = "";
-		$arraySting = explode(",", $postParam['signedFields']);
+		$arraySting = explode(",", $postParam[0]['signedFields']);
 		$lastElement = end($arraySting);
-		$postParam = json_decode($postParam);
+		$postParam = json_decode($postParam[0]);
 		foreach ($arraySting as $value) {
 			$dataString .= $postParam->$value;
 			if($lastElement != $value){
@@ -18,11 +18,11 @@ class Verifier
 		$signature = base64_decode($postParam->signature);
 		$signatureVerify = openssl_verify($dataString, $signature, $publicKey, "sha512");
 		if ($signatureVerify == 1) {
-			echo "True";
+			echo "True\n";
 		} elseif ($signatureVerify == 0) {
-			echo "False";
+			echo "False\n";
 		} else {
-			echo "Error in checking signature";
+			echo "Error in checking signature\n";
 		}
 
 	}
