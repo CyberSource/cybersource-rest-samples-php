@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function CapturePayment($flag)
 {
@@ -9,7 +9,7 @@ function CapturePayment($flag)
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\CaptureApi($apiclient);
-  include_once '../CybersourceRestSamplesPHP/Samples/Payments/CoreServices/ProcessPayment.php';
+  include_once '../cybersource-rest-samples-php/Samples/Payments/CoreServices/ProcessPayment.php';
   $id = ProcessPayment(true);
 	$cliRefInfoArr = [
     "code" => "test_capture"
@@ -39,8 +39,8 @@ function CapturePayment($flag)
     
     if($flag == true){
       //Returning the ID
-		  echo "Fetching Capture ID: ".$api_response['id']."\n";
-      return $api_response['id'];
+		  echo "Fetching Capture ID: ".$api_response[0]['id']."\n";
+      return $api_response[0]['id'];
     }else{
       print_r($api_response);
     }

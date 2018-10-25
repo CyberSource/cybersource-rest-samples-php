@@ -2,8 +2,8 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function RetrieveAllPaymentInstruments()
 {
@@ -15,7 +15,7 @@ function RetrieveAllPaymentInstruments()
   	$tokenId = "7020000000000137654";
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->instrumentidentifiersTokenIdPaymentinstrumentsGet($profileId, $tokenId, null , 20);
+		$api_response = $api_instance->instrumentidentifiersTokenIdPaymentinstrumentsGet($profileId, $tokenId);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Exception $e) {

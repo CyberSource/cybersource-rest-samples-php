@@ -2,92 +2,121 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../CybersourceRestclientPHP/autoload.php');
-require_once('../CybersourceRestclientPHP/ExternalConfig.php');
+require_once('../cybersource-rest-client-php/autoload.php');
+require_once('./ExternalConfig.php');
 
 function Payout()
 {
-	$commonElement = new CyberSource\ExternalConfig();
-	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\CaptureApi($apiclient);
-	$cliRefInfoArr = [
-    'code' => '1234567890'
+  $commonElement = new CyberSource\ExternalConfig();
+  $config = $commonElement->ConnectionHost();
+  $apiclient = new CyberSource\ApiClient($config);
+  $api_instance = new CyberSource\Api\DefaultApi($apiclient);
+  $cliRefInfoArr = [
+    "code" => "33557799"
   ];
-  $client_reference_information = new CyberSource\Model\V2paymentsClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\InlineResponse201ClientReferenceInformation($cliRefInfoArr);
 
-  $deviceInformationArr = [
-    "ipAddress" => "66.185.179.2"
+  $recipientInformationArr = [
+    "firstName" => "John",
+    "lastName" => "Doe",
+    "address1" => "Paseo Padre Boulevard",
+    "locality" => "Foster City",
+    "administrativeArea" => "CA",
+    "country" => "US",
+    "postalCode" => "94400",
+    "phoneNumber" => "6504320556"
   ];
-  $deviceInformation = new CyberSource\Model\V2paymentsDeviceInformation($deviceInformationArr);
+  $recipientInformation = new CyberSource\Model\V2payoutsRecipientInformation($recipientInformationArr);
+  $accountArr = [
+    "fundsSource" => "01",
+    "number" => "1234567890123456789012345678901234"
+  ];
+  $account = new CyberSource\Model\V2payoutsSenderInformationAccount($accountArr);
+  $senderInformationArr = [
+    "referenceNumber" => "1234567890",
+    "account" => $account,
+    "name" => "Company Name",
+    "address1" => "900 Metro Center Blvd",
+    "locality" => "Foster City",
+    "administrativeArea" => "CA",
+    "countryCode" => "US"
+  ];
+  $senderInformation = new CyberSource\Model\V2payoutsSenderInformation($senderInformationArr);
+
   $processingInformationArr = [
-    "capture" => "true"
+    "businessApplicationId" => "FD",
+    "commerceIndicator" => "internet"
   ];
-  $processingInformation = new CyberSource\Model\V2paymentsProcessingInformation($processingInformationArr);
+  $processingInformation = new CyberSource\Model\V2payoutsProcessingInformation($processingInformationArr);
 
   $amountDetailsArr = [
-      "totalAmount" => "2201",
-      "currency" => "USD"
-    ];
-  $amountDetInfo = new CyberSource\Model\V2paymentsOrderInformationAmountDetails($amountDetailsArr);
-  $billtoArr = [
-    "country" => "US",
-    "firstName" => "John",
-    "lastName" => "Deo",
-    "phoneNumber" => "6504327113",
-    "address2" => "Desk M3-5573",
-    "address1" => "901 Metro Center Blvd",
-    "postalCode" => "94404",
-    "locality" => "Foster City",
-    "company" => "Visa",
-    "administrativeArea" => "CA",
-    "email" => "test@cybs.com"
+    "totalAmount" => "100.00",
+    "currency" => "USD"
   ];
-  $billto = new CyberSource\Model\V2paymentsOrderInformationBillTo($billtoArr);
+  $amountDetInfo = new CyberSource\Model\V2payoutsOrderInformationAmountDetails($amountDetailsArr);
+  
   $orderInfoArry = [
-    "amountDetails" => $amountDetInfo,
-    "billTo" => $billto
+    "amountDetails" => $amountDetInfo
   ];
 
-  $order_information = new CyberSource\Model\V2paymentsOrderInformation($orderInfoArry);
-  $paymentCardInfo = [
-    "expirationYear" => "2031",
-    "number" => "4111111111111111",
-    "securityCode" => "123",
-    "expirationMonth" => "12"
+  $order_information = new CyberSource\Model\V2payoutsOrderInformation($orderInfoArry);
+
+  $merchantDescriptorArr = [
+    "name" => "Sending Company Name",
+    "locality" => "FC",
+    "country" => "US",
+    "administrativeArea" => "CA",
+    "postalCode" => "94440"
+    
   ];
-  $card = new CyberSource\Model\V2paymentsPaymentInformationCard($paymentCardInfo);
+  $merchantDescriptor = new CyberSource\Model\V2payoutsMerchantInformationMerchantDescriptor($merchantDescriptorArr);
+  $merchantInformationArr = [
+    "merchantDescriptor" => $merchantDescriptor
+    
+  ];
+  $merchantInformation = new CyberSource\Model\V2payoutsMerchantInformation($merchantInformationArr);
+
+  $paymentCardInfo = [
+    "type" => "001",
+    "number" => "4111111111111111",
+    "expirationMonth" => "12",
+    "expirationYear" => "2025",
+    "sourceAccountType" => "CH"
+  ];
+  $card = new CyberSource\Model\V2payoutsPaymentInformationCard($paymentCardInfo);
   $paymentInfoArr = [
       "card" => $card
       
   ];
-  $payment_information = new CyberSource\Model\V2paymentsPaymentInformation($paymentInfoArr);
+  $payment_information = new CyberSource\Model\V2payoutsPaymentInformation($paymentInfoArr);
 
   $paymentRequestArr = [
     "clientReferenceInformation" => $client_reference_information,
-    "deviceInformation" => $deviceInformation,
+    "recipientInformation" => $recipientInformation,
+    "senderInformation" => $senderInformation,
+    "merchantInformation" => $merchantInformation,
     "orderInformation" => $order_information,
     "paymentInformation" => $payment_information,
     "processingInformation" => $processingInformation
   ];
 
-  $paymentRequest = new CyberSource\Model\CreatePaymentRequest($paymentRequestArr);
+  $paymentRequest = new CyberSource\Model\OctCreatePaymentRequest($paymentRequestArr);
   $api_response = list($response,$statusCode,$httpHeader)=null;
   try {
-    $api_response = $api_instance->createPayment($paymentRequest);
-		echo "<pre>";print_r($api_response);
+    $api_response = $api_instance->octCreatePayment($paymentRequest);
+    echo "<pre>";print_r($api_response);
 
-	} catch (Exception $e) {
-		print_r($e->getresponseBody());
+  } catch (Exception $e) {
+    print_r($e->getresponseBody());
     print_r($e->getmessage());
-	}
+  }
 }    
 
 // Call Sample Code
 if(!defined('DO NOT RUN SAMPLE')){
-    echo "Samplecode is Running..";
-	Payout();
+    echo "ProcessPayout Samplecode is Running..";
+  Payout();
 
 }
 
-?>	
+?>  
