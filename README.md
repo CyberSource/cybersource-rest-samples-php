@@ -1,4 +1,4 @@
-# PHP Sample Code for the Cybersource.Net SDK
+# PHP Sample Code for the Cybersource REST SDK
 The Repository contains working SampleCodes(https://github.com/khaaldrogo/cybersource-rest-samples-php)
 
 This repository contains working code samples which demonstrate PHP integration with the [Cybersource.Net PHP SDK](https://github.com/khaaldrogo/sdk-php).
