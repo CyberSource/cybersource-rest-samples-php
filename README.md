@@ -1,5 +1,5 @@
 # cybersource_rest_PHP
-This project provides a simple PHP helper class that simplifies authentication to the CyberSource REST API 
+This project provides multiple sample codes for REST APIs supported by CyberSource.
 
 ## Requirements
 * PHP 5.6+
