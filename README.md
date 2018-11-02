@@ -1,5 +1,5 @@
 # PHP Sample Code for the CyberSource SDK
-This project provides multiple sample codes for REST APIs supported by CyberSource.
+This project provides multiple sample code for REST APIs supported by CyberSource.
 
 **__NOTE: THIS REPO OF CODE SAMPLES HAS BEEN MADE PUBLIC FOR SDK TESTING AND SHOULD NOT BE USED FOR PRODUCTION - YET.  PLEASE RAISE AN ISSUE ON THIS REPO IF YOU HAVE FURTHER QUESTIONS AND CHECK BACK SOON FOR GENERAL AVAILABILITY__**
 
