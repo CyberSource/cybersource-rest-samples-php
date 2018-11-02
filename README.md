@@ -59,8 +59,8 @@ override the new secure-http default setting)*.
    $this->logFile = <logDirectory>;
    $this->logFilename = <logFilename>;
    
-   $this->proxyUrl = "userproxy.visa.com";
-   $this->proxyHost = "443";
+   $this->proxyUrl = <proxyHost>;
+   $this->proxyHost = <proxyPort>;
 
 ```
   #### For Jwt Signature Authentication
