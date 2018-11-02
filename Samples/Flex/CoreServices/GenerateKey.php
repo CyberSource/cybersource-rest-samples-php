@@ -21,9 +21,9 @@ function GenerateKey()
 		print_r($api_response);
 		
 
-	} catch (Exception $e) {
+	} catch (Cybersource\ApiException $e) {
 		print_r($e->getresponseBody());
-		print_r($e->getmessage());
+		print_r($e->getMessage());
 	}
 }    
 

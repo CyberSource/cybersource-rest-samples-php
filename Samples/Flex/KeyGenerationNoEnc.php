@@ -25,14 +25,14 @@ function KeyGenerationNoEnc($flag)
 			return $returnData;
 		}else {
 			print_r($api_response);
-			include_once '../cybersource-rest-samples-php/Samples/Flex/CoreServices/TokenizeCard.php';
+			include_once './Samples/Flex/CoreServices/TokenizeCard.php';
 	  		$id = TokenizeCard($keyId, $publicKey);
 		}
 		
 
-	} catch (Exception $e) {
+	} catch (Cybersource\ApiException $e) {
 		print_r($e->getresponseBody());
-		print_r($e->getmessage());
+		print_r($e->getMessage());
 	}
 }    
 

@@ -35,14 +35,14 @@ function TokenizeCard($keyId, $publicKey)
 		return $verifyObj->verifySignature($publicKey, $api_response);
 		
 
-	} catch (Exception $e) {
+	} catch (Cybersource\ApiException $e) {
 		print_r($e->getresponseBody());
-		print_r($e->getmessage());
+		print_r($e->getMessage());
 	}
 }    
 if(!defined('DO NOT RUN SAMPLE')){
     echo "TokenizeCard Sample Code is Processing\n";
-    include_once '../cybersource-rest-samples-php/Samples/Flex/KeyGenerationNoEnc.php';
+    include_once './Samples/Flex/KeyGenerationNoEnc.php';
   	$data = KeyGenerationNoEnc(true);
 	TokenizeCard($data[0], $data[1]);
 }

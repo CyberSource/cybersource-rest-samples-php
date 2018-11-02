@@ -27,9 +27,9 @@ function VoidCredit()
     $api_response = $api_instance->voidCredit($paymentRequest, $id);
     echo "<pre>";print_r($api_response);
 
-  } catch (Exception $e) {
+  } catch (Cybersource\ApiException $e) {
     print_r($e->getresponseBody());
-    print_r($e->getmessage());
+    print_r($e->getMessage());
   }
 }    
 

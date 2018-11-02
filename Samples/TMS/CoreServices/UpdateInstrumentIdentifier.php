@@ -54,8 +54,8 @@ function UpdateInstrumentIdentifier()
 		$api_response = $api_instance->instrumentidentifiersTokenIdPatch($profileId, $tokenId, $tmsRequest);
 		echo "<pre>";print_r($api_response);
 
-	} catch (Exception $e) {
-    print_r($e->getmessage());
+	} catch (Cybersource\ApiException $e) {
+    print_r($e->getMessage());
 	}
 }    
 

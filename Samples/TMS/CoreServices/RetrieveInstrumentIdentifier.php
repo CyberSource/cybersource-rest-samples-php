@@ -25,8 +25,8 @@ function RetrieveInstrumentIdentifier($flag)
 			print_r($api_response);
 		}
 
-	} catch (Exception $e) {
-    print_r($e->getmessage());
+	} catch (Cybersource\ApiException $e) {
+    print_r($e->getMessage());
 	}
 }    
 

@@ -1,6 +1,6 @@
 <?php
-error_reporting(E_ALL);
-require_once('autoload.php');
+
+require_once('../cybersource-rest-client-php/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
 
 function CapturePayment($flag)
@@ -44,10 +44,10 @@ function CapturePayment($flag)
     }else{
       print_r($api_response);
     }
-	} catch (Exception $e) {
-		print_r($e->getresponseBody());
-    print_r($e->getmessage());
-	}
+  } catch (Cybersource\ApiException $e) {
+    print_r($e->getResponseBody());
+    print_r($e->getMessage());
+  }
 }    
 
 
