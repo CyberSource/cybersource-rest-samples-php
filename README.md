@@ -48,15 +48,20 @@ override the new secure-http default setting)*.
 
 
 ```
-   authenticationType  = http_Signature
-   merchantID 	       = <merchantID>
-   runEnvironment      = CyberSource.Environment.SANDBOX
-   merchantKeyId       = <merchantKeyId>
-   merchantsecretKey   = <merchantsecretKey>
-   enableLog           = true
-   logDirectory        = <logDirectory>
-   logMaximumSize      = <size>
-   logFilename         = <logFilename>
+   $this->authType = "HTTP_SIGNATURE";
+   $this->runEnv = "cyberSource.environment.SANDBOX";
+   $this->merchantID = <merchantID>;
+   $this->apiKeyID = <merchantKeyId>;
+   $this->screteKey = <merchantsecretKey>;
+   
+   $this->enableLog = true;
+   $this->logSize = <size>;
+   $this->logFile = <logDirectory>;
+   $this->logFilename = <logFilename>;
+   
+   $this->proxyUrl = "userproxy.visa.com";
+   $this->proxyHost = "443";
+
 ```
   #### For Jwt Signature Authentication
 
