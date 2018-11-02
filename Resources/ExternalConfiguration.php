@@ -3,7 +3,7 @@
 * Purpose : passing Authentication config object to the configuration
 */
 namespace CyberSource;
-require_once('../cybersource-rest-client-php/autoload.php');
+require_once('vendor/autoload.php');
 
 
 class ExternalConfiguration

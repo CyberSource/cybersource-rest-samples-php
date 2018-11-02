@@ -2,7 +2,7 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('../cybersource-rest-client-php/autoload.php');
+require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
 
 function UpdateInstrumentIdentifier()
