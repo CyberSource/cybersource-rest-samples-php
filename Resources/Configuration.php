@@ -6,7 +6,7 @@ namespace CyberSource;
 require_once('vendor/autoload.php');
 
 
-class ExternalConfiguration
+class Configuration
 {
 	//initialize variable on constructor
         function __construct()
@@ -83,6 +83,6 @@ class ExternalConfiguration
                 fclose($file);
         }
 }
-$temp = new ExternalConfiguration();
+$temp = new Configuration();
 
 ?>

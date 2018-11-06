@@ -1,11 +1,11 @@
 <?php
 
 require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once('./Resources/Configuration.php');
 
 function ProcessPayment($flag)
 {
-	$commonElement = new CyberSource\ExternalConfiguration();
+	$commonElement = new CyberSource\Configuration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\PaymentApi($apiclient);

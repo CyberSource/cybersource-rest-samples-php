@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once('./Resources/Configuration.php');
 
 function RetrieveAllPaymentInstruments()
 {
-	$commonElement = new CyberSource\ExternalConfiguration();
+	$commonElement = new CyberSource\Configuration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($apiclient);

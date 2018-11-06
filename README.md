@@ -56,7 +56,7 @@ extension_dir = "ext"
 Then run `composer update` again. You might have to restart your machine before the changes take effect.
 
 
-### To set your API credentials for an API request,Configure the following information in ExternalConfiguration.php file:
+### To set your API credentials for an API request,Configure the following information in Configuration.php file:
   
   #### For Http Signature Authentication 
   
@@ -121,7 +121,7 @@ Then run `composer update` again. You might have to restart your machine before 
 CyberSource maintains a complete sandbox environment for testing and development purposes. This sandbox environment is an exact 
 duplicate of our production environment with the transaction authorization and settlement process simulated. By default, this SDK is 
 configured to communicate with the sandbox environment. To switch to the production environment, set the appropriate property 
-in Resources\ExternalConfiguration.php. For example:
+in Resources\Configuration.php. For example:
 
 ```PHP
 // For PRODUCTION use
