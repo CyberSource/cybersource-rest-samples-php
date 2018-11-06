@@ -20,7 +20,7 @@ function CreateInstrumentIdentifier()
       "previousTransactionId" => "123456789012345"
       
   ];
-  $merchantInitiatedTransaction = new CyberSource\Model\InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
+  $merchantInitiatedTransaction = new CyberSource\Model\MerchantInitiatedTransaction($merchantInitiatedTransactionArr);
 
 
   $initiatorInfoArr = [
