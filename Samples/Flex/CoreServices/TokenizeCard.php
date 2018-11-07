@@ -3,13 +3,13 @@
 error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
-require_once('./Resources/Configuration.php');
+require_once('./Resources/ExternalConfiguration.php');
 require_once('Samples/Flex/Verifier.php');
 
 
 function TokenizeCard($keyId, $publicKey)
 {
-	$commonElement = new CyberSource\Configuration();
+	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\TokenizationApi($apiclient);

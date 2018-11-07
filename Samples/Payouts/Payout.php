@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
-require_once('./Resources/Configuration.php');
+require_once('./Resources/ExternalConfiguration.php');
 
 function Payout()
 {
-  $commonElement = new CyberSource\Configuration();
+  $commonElement = new CyberSource\ExternalConfiguration();
   $config = $commonElement->ConnectionHost();
   $apiclient = new CyberSource\ApiClient($config);
   $api_instance = new CyberSource\Api\DefaultApi($apiclient);
