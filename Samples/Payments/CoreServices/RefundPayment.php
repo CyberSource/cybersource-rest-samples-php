@@ -52,7 +52,7 @@ function RefundPayment($flag)
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Refund Payment Samplecode is Running..\n";
   RefundPayment(false);
 

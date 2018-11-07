@@ -34,7 +34,7 @@ function VoidRefund()
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Voidrefund Samplecode is Running..\n";
 	VoidRefund();
 

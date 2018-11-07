@@ -78,7 +78,7 @@ function ProcessCredit($flag)
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Process Credit Samplecode is Running..\n";
 	ProcessCredit(false);
 

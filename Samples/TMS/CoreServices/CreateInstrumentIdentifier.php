@@ -66,7 +66,7 @@ function CreateInstrumentIdentifier($flag)
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Samplecode is Running..";
 	CreateInstrumentIdentifier(false);
 

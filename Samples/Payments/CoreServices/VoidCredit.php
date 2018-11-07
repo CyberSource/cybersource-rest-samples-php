@@ -34,7 +34,7 @@ function VoidCredit()
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Void Credit Samplecode is Running..\n";
 	VoidCredit();
 
