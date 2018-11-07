@@ -35,7 +35,7 @@ function VoidPayment()
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Voidpayment Samplecode is Running..\n";
 	VoidPayment();
 

@@ -47,7 +47,7 @@ function RefundCapture()
 }    
 
 // Call Sample Code
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "RefundCapture Sample code is Running..\n";
 	RefundCapture();
 

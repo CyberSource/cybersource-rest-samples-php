@@ -40,7 +40,7 @@ function TokenizeCard($keyId, $publicKey)
 		print_r($e->getMessage());
 	}
 }    
-if(!defined('DO NOT RUN SAMPLE')){
+if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "TokenizeCard Sample Code is Processing\n";
     include_once './Samples/Flex/KeyGenerationNoEnc.php';
   	$data = KeyGenerationNoEnc(true);
