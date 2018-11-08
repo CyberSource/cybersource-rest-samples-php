@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-
 require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
 
@@ -10,23 +8,23 @@ function RefundCapture()
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\RefundApi($apiclient);
-  include_once '../cybersource-rest-samples-php/Samples/Payments/CoreServices/CapturePayment.php';
+  include_once 'Samples/Payments/CoreServices/CapturePayment.php';
   $id = CapturePayment(true);
 	$cliRefInfoArr = [
     "code" => "test_refund_capture"
   ];
-  $client_reference_information = new CyberSource\Model\V2paymentsClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
   $amountDetailsArr = [
       "totalAmount" => "10",
       "currency" => "USD"
   ];
-  $amountDetInfo = new CyberSource\Model\V2paymentsOrderInformationAmountDetails($amountDetailsArr);
+  $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
   
   $orderInfoArry = [
     "amountDetails" => $amountDetInfo
   ];
 
-  $order_information = new CyberSource\Model\V2paymentsOrderInformation($orderInfoArry);
+  $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArry);
   
 
   $paymentRequestArr = [
@@ -41,14 +39,14 @@ function RefundCapture()
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getresponseBody());
+    print_r($e->getResponseBody());
     print_r($e->getMessage());
-	}
+  }
 }    
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "RefundCapture Sample code is Running..\n";
+    echo "RefundCapture Samplecode is Running.. \n";
 	RefundCapture();
 
 }

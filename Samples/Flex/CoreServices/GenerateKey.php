@@ -1,6 +1,4 @@
 <?php
-//echo "Inside php functionality"
-error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
@@ -22,14 +20,14 @@ function GenerateKey()
 		
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getresponseBody());
-		print_r($e->getMessage());
+		print_r($e->getResponseBody());
+    print_r($e->getMessage());
 	}
 }    
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "Get Customer Sample Code\n";
+    echo "GenerateKey Samplecode is Running.. \n";
 	GenerateKey();
 }
 

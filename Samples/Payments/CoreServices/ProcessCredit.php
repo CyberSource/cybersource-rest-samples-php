@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
 
@@ -12,13 +11,13 @@ function ProcessCredit($flag)
 	$cliRefInfoArr = [
     "code" => "test_credits"
   ];
-  $client_reference_information = new CyberSource\Model\V2paymentsClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
 
   $amountDetailsArr = [
     "totalAmount" => "200",
     "currency" => "usd"
   ];
-  $amountDetInfo = new CyberSource\Model\V2paymentsOrderInformationAmountDetails($amountDetailsArr);
+  $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
   $billtoArr = [
     "firstName" => "John",
     "lastName" => "Doe",
@@ -31,13 +30,13 @@ function ProcessCredit($flag)
     "company" => "Visa",
     "email" => "test@cybs.com"
   ];
-  $billto = new CyberSource\Model\V2paymentsOrderInformationBillTo($billtoArr);
+  $billto = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr);
   $orderInfoArry = [
     "amountDetails" => $amountDetInfo,
     "billTo" => $billto
   ];
 
-  $order_information = new CyberSource\Model\V2paymentsOrderInformation($orderInfoArry);
+  $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArry);
   $paymentCardInfo = [
     "expirationYear" => "2031",
     "number" => "5555555555554444",
@@ -45,12 +44,12 @@ function ProcessCredit($flag)
     "expirationMonth" => "12",
     "type" => "002"
   ];
-  $card = new CyberSource\Model\V2paymentsPaymentInformationCard($paymentCardInfo);
+  $card = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentCardInfo);
   $paymentInfoArr = [
       "card" => $card
       
   ];
-  $payment_information = new CyberSource\Model\V2paymentsPaymentInformation($paymentInfoArr);
+  $payment_information = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr);
 
   $paymentRequestArr = [
     "clientReferenceInformation" => $client_reference_information,
@@ -72,14 +71,14 @@ function ProcessCredit($flag)
     }
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getresponseBody());
+    print_r($e->getResponseBody());
     print_r($e->getMessage());
-	}
+  }
 }    
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "Process Credit Samplecode is Running..\n";
+    echo "Process Credit Samplecode is Running.. \n";
 	ProcessCredit(false);
 
 }
