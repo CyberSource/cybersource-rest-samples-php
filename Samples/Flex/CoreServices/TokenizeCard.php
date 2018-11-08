@@ -1,6 +1,4 @@
 <?php
-//echo "Inside php functionality"
-error_reporting(E_ALL);
 
 require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
@@ -12,7 +10,7 @@ function TokenizeCard($keyId, $publicKey)
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\TokenizationApi($apiclient);
+	$api_instance = new CyberSource\Api\FlexTokenApi($apiclient);
 	$publicKey = "-----BEGIN PUBLIC KEY-----\n".$publicKey."\n-----END PUBLIC KEY-----";
 	 
 	$cardInfoArr = [
@@ -21,7 +19,7 @@ function TokenizeCard($keyId, $publicKey)
 	'cardExpirationYear' => "2031",
 	'cardType' => "002"
 	];
-	$card_information = new CyberSource\Model\Paymentsflexv1tokensCardInfo($cardInfoArr);
+	$card_information = new CyberSource\Model\Flexv1tokensCardInfo($cardInfoArr);
 	$flexRequestArr = [
 	'keyId' => $keyId,
 	'cardInfo' => $card_information
@@ -36,12 +34,12 @@ function TokenizeCard($keyId, $publicKey)
 		
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getresponseBody());
+		print_r($e->getResponseBody());
 		print_r($e->getMessage());
-	}
+	  }
 }    
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "TokenizeCard Sample Code is Processing\n";
+    echo "TokenizeCard Samplecode is Processing\n";
     include_once './Samples/Flex/KeyGenerationNoEnc.php';
   	$data = KeyGenerationNoEnc(true);
 	TokenizeCard($data[0], $data[1]);

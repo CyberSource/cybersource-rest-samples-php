@@ -9,23 +9,23 @@ function CapturePayment($flag)
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\CaptureApi($apiclient);
-  include_once '../cybersource-rest-samples-php/Samples/Payments/CoreServices/ProcessPayment.php';
-  $id = ProcessPayment(true);
+  include_once 'Samples/Payments/CoreServices/ProcessPayment.php';
+  $id = ProcessPayment("true");
 	$cliRefInfoArr = [
     "code" => "test_capture"
   ];
-  $client_reference_information = new CyberSource\Model\V2paymentsClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
   $amountDetailsArr = [
       "totalAmount" => "102.21",
       "currency" => "USD"
   ];
-  $amountDetInfo = new CyberSource\Model\V2paymentsOrderInformationAmountDetails($amountDetailsArr);
+  $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
 
   $orderInfoArry = [
     "amountDetails" => $amountDetInfo
   ];
 
-  $order_information = new CyberSource\Model\V2paymentsOrderInformation($orderInfoArry);
+  $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArry);
   $requestArr = [
     "clientReferenceInformation" => $client_reference_information,
     "orderInformation" => $order_information
@@ -53,7 +53,7 @@ function CapturePayment($flag)
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-  echo "Capture payment Samplecode is Running..\n";
+  echo "Capture payment Samplecode is Running.. \n";
   CapturePayment(false);
 
 }
