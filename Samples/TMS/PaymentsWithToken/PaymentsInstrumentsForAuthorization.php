@@ -10,12 +10,12 @@ function CreateInstrumentIdentifier()
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($apiclient);
+	$api_instance = new CyberSource\Api\InstrumentIdentifiersApi($apiclient);
 	
   $tmsCardInfo = [
     "number" => "1234567890987654"
   ];
-  $card = new CyberSource\Model\InstrumentidentifiersCard($tmsCardInfo);
+  $card = new CyberSource\Model\TMSv1instrumentidentifiersCard($tmsCardInfo);
   $merchantInitiatedTransactionArr = [
       "previousTransactionId" => "123456789012345"
       
@@ -27,19 +27,19 @@ function CreateInstrumentIdentifier()
       "merchantInitiatedTransaction" => $merchantInitiatedTransaction
       
   ];
-  $initiatorInformation = new CyberSource\Model\InstrumentidentifiersProcessingInformationAuthorizationOptionsInitiator($initiatorInfoArr);
+  $initiatorInformation = new CyberSource\Model\TMSv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator($initiatorInfoArr);
 
   $authorizationOptionsArr = [
       'initiator' => $initiatorInformation
       
   ];
-  $authorizationOptions = new CyberSource\Model\InstrumentidentifiersProcessingInformationAuthorizationOptions( $authorizationOptionsArr);
+  $authorizationOptions = new CyberSource\Model\TMSv1instrumentidentifiersProcessingInformationAuthorizationOptions( $authorizationOptionsArr);
 
   $processingInformationArr = [
       "authorizationOptions" => $authorizationOptions
       
   ];
-  $processingInformation = new CyberSource\Model\InstrumentidentifiersProcessingInformation($processingInformationArr);
+  $processingInformation = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformation($processingInformationArr);
 
   $tmsRequestArr = [
     "card" => $card,
@@ -50,7 +50,7 @@ function CreateInstrumentIdentifier()
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->instrumentidentifiersPost($profileId, $tmsRequest);
+		$api_response = $api_instance->tmsV1InstrumentidentifiersPost($profileId, $tmsRequest);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
