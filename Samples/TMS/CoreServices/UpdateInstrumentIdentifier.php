@@ -17,7 +17,7 @@ function UpdateInstrumentIdentifier()
       "previousTransactionId" => "123456789012345"
       
   ];
-  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
+  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1InitiatorMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
 
 
   $initiatorInfoArr = [
