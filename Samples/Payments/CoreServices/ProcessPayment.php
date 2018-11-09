@@ -1,5 +1,4 @@
 <?php
-
 require_once('vendor/autoload.php');
 require_once('./Resources/ExternalConfiguration.php');
 
@@ -8,28 +7,29 @@ function ProcessPayment($flag)
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\PaymentApi($apiclient);
+	$api_instance = new CyberSource\Api\PaymentsApi($apiclient);
 	$cliRefInfoArr = [
     "code" => "test_payment"
   ];
-  $client_reference_information = new CyberSource\Model\V2paymentsClientReferenceInformation($cliRefInfoArr);
-  if($flag ==true){
-    $processingInformationArr = [
-      "capture" => true,
-      "commerceIndicator" => "internet"
+  $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
+  if($flag == "true"){
+   $processingInformationArr = [
+     "capture" => true,
+     "commerceIndicator" => "internet"
     ];
   }else{
-    $processingInformationArr = [
+   $processingInformationArr = [
       "commerceIndicator" => "internet"
-    ];
+   ];
   }
-  $processingInformation = new CyberSource\Model\V2paymentsProcessingInformation($processingInformationArr);
+  
+  $processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
   $amountDetailsArr = [
     "totalAmount" => "102.21",
     "currency" => "USD"
   ];
-  $amountDetInfo = new CyberSource\Model\V2paymentsOrderInformationAmountDetails($amountDetailsArr);
+  $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
   $billtoArr = [
     "firstName" => "John",
     "lastName" => "Doe",
@@ -42,25 +42,25 @@ function ProcessPayment($flag)
     "company" => "Visa",
     "email" => "test@cybs.com"
   ];
-  $billto = new CyberSource\Model\V2paymentsOrderInformationBillTo($billtoArr);
+  $billto = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr);
   $orderInfoArry = [
     "amountDetails" => $amountDetInfo,
     "billTo" => $billto
   ];
 
-  $order_information = new CyberSource\Model\V2paymentsOrderInformation($orderInfoArry);
+  $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArry);
   $paymentCardInfo = [
     "expirationYear" => "2031",
     "number" => "4111111111111111",
     "securityCode" => "123",
     "expirationMonth" => "12"
   ];
-  $card = new CyberSource\Model\V2paymentsPaymentInformationCard($paymentCardInfo);
+  $card = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentCardInfo);
   $paymentInfoArr = [
       "card" => $card
       
   ];
-  $payment_information = new CyberSource\Model\V2paymentsPaymentInformation($paymentInfoArr);
+  $payment_information = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr);
   
   $paymentRequestArr = [
     "clientReferenceInformation" => $client_reference_information,
@@ -75,7 +75,7 @@ function ProcessPayment($flag)
     //Calling the Api
     $api_response = $api_instance->createPayment($paymentRequest);
     
-    if($flag ==true){
+    if($flag =="true" || $flag =="notallow"){
       //Returning the ID
       echo "Fetching Payment ID: ".$api_response[0]['id']."\n";
       return $api_response[0]['id'];
@@ -93,8 +93,8 @@ function ProcessPayment($flag)
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-  echo "Process payment Samplecode is Running..\n";
-  ProcessPayment(false);
+  echo "Process payment Samplecode is Running.. \n";
+  ProcessPayment("false");
 
 }
   

@@ -10,11 +10,11 @@ function Payout()
   $commonElement = new CyberSource\ExternalConfiguration();
   $config = $commonElement->ConnectionHost();
   $apiclient = new CyberSource\ApiClient($config);
-  $api_instance = new CyberSource\Api\DefaultApi($apiclient);
+  $api_instance = new CyberSource\Api\ProcessAPayoutApi($apiclient);
   $cliRefInfoArr = [
     "code" => "33557799"
   ];
-  $client_reference_information = new CyberSource\Model\InlineResponse201ClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\PtsV2PaymentsPost201ResponseClientReferenceInformation($cliRefInfoArr);
 
   $recipientInformationArr = [
     "firstName" => "John",
@@ -26,12 +26,12 @@ function Payout()
     "postalCode" => "94400",
     "phoneNumber" => "6504320556"
   ];
-  $recipientInformation = new CyberSource\Model\V2payoutsRecipientInformation($recipientInformationArr);
+  $recipientInformation = new CyberSource\Model\Ptsv2payoutsRecipientInformation($recipientInformationArr);
   $accountArr = [
     "fundsSource" => "01",
     "number" => "1234567890123456789012345678901234"
   ];
-  $account = new CyberSource\Model\V2payoutsSenderInformationAccount($accountArr);
+  $account = new CyberSource\Model\Ptsv2payoutsSenderInformationAccount($accountArr);
   $senderInformationArr = [
     "referenceNumber" => "1234567890",
     "account" => $account,
@@ -41,25 +41,25 @@ function Payout()
     "administrativeArea" => "CA",
     "countryCode" => "US"
   ];
-  $senderInformation = new CyberSource\Model\V2payoutsSenderInformation($senderInformationArr);
+  $senderInformation = new CyberSource\Model\Ptsv2payoutsSenderInformation($senderInformationArr);
 
   $processingInformationArr = [
     "businessApplicationId" => "FD",
     "commerceIndicator" => "internet"
   ];
-  $processingInformation = new CyberSource\Model\V2payoutsProcessingInformation($processingInformationArr);
+  $processingInformation = new CyberSource\Model\Ptsv2payoutsProcessingInformation($processingInformationArr);
 
   $amountDetailsArr = [
     "totalAmount" => "100.00",
     "currency" => "USD"
   ];
-  $amountDetInfo = new CyberSource\Model\V2payoutsOrderInformationAmountDetails($amountDetailsArr);
+  $amountDetInfo = new CyberSource\Model\Ptsv2payoutsOrderInformationAmountDetails($amountDetailsArr);
   
   $orderInfoArry = [
     "amountDetails" => $amountDetInfo
   ];
 
-  $order_information = new CyberSource\Model\V2payoutsOrderInformation($orderInfoArry);
+  $order_information = new CyberSource\Model\Ptsv2payoutsOrderInformation($orderInfoArry);
 
   $merchantDescriptorArr = [
     "name" => "Sending Company Name",
@@ -69,12 +69,12 @@ function Payout()
     "postalCode" => "94440"
     
   ];
-  $merchantDescriptor = new CyberSource\Model\V2payoutsMerchantInformationMerchantDescriptor($merchantDescriptorArr);
+  $merchantDescriptor = new CyberSource\Model\Ptsv2payoutsMerchantInformationMerchantDescriptor($merchantDescriptorArr);
   $merchantInformationArr = [
     "merchantDescriptor" => $merchantDescriptor
     
   ];
-  $merchantInformation = new CyberSource\Model\V2payoutsMerchantInformation($merchantInformationArr);
+  $merchantInformation = new CyberSource\Model\Ptsv2payoutsMerchantInformation($merchantInformationArr);
 
   $paymentCardInfo = [
     "type" => "001",
@@ -83,12 +83,12 @@ function Payout()
     "expirationYear" => "2025",
     "sourceAccountType" => "CH"
   ];
-  $card = new CyberSource\Model\V2payoutsPaymentInformationCard($paymentCardInfo);
+  $card = new CyberSource\Model\Ptsv2payoutsPaymentInformationCard($paymentCardInfo);
   $paymentInfoArr = [
       "card" => $card
       
   ];
-  $payment_information = new CyberSource\Model\V2payoutsPaymentInformation($paymentInfoArr);
+  $payment_information = new CyberSource\Model\Ptsv2payoutsPaymentInformation($paymentInfoArr);
 
   $paymentRequestArr = [
     "clientReferenceInformation" => $client_reference_information,
@@ -100,10 +100,10 @@ function Payout()
     "processingInformation" => $processingInformation
   ];
 
-  $paymentRequest = new CyberSource\Model\OctCreatePaymentRequest($paymentRequestArr);
+  $paymentRequest = new CyberSource\Model\PtsV2PayoutsPostResponse($paymentRequestArr);
   $api_response = list($response,$statusCode,$httpHeader)=null;
   try {
-    $api_response = $api_instance->octCreatePayment($paymentRequest);
+      $api_response = $api_instance->octCreatePayment($paymentRequest);
     echo "<pre>";print_r($api_response);
 
   } catch (Cybersource\ApiException $e) {
