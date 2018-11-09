@@ -17,6 +17,7 @@ function DownloadReport()
 		echo "<pre>";print_r($api_response); 
 		// To save the Report
 		$file = 'report_DownloadReport.xml';
+		$data = 'this is your string to write';
 		file_put_contents($file, $api_response[0]);
 
 	} catch (Cybersource\ApiException $e) {

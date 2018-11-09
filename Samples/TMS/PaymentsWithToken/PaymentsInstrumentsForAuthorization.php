@@ -15,7 +15,7 @@ function CreateInstrumentIdentifier()
   $tmsCardInfo = [
     "number" => "1234567890987654"
   ];
-  $card = new CyberSource\Model\TMSv1instrumentidentifiersCard($tmsCardInfo);
+  $card = new CyberSource\Model\Tmsv1instrumentidentifiersCard($tmsCardInfo);
   $merchantInitiatedTransactionArr = [
       "previousTransactionId" => "123456789012345"
       
@@ -27,13 +27,13 @@ function CreateInstrumentIdentifier()
       "merchantInitiatedTransaction" => $merchantInitiatedTransaction
       
   ];
-  $initiatorInformation = new CyberSource\Model\TMSv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator($initiatorInfoArr);
+  $initiatorInformation = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator($initiatorInfoArr);
 
   $authorizationOptionsArr = [
       'initiator' => $initiatorInformation
       
   ];
-  $authorizationOptions = new CyberSource\Model\TMSv1instrumentidentifiersProcessingInformationAuthorizationOptions( $authorizationOptionsArr);
+  $authorizationOptions = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions( $authorizationOptionsArr);
 
   $processingInformationArr = [
       "authorizationOptions" => $authorizationOptions

@@ -16,10 +16,10 @@ function CreateReportSubscriptionForReportNameByOrganization()
                     "Request.MerchantID"],
         'reportMimeType' => 'application/xml',
         'reportFrequency' => 'WEEKLY',
-        'reportName' => 'test_v4567778',
+        'reportName' => 'test_v459',
         'timezone' => 'GMT',
-        'startTime' => '0800',
-        'startDay' => "2"      
+        'startTime' => '0900',
+        'startDay' => "1"      
 	];
 	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
@@ -29,7 +29,7 @@ function CreateReportSubscriptionForReportNameByOrganization()
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
-    print_r($e->getMessage());
+    	print_r($e->getMessage());
 	}
 }    
 

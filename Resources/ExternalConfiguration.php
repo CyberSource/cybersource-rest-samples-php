@@ -19,8 +19,6 @@ class ExternalConfiguration
                 $this->merchantID = "testrest";
                 $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
                 $this->screteKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
-                $this->proxyUrl = "userproxy.visa.com";
-                $this->proxyHost = "443";
                 $this->keyAlias = "testrest";
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
@@ -42,8 +40,6 @@ class ExternalConfiguration
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
                 $confiData = $config->setSecreteKey($this->screteKey);
-                $confiData = $config->setCurlProxyHost($this->proxyUrl);
-                $confiData = $config->setCurlProxyPort($this->proxyHost);
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
@@ -59,8 +55,6 @@ class ExternalConfiguration
 		$config = $config->setHost("apitest.cybersource.com");
 		$config = $config->setDebug(false);
 		$config = $config->setDebugFile("../../Logs/Logs.txt");
-		$config = $config->setCurlProxyHost("userproxy.visa.com");
-		$config = $config->setCurlProxyPort("443");
 		return $config;
 	}
 

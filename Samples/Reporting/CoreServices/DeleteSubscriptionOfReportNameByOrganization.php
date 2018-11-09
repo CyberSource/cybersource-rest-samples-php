@@ -11,7 +11,7 @@ function DeleteSubscriptionOfReportNameByOrganization()
 	
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->deleteSubscription("testrest_subcription_v123");
+		$api_response = $api_instance->deleteSubscription("test_v456");
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {

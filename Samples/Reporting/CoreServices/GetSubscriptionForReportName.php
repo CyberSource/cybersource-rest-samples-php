@@ -8,7 +8,7 @@ function GetSubscriptionForReportName()
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\ReportSubscriptionsApi($apiclient);
-	$reportName = "testrest_subcription_v1";
+	$reportName = "test_v456";
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->getSubscription($reportName);

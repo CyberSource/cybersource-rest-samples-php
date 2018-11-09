@@ -10,14 +10,14 @@ function CreatePaymentsInstruments()
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\PaymentInstrumentApi($apiclient);
+	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
 	
   $tmsCardInfo = [
     "expirationMonth" => "09",
     "expirationYear" => "2022",
     "type" => "visa"
   ];
-  $card = new CyberSource\Model\PaymentinstrumentsCard($tmsCardInfo);
+  $card = new CyberSource\Model\Tmsv1paymentinstrumentsCard($tmsCardInfo);
 
   $tmsBillToArr = [
     "firstName" => "John",
@@ -32,24 +32,27 @@ function CreatePaymentsInstruments()
     "email" => "john.smith@example.com",
     "phoneNumber" => "555123456"
   ];
-  $tmsBillTo = new CyberSource\Model\PaymentinstrumentsBillTo($tmsBillToArr);
+  $tmsBillTo = new CyberSource\Model\Tmsv1paymentinstrumentsBillTo($tmsBillToArr);
   $cardArr = [
-      "number" => "1234567890987654" 
+      "number" => "4111111111111111" 
   ];
-  $instrumentidentifiersCard = new CyberSource\Model\InstrumentidentifiersCard($cardArr);
+  $instrumentidentifiersCard = new CyberSource\Model\Tmsv1instrumentidentifiersCard($cardArr);
+
+  $instrumentidentifiersArr = [
+      "card" => $instrumentidentifiersCard
+  ];
+  $instrumentidentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($instrumentidentifiersArr);
 
   $tmsRequestArr = [
-
-      "card" => $card,
-      "billTo" => $tmsBillTo,
-       "instrumentIdentifier" => $instrumentidentifiersCard
-      
+    "card" => $card,
+    "billTo" => $tmsBillTo,
+    "instrumentIdentifier" => $instrumentidentifier
   ];
-	$tmsRequest = new CyberSource\Model\Body2($tmsRequestArr);
+  $tmsRequest = new CyberSource\Model\Body2($tmsRequestArr);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->paymentinstrumentsPost($profileId, $tmsRequest);
+		$api_response = $api_instance->tmsV1PaymentinstrumentsPost($profileId, $tmsRequest);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
