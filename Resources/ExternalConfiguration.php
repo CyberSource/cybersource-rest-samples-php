@@ -18,7 +18,7 @@ class ExternalConfiguration
                 $this->logFilename = "Cybs.log";
                 $this->merchantID = "testrest";
                 $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
-                $this->screteKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
+                $this->secretKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
                 $this->keyAlias = "testrest";
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
@@ -29,7 +29,7 @@ class ExternalConfiguration
         //creating merchant config object
 	function merchantConfigObject()
 	{     
-		$config = new \CyberSource\Authentication\Core\MerchantConfiguration();
+		$config = new \CyberSource\Authentication\core\MerchantConfiguration();
                 if(is_bool($this->enableLog))
 		      $confiData = $config->setDebug($this->enableLog);
 
@@ -39,7 +39,7 @@ class ExternalConfiguration
                 $confiData = $config->setauthenticationType(strtoupper(trim($this->authType)));
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
-                $confiData = $config->setSecreteKey($this->screteKey);
+                $confiData = $config->setSecretKey($this->secretKey);
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
