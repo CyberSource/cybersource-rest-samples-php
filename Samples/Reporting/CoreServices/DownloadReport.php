@@ -17,7 +17,7 @@ function DownloadReport()
 		$downloadData = $api_response[0];
         $filePath = $commonElement->downloadReport($downloadData, "DownloadReport.csv");
 		print_r($api_response);
-        echo "File has been downloaded in below path: \n".$filePath."\n";
+        echo "File has been downloaded in the location: \n".$filePath."\n";
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
