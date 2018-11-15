@@ -13,7 +13,11 @@ function DownloadFileWithFileIdentifier()
     $api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->getFile($fileId, $organizationId = "testrest");
-		echo "<pre>";print_r($api_response);
+        $downloadData = $api_response[0];
+        $filePath = $commonElement->downloadReport($downloadData, "DownloadFileWithFileIdentifier.csv");
+		print_r($api_response);
+        echo "File has been downloaded in the location: \n".$filePath."\n";
+
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e);

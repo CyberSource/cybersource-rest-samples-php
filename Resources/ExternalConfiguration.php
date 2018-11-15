@@ -39,7 +39,7 @@ class ExternalConfiguration
                 $confiData = $config->setauthenticationType(strtoupper(trim($this->authType)));
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
-                $confiData = $config->setSecretKey($this->secretKey);
+                $confiData = $config->setSecreteKey($this->secretKey);
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
@@ -75,6 +75,14 @@ class ExternalConfiguration
                 $file = fopen("./CSV_Files/TestReport/TestResults.csv", "a+");
                 fputcsv($file, array($testId, $runtime, $apiName, $responseMessage));
                 fclose($file);
+        }
+
+        function downloadReport($downloadData, $fileName){
+                $filePathName = "./Resources/".$fileName;
+                $file = fopen($filePathName, "w");
+                fputcsv($file, array($downloadData));
+                fclose($file);
+                return __DIR__.'\\'.$fileName;
         }
 }
 $temp = new ExternalConfiguration();
