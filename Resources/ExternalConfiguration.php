@@ -39,7 +39,7 @@ class ExternalConfiguration
                 $confiData = $config->setauthenticationType(strtoupper(trim($this->authType)));
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
-                $confiData = $config->setSecreteKey($this->secretKey);
+                $confiData = $config->setSecretKey($this->secretKey);
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
