@@ -14,11 +14,10 @@ function DownloadReport()
 	$reportName="testrest_v2";
 	try {
 		$api_response = $api_instance->downloadReport($reportDate, $reportName, $organizationId = null);
-		echo "<pre>";print_r($api_response); 
-		// To save the Report
-		$file = 'report_DownloadReport.xml';
-		$data = 'this is your string to write';
-		file_put_contents($file, $api_response[0]);
+		$downloadData = $api_response[0];
+        $filePath = $commonElement->downloadReport($downloadData, "DownloadReport.csv");
+		print_r($api_response);
+        echo "File has been downloaded in below path: \n".$filePath."\n";
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());

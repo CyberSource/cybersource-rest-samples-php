@@ -76,6 +76,14 @@ class ExternalConfiguration
                 fputcsv($file, array($testId, $runtime, $apiName, $responseMessage));
                 fclose($file);
         }
+
+        function downloadReport($downloadData, $fileName){
+                $filePathName = "./Resources/".$fileName;
+                $file = fopen($filePathName, "w");
+                fputcsv($file, array($downloadData));
+                fclose($file);
+                return __DIR__.'\\'.$fileName;
+        }
 }
 $temp = new ExternalConfiguration();
 
