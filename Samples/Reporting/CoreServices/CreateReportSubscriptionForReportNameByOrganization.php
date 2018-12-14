@@ -26,10 +26,6 @@ function CreateReportSubscriptionForReportNameByOrganization()
 	try {
 		$api_response = $api_instance->createSubscription(null,$reportRequest);
 		echo "<pre>";print_r($api_response);
-		/*if($api_response[1]==201){
-			require_once __DIR__. DIRECTORY_SEPARATOR ."DeleteSubscriptionOfReportNameByOrganization.php";
-			$id = DeleteSubscriptionOfReportNameByOrganization($reportRequest['reportName']);
-		}*/
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
