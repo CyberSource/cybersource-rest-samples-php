@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function CreateAdhocReport()
 {
@@ -11,8 +11,8 @@ function CreateAdhocReport()
 	$createReportRequestArr =[
 		"reportDefinitionName"=> "TransactionRequestClass",
 		"timezone"=> "GMT",
-		"reportMimeType"=> "application/xml",
-		"reportName"=> "testrest_v49",
+		"reportMimeType"=> "text/csv",
+		"reportName"=> "testrest_v57",
 		"reportStartTime"=> "2018-09-02T12:00:00+05:00",
 		"reportEndTime"=> "2018-09-03T12:00:00+05:00",
 		"reportPreferences"=> ["signedAmounts"=>"true","fieldNameConvention"=>"SOAPI"],

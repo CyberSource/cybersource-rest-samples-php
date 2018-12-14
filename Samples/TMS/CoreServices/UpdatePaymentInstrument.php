@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function UpdatePaymentInstrument()
 {
@@ -47,7 +47,7 @@ function UpdatePaymentInstrument()
 	$tmsRequest = new CyberSource\Model\Body3($tmsRequestArr);
 
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
-  include_once 'Samples/TMS/CoreServices/RetrievePaymentInstrument.php';
+  require_once __DIR__. DIRECTORY_SEPARATOR .'RetrievePaymentInstrument.php';
   $tokenId = RetrievePaymentInstrument(true);
  	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {

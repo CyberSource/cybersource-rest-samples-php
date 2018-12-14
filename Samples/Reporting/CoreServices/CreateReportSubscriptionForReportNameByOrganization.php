@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function CreateReportSubscriptionForReportNameByOrganization()
 {
@@ -16,16 +16,20 @@ function CreateReportSubscriptionForReportNameByOrganization()
                     "Request.MerchantID"],
         'reportMimeType' => 'application/xml',
         'reportFrequency' => 'WEEKLY',
-        'reportName' => 'test_v459',
+        'reportName' => 'testrests_subcription_v1',
         'timezone' => 'GMT',
         'startTime' => '0900',
-        'startDay' => "1"      
+        'startDay' => "3"      
 	];
 	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->createSubscription(null,$reportRequest);
 		echo "<pre>";print_r($api_response);
+		/*if($api_response[1]==201){
+			require_once __DIR__. DIRECTORY_SEPARATOR ."DeleteSubscriptionOfReportNameByOrganization.php";
+			$id = DeleteSubscriptionOfReportNameByOrganization($reportRequest['reportName']);
+		}*/
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());

@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function UpdateInstrumentIdentifier()
 {
@@ -43,7 +43,7 @@ function UpdateInstrumentIdentifier()
   ];
 
 	$tmsRequest = new CyberSource\Model\Body($tmsRequestArr);
-  include_once 'Samples/TMS/CoreServices/RetrieveInstrumentIdentifier.php';
+  require_once __DIR__. DIRECTORY_SEPARATOR .'RetrieveInstrumentIdentifier.php';
   $tokenId = RetrieveInstrumentIdentifier(true);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;

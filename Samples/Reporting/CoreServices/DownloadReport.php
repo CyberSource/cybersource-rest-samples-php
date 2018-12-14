@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function DownloadReport()
 {
@@ -11,11 +11,11 @@ function DownloadReport()
 	
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	$reportDate="2018-09-02";
-	$reportName="testrest_v2";
+	$reportName="testrest v2";
 	try {
 		$api_response = $api_instance->downloadReport($reportDate, $reportName, $organizationId = null);
 		$downloadData = $api_response[0];
-        $filePath = $commonElement->downloadReport($downloadData, "DownloadReport.csv");
+        $filePath = $commonElement->downloadReport($downloadData, "DownloadReport.xml");
 		print_r($api_response);
         echo "File has been downloaded in the location: \n".$filePath."\n";
 

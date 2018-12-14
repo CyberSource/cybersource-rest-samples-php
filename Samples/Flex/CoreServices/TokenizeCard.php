@@ -1,8 +1,8 @@
 <?php
 
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
-require_once('Samples/Flex/Verifier.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../Verifier.php';
 
 
 function TokenizeCard($keyId, $publicKey)
@@ -40,7 +40,7 @@ function TokenizeCard($keyId, $publicKey)
 }    
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "TokenizeCard Samplecode is Processing\n";
-    include_once './Samples/Flex/KeyGenerationNoEnc.php';
+    include_once __DIR__. DIRECTORY_SEPARATOR .'../KeyGenerationNoEnc.php';
   	$data = KeyGenerationNoEnc(true);
 	TokenizeCard($data[0], $data[1]);
 }
