@@ -16,8 +16,8 @@ function RetrievePaymentInstrument($flag)
 		$api_response = $api_instance->tmsV1PaymentinstrumentsTokenIdGet($profileId, $tokenId);
 		if($flag == true){
 			//Returning the ID
-		  	echo "Fetching RetrievePaymentInstrument ID: ".$api_response[0]['id']."\n";
-			return $api_response[0]['id'];
+		  	echo "Fetching RetrievePaymentInstrument ID: ".$api_response[0]->id."\n";
+			return $api_response[0]->id;
 		}else{
 			print_r($api_response);
 		}
