@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function GetIndividualBatchFile()
 {
@@ -9,9 +9,9 @@ function GetIndividualBatchFile()
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\TransactionBatchApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
-	$Id="Owcyk6pl";
+	$id="Owcyk6pl";
 	try {
-		$api_response = $api_instance->ptsV1TransactionBatchesIdGet($Id);
+		$api_response = $api_instance->ptsV1TransactionBatchesIdGet($id);
 		echo "<pre>";print_r($api_response);
 		
 

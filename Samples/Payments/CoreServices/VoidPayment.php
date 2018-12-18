@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function VoidPayment()
 {
@@ -8,7 +8,7 @@ function VoidPayment()
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\VoidApi($apiclient);
-  include_once 'Samples/Payments/CoreServices/ProcessPayment.php';
+  require_once __DIR__. DIRECTORY_SEPARATOR .'ProcessPayment.php';
   $id = ProcessPayment("true");
 	$cliRefInfoArr = [
     'code' => 'test_void'
