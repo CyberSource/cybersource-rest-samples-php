@@ -29,7 +29,7 @@ class ExternalConfiguration
         //creating merchant config object
         function merchantConfigObject()
         {     
-                $config = new \CyberSource\Authentication\core\MerchantConfiguration();
+                $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
                 if(is_bool($this->enableLog))
                       $confiData = $config->setDebug($this->enableLog);
 
@@ -73,7 +73,7 @@ class ExternalConfiguration
 
         function CallTestLogging($testId, $apiName, $responseMessage){
                 $runtime = date('d-m-Y H:i:s');
-                $file = fopen("./CSV_Files/TestReport/TestResults.csv", "a+");
+                $file = fopen("./SamplesQA/CSV_Files/TestReport/TestResults.csv", "a+");
                 fputcsv($file, array($testId, $runtime, $apiName, $responseMessage));
                 fclose($file);
         }
