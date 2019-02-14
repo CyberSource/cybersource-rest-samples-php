@@ -29,7 +29,7 @@ class ExternalConfiguration
         //creating merchant config object
         function merchantConfigObject()
         {     
-                $config = new \CyberSource\Authentication\Ccore\MerchantConfiguration();
+                $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
                 if(is_bool($this->enableLog))
                       $confiData = $config->setDebug($this->enableLog);
 
