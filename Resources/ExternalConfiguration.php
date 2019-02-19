@@ -71,10 +71,10 @@ class ExternalConfiguration
                 return $retDate;
         }
 
-        function CallTestLogging($testId, $apiName, $responseMessage){
+        function CallTestLogging($testId, $apiName, $assertMessage, $inputMessage){
                 $runtime = date('d-m-Y H:i:s');
-                $file = fopen("./CSV_Files/TestReport/TestResults.csv", "a+");
-                fputcsv($file, array($testId, $runtime, $apiName, $responseMessage));
+                $file = fopen("./SamplesQA/CSV_Files/TestReport/TestResults.csv", "a+");
+                fputcsv($file, array($testId, $apiName, $assertMessage, $inputMessage, $runtime));
                 fclose($file);
         }
 

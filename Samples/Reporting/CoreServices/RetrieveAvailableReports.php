@@ -12,20 +12,30 @@ function RetrieveAvailableReports()
 	$endTime="2018-10-30T23:59:59.0Z";
 	$timeQueryType="executedTime";
   
-	$api_response = list($response,$statusCode,$httpHeader)=null;
+	
+ 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->searchReports($startTime, $endTime, $timeQueryType);
-		echo "<pre>";print_r($api_response);
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+		$resBodyArr= json_decode($api_response[0]);
+		echo "The Api Response Body: \n". json_encode($resBodyArr, JSON_UNESCAPED_SLASHES)."\n\n";
+	    echo "The Api Response StatusCode: ".json_encode($api_response[1])."\n\n";
+	    echo "The Api Response Header: \n".json_encode($api_response[2], JSON_UNESCAPED_SLASHES)."\n";
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-    	print_r($e->getMessage());
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+        echo "The Exception Response Body: \n";
+		print_r($e->getResponseBody()); echo "\n\n";
+		echo "The Exception Response Header: \n";
+		print_r($e->getResponseHeaders()); echo "\n\n";
+		echo "The Exception Response Header: \n";
+		print_r($e->getMessage());echo "\n\n";
 	}
 }    
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "RetrieveAvailableReports Samplecode is Running.. \n";
+    echo "[BEGIN] EXECUTION OF SAMPLE CODE: RetrieveAvailableReports  \n\n";
 	RetrieveAvailableReports();
 
 }

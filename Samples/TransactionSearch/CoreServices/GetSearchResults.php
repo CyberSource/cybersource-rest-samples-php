@@ -10,20 +10,30 @@ function GetSearchResults()
 	$api_instance = new CyberSource\Api\SearchTransactionsApi($apiclient);
 	//$id="4862be87-e01d-427b-bc59-4783a3bcdb25";
 	$id="e80cc844-0d19-44d7-aa82-2fd618a89a2d";
-	$api_response = list($response,$statusCode,$httpHeader)=null;
+	
+ 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->getSearch($id);
-		echo "<pre>";print_r($api_response);
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+		$resBodyArr= json_decode($api_response[0]);
+	    echo "The Api Response Body: \n". json_encode($resBodyArr, JSON_UNESCAPED_SLASHES)."\n\n";
+	    echo "The Api Response StatusCode: ".json_encode($api_response[1])."\n\n";
+	    echo "The Api Response Header: \n".json_encode($api_response[2], JSON_UNESCAPED_SLASHES)."\n";
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-    print_r($e->getMessage());
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+        echo "The Exception Response Body: \n";
+		print_r($e->getResponseBody()); echo "\n\n";
+		echo "The Exception Response Header: \n";
+		print_r($e->getResponseHeaders()); echo "\n\n";
+		echo "The Exception Response Header: \n";
+		print_r($e->getMessage());echo "\n\n";
 	}
 }    
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "GetSearchResults Samplecode is Running.. \n";
+    echo "[BEGIN] EXECUTION OF SAMPLE CODE: GetSearchResults  \n\n";
 	GetSearchResults();
 
 }
