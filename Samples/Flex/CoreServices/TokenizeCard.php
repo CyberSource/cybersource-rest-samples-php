@@ -25,21 +25,32 @@ function TokenizeCard($keyId, $publicKey)
 	'cardInfo' => $card_information
 	];
 	$flexRequest = new CyberSource\Model\TokenizeRequest($flexRequestArr);
-	$api_response = list($response,$statusCode,$httpHeader)=null;
+	$flexRequestArr = json_decode($flexRequest);
+	echo "The Api Request Body: \n". json_encode($flexRequestArr, JSON_UNESCAPED_SLASHES) ."\n\n";
+ 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->tokenize($flexRequest);
-		print_r($api_response);
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+		$resBodyArr= json_decode($api_response[0]);
+		echo "The Api Response Body: \n". json_encode($resBodyArr, JSON_UNESCAPED_SLASHES)."\n\n";
+		echo "The Api Response StatusCode: ".json_encode($api_response[1])."\n\n";
+		echo "The Api Response Header: \n".json_encode($api_response[2], JSON_UNESCAPED_SLASHES)."\n";
 		$verifyObj = new Verifier();
 		return $verifyObj->verifySignature($publicKey, $api_response);
 		
 
 	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-		print_r($e->getMessage());
-	  }
+		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
+	    echo "The Exception Response Body: \n";
+		print_r($e->getResponseBody()); echo "\n\n";
+	    echo "The Exception Response Header: \n";
+	    print_r($e->getResponseHeaders()); echo "\n\n";
+	    echo "The Exception Response Header: \n";
+	    print_r($e->getMessage());echo "\n\n";
+	}
 }    
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "TokenizeCard Samplecode is Processing\n";
+    echo "[BEGIN] EXECUTION OF SAMPLE CODE:  TokenizeCard\n\n";
     include_once __DIR__. DIRECTORY_SEPARATOR .'../KeyGenerationNoEnc.php';
   	$data = KeyGenerationNoEnc(true);
 	TokenizeCard($data[0], $data[1]);

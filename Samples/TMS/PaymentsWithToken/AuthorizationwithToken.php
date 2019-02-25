@@ -50,7 +50,8 @@ function CreatePaymentsInstruments()
   ];
   $tmsRequest = new CyberSource\Model\Body2($tmsRequestArr);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
-	$api_response = list($response,$statusCode,$httpHeader)=null;
+	
+ 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->tmsV1PaymentinstrumentsPost($profileId, $tmsRequest);
 		echo "<pre>";print_r($api_response);
