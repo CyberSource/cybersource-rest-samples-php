@@ -17,8 +17,7 @@ function RetrieveAvailableReports()
 	try {
 		$api_response = $api_instance->searchReports($startTime, $endTime, $timeQueryType);
 		echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
-		$resBodyArr= json_decode($api_response[0]);
-		echo "The Api Response Body: \n". json_encode($resBodyArr, JSON_UNESCAPED_SLASHES)."\n\n";
+		echo "The Api Response Body: \n"; print_r($api_response[0]);echo "\n\n";
 	    echo "The Api Response StatusCode: ".json_encode($api_response[1])."\n\n";
 	    echo "The Api Response Header: \n".json_encode($api_response[2], JSON_UNESCAPED_SLASHES)."\n";
 

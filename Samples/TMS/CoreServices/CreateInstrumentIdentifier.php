@@ -17,7 +17,7 @@ function CreateInstrumentIdentifier($flag)
     "previousTransactionId" => "123456789012345"
       
   ];
-  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1InitiatorMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
+  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1instrumentidentifiersMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
 
 
   $initiatorInfoArr = [
@@ -45,7 +45,7 @@ function CreateInstrumentIdentifier($flag)
 
 	$tmsRequest = new CyberSource\Model\Body($tmsRequestArr);
   $requestArr = json_decode($tmsRequest);
-  $requestBody = $apiclient->dataMasking(json_encode($paymentrqstArr, JSON_UNESCAPED_SLASHES));
+  $requestBody = $apiclient->dataMasking(json_encode($requestArr, JSON_UNESCAPED_SLASHES));
   echo "The Request Payload : \n".$requestBody."\n\n";
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	
@@ -59,8 +59,7 @@ function CreateInstrumentIdentifier($flag)
       return $api_response[0]['id'];
     }else{
       echo "The API Request Header: \n". json_encode($config->getRequestHeaders(), JSON_UNESCAPED_SLASHES)."\n\n";
-      $resBodyArr= json_decode($api_response[0]);
-      echo "The Api Response Body: \n". json_encode($resBodyArr, JSON_UNESCAPED_SLASHES)."\n\n";
+      echo "The Api Response Body: \n"; print_r($api_response[0]);echo "\n\n";
       echo "The Api Response StatusCode: ".json_encode($api_response[1])."\n\n";
       echo "The Api Response Header: \n".json_encode($api_response[2], JSON_UNESCAPED_SLASHES)."\n";
     }
