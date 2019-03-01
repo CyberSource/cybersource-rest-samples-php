@@ -54,8 +54,8 @@ function CreatePaymentInstrument($flag)
 		if($flag == true){
       //Returning the ID
 
-        echo "Fetching CreatePaymentInstrument ID: ".$api_response[0]->id."\n";
-      return $api_response[0]->id;
+        echo "Fetching CreatePaymentInstrument ID: ".$api_response[0]["id"]."\n";
+      return $api_response[0]["id"];
     }else{
       print_r($api_response);
     }

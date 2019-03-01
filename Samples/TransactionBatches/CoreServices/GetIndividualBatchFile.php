@@ -7,11 +7,11 @@ function GetIndividualBatchFile()
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
-	$api_instance = new CyberSource\Api\TransactionBatchApi($apiclient);
+	$api_instance = new CyberSource\Api\TransactionBatchesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	$id="Owcyk6pl";
 	try {
-		$api_response = $api_instance->ptsV1TransactionBatchesIdGet($id);
+		$api_response = $api_instance->getTransactionBatchId($id);
 		echo "<pre>";print_r($api_response);
 		
 
