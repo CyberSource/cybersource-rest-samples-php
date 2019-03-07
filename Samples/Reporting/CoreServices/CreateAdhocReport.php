@@ -20,7 +20,7 @@ function CreateAdhocReport()
 	];
 	  
 	  
-	$reportRequest = new CyberSource\Model\RequestBody1($createReportRequestArr);
+	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->createReport($reportRequest);
