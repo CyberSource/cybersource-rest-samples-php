@@ -105,7 +105,7 @@ function ProcessPaymentWithServiceFee($flag)
 // Call Sample Code
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "Process payment Samplecode is Running.. \n";
+    echo "Process Payment With Service Fee Samplecode is Running.. \n";
     ProcessPaymentWithServiceFee("false");
 }
 
