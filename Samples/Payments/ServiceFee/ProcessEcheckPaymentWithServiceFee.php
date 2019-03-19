@@ -3,7 +3,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function ProcessPayment($flag)
+function ProcessEcheckPaymentWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
@@ -30,8 +30,9 @@ function ProcessPayment($flag)
     $processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
     $amountDetailsArr = [
-		"totalAmount" => "102.21",
-		"currency" => "USD"
+		"totalAmount" => "2325.00",
+		"currency" => "USD",
+		"serviceFeeAmount" => "20"
 	];
     $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
 	
@@ -54,18 +55,22 @@ function ProcessPayment($flag)
 		"billTo" => $billto
 	];
     $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArr);
-	
-    $paymentCardInfo = [
-		"expirationYear" => "2031",
-		"number" => "4111111111111111",
-		"securityCode" => "123",
-		"expirationMonth" => "12"
+
+    $accountInfo = [
+		"number" => "4100",
+		"type" => "C",
+		"checkNumber" => "123456"
 	];
-    $card = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentCardInfo);
+
+    $bankInfo = [
+		"account" => new CyberSource\Model\Ptsv2paymentsPaymentInformationBankAccount($accountInfo), 
+		"routingNumber" => "071923284"
+	];
+    $bank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($bankInfo);
 	
     $paymentInfoArr = [
-		"card" => $card
-    ];
+		"bank" => $bank
+	];
     $payment_information = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr);
 
     $paymentRequestArr = [
@@ -73,7 +78,7 @@ function ProcessPayment($flag)
 		"orderInformation" => $order_information, 
 		"paymentInformation" => $payment_information, 
 		"processingInformation" => $processingInformation
-	];
+	];	
     $paymentRequest = new CyberSource\Model\CreatePaymentRequest($paymentRequestArr);
 	
     $api_response = list($response, $statusCode, $httpHeader) = null;
@@ -104,8 +109,8 @@ function ProcessPayment($flag)
 // Call Sample Code
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "Process payment Samplecode is Running.. \n";
-    ProcessPayment("false");
+    echo "Process Echeck payment with service fee Samplecode is Running.. \n";
+    ProcessEcheckPaymentWithServiceFee("false");
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function CreateReportSubscriptionForReportNameByOrganization()
 {
@@ -15,16 +15,16 @@ function CreateReportSubscriptionForReportNameByOrganization()
                     "Request.TransactionDate",
                     "Request.MerchantID"],
         'reportMimeType' => 'application/xml',
-        'reportFrequency' => 'WEEKLY',
-        'reportName' => 'test_v459',
+        'reportFrequency' => 'MONTHLY',
+        'reportName' => 'testrests_subcription_v1',
         'timezone' => 'GMT',
-        'startTime' => '0900',
-        'startDay' => "1"      
+        'startTime' => '1300',
+        'startDay' => "3"      
 	];
-	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
+	$reportRequest = new CyberSource\Model\RequestBody1($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->createSubscription(null,$reportRequest);
+		$api_response = $api_instance->createSubscription($reportRequest,null);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {

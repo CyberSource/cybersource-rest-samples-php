@@ -11,9 +11,4 @@ before_script:
     - composer install --prefer-dist
 
 script:
-    - php Samples/Payments/CoreServices/ProcessPayment.php
-    - php Samples/Payments/CoreServices/CapturePayment.php
-    - php Samples/Payments/CoreServices/ProcessAuthorizationReversal.php
-    - php Samples/Payments/CoreServices/ProcessCredit.php
-    - php Samples/Payments/CoreServices/RefundCapture.php
-    - php Samples/Payments/CoreServices/RefundPayment.php
+    - bash runAllSamples.sh

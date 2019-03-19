@@ -2,8 +2,8 @@
 //echo "Inside php functionality"
 error_reporting(E_ALL);
 
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function CreateInstrumentIdentifier()
 {
@@ -20,7 +20,7 @@ function CreateInstrumentIdentifier()
       "previousTransactionId" => "123456789012345"
       
   ];
-  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1InitiatorMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
+  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1instrumentidentifiersMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
 
 
   $initiatorInfoArr = [

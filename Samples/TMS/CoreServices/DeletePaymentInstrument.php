@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function DeletePaymentsInstruments()
 {
@@ -8,7 +8,7 @@ function DeletePaymentsInstruments()
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
-	include_once 'Samples/TMS/CoreServices/RetrievePaymentInstrument.php';
+	require_once __DIR__. DIRECTORY_SEPARATOR .'RetrievePaymentInstrument.php';
   	$tokenId = RetrievePaymentInstrument(true);
   	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;

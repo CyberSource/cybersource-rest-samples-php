@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function GetListOfBatchFiles()
 {
@@ -12,7 +12,7 @@ function GetListOfBatchFiles()
 	$startTime='2018-10-01T00:00:00.00Z';
 	$endTime='2018-10-31T23:59:59.59Z';
 	try {
-		$api_response = $api_instance->ptsV1TransactionBatchesGet($startTime, $endTime);
+		$api_response = $api_instance->getTransactionBatches($startTime, $endTime);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {

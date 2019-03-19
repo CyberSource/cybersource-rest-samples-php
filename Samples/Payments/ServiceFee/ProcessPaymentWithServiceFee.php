@@ -3,7 +3,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function ProcessPayment($flag)
+function ProcessPaymentWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
@@ -30,11 +30,12 @@ function ProcessPayment($flag)
     $processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
     $amountDetailsArr = [
-		"totalAmount" => "102.21",
-		"currency" => "USD"
+		"totalAmount" => "2325.00",
+		"currency" => "USD",
+		"serviceFeeAmount" => "30.00"
 	];
     $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
-	
+
     $billtoArr = [
 		"firstName" => "John",
 		"lastName" => "Doe",
@@ -50,7 +51,7 @@ function ProcessPayment($flag)
     $billto = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr);
 	
     $orderInfoArr = [
-		"amountDetails" => $amountDetInfo, 
+		"amountDetails" => $amountDetInfo,
 		"billTo" => $billto
 	];
     $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArr);
@@ -73,7 +74,7 @@ function ProcessPayment($flag)
 		"orderInformation" => $order_information, 
 		"paymentInformation" => $payment_information, 
 		"processingInformation" => $processingInformation
-	];
+	]; 
     $paymentRequest = new CyberSource\Model\CreatePaymentRequest($paymentRequestArr);
 	
     $api_response = list($response, $statusCode, $httpHeader) = null;
@@ -105,7 +106,7 @@ function ProcessPayment($flag)
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
     echo "Process payment Samplecode is Running.. \n";
-    ProcessPayment("false");
+    ProcessPaymentWithServiceFee("false");
 }
 
 ?>

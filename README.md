@@ -1,4 +1,6 @@
 # PHP Sample Code for the CyberSource SDK
+[![Build Status](https://travis-ci.org/CyberSource/cybersource-rest-samples-php.svg?branch=master)](https://travis-ci.org/CyberSource/cybersource-rest-samples-php)
+
 This repository contains working code samples which demonstrate PHP integration with the CyberSource REST APIs through the [CyberSource PHP SDK](https://github.com/CyberSource/cybersource-rest-client-php).
  
 
@@ -14,7 +16,7 @@ You can also run each sample directly from the command line.
 * Enable JSON PHP Extension
 * Enable PHP_APCU PHP Extension. You will need to download it for your platform (Windows/Linux/Mac) 
 * [CyberSource Account](https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration.html)
-* [CyberSource API Keys](https://prod.developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration/createCertSharedKey.html)
+* [CyberSource API Keys](https://developer.cybersource.com/api/developer-guides/dita-gettingstarted/registration/createCertSharedKey.html)
 
 ### Running the Samples From the Command Line
 * Clone this repository:

@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function VoidCapture()
 {
@@ -8,7 +8,7 @@ function VoidCapture()
   $config = $commonElement->ConnectionHost();
   $apiclient = new CyberSource\ApiClient($config);
   $api_instance = new CyberSource\Api\VoidApi($apiclient);
-  include_once 'Samples/Payments/CoreServices/CapturePayment.php';
+  require_once __DIR__. DIRECTORY_SEPARATOR .'CapturePayment.php';
   $id = CapturePayment(true);
   $cliRefInfoArr = [
     'code' => 'test_void'

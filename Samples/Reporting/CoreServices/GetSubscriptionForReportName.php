@@ -1,6 +1,6 @@
 <?php
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
 function GetSubscriptionForReportName()
 {
@@ -8,7 +8,7 @@ function GetSubscriptionForReportName()
 	$config = $commonElement->ConnectionHost();
 	$apiclient = new CyberSource\ApiClient($config);
 	$api_instance = new CyberSource\Api\ReportSubscriptionsApi($apiclient);
-	$reportName = "test_v456";
+	$reportName = "testv2_subscriprion";
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->getSubscription($reportName);

@@ -1,9 +1,8 @@
 <?php
 //echo "Inside php functionality"
 error_reporting(E_ALL);
-
-require_once('vendor/autoload.php');
-require_once('./Resources/ExternalConfiguration.php');
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../vendor/autoload.php';
+require_once __DIR__. DIRECTORY_SEPARATOR .'../../Resources/ExternalConfiguration.php';
 
 function KeyGenerationNoEnc($flag)
 {
@@ -25,7 +24,7 @@ function KeyGenerationNoEnc($flag)
 			return $returnData;
 		}else {
 			print_r($api_response);
-			include_once './Samples/Flex/CoreServices/TokenizeCard.php';
+			include_once __DIR__. DIRECTORY_SEPARATOR . 'CoreServices/TokenizeCard.php';
 	  		$id = TokenizeCard($keyId, $publicKey);
 		}
 		
