@@ -18,7 +18,10 @@ class GetGeneratorHeader
         $requestTarget     = "/pts/v2/payments/" . $paymentID;
         
         if ($merchantConfigObj->getDebug()) {
-            error_log("[DEBUG] HTTP Request body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 3, $merchantConfigObj->getDebugFile());
+                error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
+							3, 
+							$merchantConfigObj->getDebugFile() . DIRECTORY_SEPARATOR . $merchantConfigObj->getLogFileName()
+						  );
         }
 		
         $api_response = list($response, $statusCode, $httpHeader) = null;
