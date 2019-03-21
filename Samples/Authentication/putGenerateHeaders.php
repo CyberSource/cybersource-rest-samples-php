@@ -11,7 +11,7 @@ class PutGeneratorHeader
     {	
 		$merObj            = new CyberSource\ExternalConfiguration();
         $merchantConfigObj = $merObj->merchantConfigObject();
-		
+
 		$requestJsonPath   = __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/authRequest.json';
 		
         $payload           = new CyberSource\Authentication\PayloadDigest\PayloadDigest();
@@ -24,8 +24,11 @@ class PutGeneratorHeader
             $auth         = new CyberSource\Authentication\Core\Authentication();
             $authResponse = $auth->generateToken($requestTarget, $payloadData, "GET", $merchantConfigObj);
 			
-            if ($merchantConfigObj->getDebug()) {
-                error_log("[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 3, $merchantConfigObj->getDebugFile());
+			if ($merchantConfigObj->getDebug()) {
+                error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
+							3, 
+							$merchantConfigObj->getDebugFile() . DIRECTORY_SEPARATOR . $merchantConfigObj->getLogFileName()
+						  );
             }
 			
             print_r($authResponse);            

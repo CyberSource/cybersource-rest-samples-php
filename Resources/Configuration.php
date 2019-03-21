@@ -14,7 +14,7 @@ class Configuration
                 $this->authType = "http_signature";
                 $this->enableLog = true;
                 $this->logSize = "1048576";
-                $this->logFile = "../../CybersourceAuthenticationSdkPhp/Log/";
+                $this->logFile = "Log";
                 $this->logFilename = "Cybs.log";
                 $this->merchantID = "testrest";
                 $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
@@ -24,7 +24,7 @@ class Configuration
                 $this->keyAlias = "testrest";
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
-                $this->keyDirectory = "../../CybersourceAuthenticationSdkPhp/resource/";
+                $this->keyDirectory = "Resources/";
                 $this->runEnv = "cyberSource.environment.SANDBOX";
                 $this->merchantConfigObject();
         }
