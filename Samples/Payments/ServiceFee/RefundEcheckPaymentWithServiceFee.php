@@ -3,7 +3,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function RefundEcheckWithServiceFee($flag)
+function RefundEcheckPaymentWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
@@ -95,7 +95,7 @@ function RefundEcheckWithServiceFee($flag)
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
     echo "Refund Payment Samplecode is Running.. \n";
-    RefundEcheckPayment(false);
+    RefundEcheckPaymentWithServiceFee(false);
 }
 
 ?>
