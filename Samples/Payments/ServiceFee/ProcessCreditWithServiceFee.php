@@ -69,7 +69,6 @@ function ProcessCreditWithServiceFee($flag)
         $api_response = $api_instance->createCredit($paymentRequest);
         if ($flag == true)
         {
-            //Returning the ID
             echo "Fetching Credit ID: " . $api_response[0]['id'] . "\n";
             return $api_response[0]['id'];
         }
@@ -88,8 +87,7 @@ function ProcessCreditWithServiceFee($flag)
 // Call Sample Code
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "Process Credit With Service Fee is Running.. \n";
+    echo "Process Credit With Service Fee Sample code is Running.. \n";
     ProcessCreditWithServiceFee(false);
 }
-
 ?>

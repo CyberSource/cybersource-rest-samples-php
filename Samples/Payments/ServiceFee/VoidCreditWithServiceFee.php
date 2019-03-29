@@ -4,12 +4,15 @@ require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfigura
 
 function VoidCreditWithServiceFee()
 {
- $commonElement = new CyberSource\ExternalConfiguration();
+  $commonElement = new CyberSource\ExternalConfiguration();
   $config = $commonElement->ConnectionHost();
+  
   $apiclient = new CyberSource\ApiClient($config);
   $api_instance = new CyberSource\Api\VoidApi($apiclient);
+  
   require_once __DIR__. DIRECTORY_SEPARATOR .'ProcessCreditWithServiceFee.php';
   $id = ProcessCreditWithServiceFee(true);
+  
   $cliRefInfoArr = [
     'code' => 'test_void'
   ];
@@ -18,14 +21,16 @@ function VoidCreditWithServiceFee()
   $paymentRequestArr = [
     "clientReferenceInformation" => $client_reference_information
   ];
-
   $paymentRequest = new CyberSource\Model\VoidCreditRequest($paymentRequestArr);
-  $api_response = list($response,$statusCode,$httpHeader)=null;
+  
+  $api_response = list($response,$statusCode,$httpHeader) = null;
+  
   try {
     $api_response = $api_instance->voidCredit($paymentRequest, $id);
-    echo "<pre>";print_r($api_response);
-
-  } catch (Cybersource\ApiException $e) {
+    
+	print_r($api_response);
+  } 
+  catch (Cybersource\ApiException $e) {
     print_r($e->getResponseBody());
     print_r($e->getMessage());
   }
@@ -33,7 +38,7 @@ function VoidCreditWithServiceFee()
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "Void EcheckCredit  Samplecode is Running.. \n";
+    echo "Void Credit With Service Fee Sample code is Running.. \n";
     VoidCreditWithServiceFee();
 }
 ?>	

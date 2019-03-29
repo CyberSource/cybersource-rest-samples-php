@@ -7,9 +7,11 @@ function ProcessEcheckCreditWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
+	
     $apiclient = new CyberSource\ApiClient($config);
     $api_instance = new CyberSource\Api\CreditApi($apiclient);
-    $cliRefInfoArr = [
+    
+	$cliRefInfoArr = [
 		"code" => "test_credits"
 	];
     $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
@@ -19,7 +21,8 @@ function ProcessEcheckCreditWithServiceFee($flag)
 		"currency" => "usd"
 	];
     $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
-    $billtoArr = [
+    
+	$billtoArr = [
 		"firstName" => "John",
 		"lastName" => "Doe",
 		"address1" => "1 Market St",
@@ -92,5 +95,4 @@ if (!defined('DO_NOT_RUN_SAMPLES'))
     echo "Process Echeck Credit WIth Service Fee Sample code is Running.. \n";
     ProcessEcheckCreditWithServiceFee(false);
 }
-
 ?>

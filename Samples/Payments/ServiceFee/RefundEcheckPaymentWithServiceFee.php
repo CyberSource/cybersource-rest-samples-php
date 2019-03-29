@@ -7,11 +7,11 @@ function RefundEcheckPaymentWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
+	
     $apiclient = new CyberSource\ApiClient($config);
     $api_instance = new CyberSource\Api\RefundApi($apiclient);
 	
-    require_once __DIR__ . DIRECTORY_SEPARATOR . 'ProcessEcheckPaymentWithServiceFee.php';
-	
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'ProcessEcheckPaymentWithServiceFee.php';	
     $id = ProcessEcheckPaymentWithServiceFee("true");
 	
     $cliRefInfoArr = [
@@ -38,9 +38,10 @@ function RefundEcheckPaymentWithServiceFee($flag)
 		"company" => "ABC Company", 
 		"email" => "test@cybs.com"
 	];
+	$billToInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr);
 	
     $orderInfoArr = [
-		"billTo" => new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr) , 
+		"billTo" => $billToInfo , 
 		"amountDetails" => $amountDetInfo
 	];
     $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArr);
@@ -50,9 +51,10 @@ function RefundEcheckPaymentWithServiceFee($flag)
 		"type" => "C", 
 		"checkNumber" => "123456"
 	];
+	$accountInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformationBankAccount($accountInfo);
 
     $bankInfo = [
-		"account" => new CyberSource\Model\Ptsv2paymentsPaymentInformationBankAccount($accountInfo) , 
+		"account" => $accountInformation, 
 		"routingNumber" => "071923284"
 	];
     $bank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($bankInfo);
@@ -60,16 +62,17 @@ function RefundEcheckPaymentWithServiceFee($flag)
     $paymentInfoArr = [
 		"bank" => $bank
 	];
+	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr);
 
     $paymentRequestArr = [
 		"clientReferenceInformation" => $client_reference_information, 
 		"orderInformation" => $order_information, 
-		"paymentInformation" => new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr)
+		"paymentInformation" => $paymentInformation
 	];
-
     $paymentRequest = new CyberSource\Model\RefundPaymentRequest($paymentRequestArr);
 
     $api_response = list($response, $statusCode, $httpHeader) = null;
+	
     try
     {
         $api_response = $api_instance->refundPayment($paymentRequest, $id);
@@ -94,8 +97,7 @@ function RefundEcheckPaymentWithServiceFee($flag)
 // Call Sample Code
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "Refund Payment Samplecode is Running.. \n";
+    echo "Refund Echeck Payment With Service Fee Sample code is Running.. \n";
     RefundEcheckPaymentWithServiceFee(false);
 }
-
 ?>
