@@ -3,23 +3,26 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function ProcessEcheckCredit($flag)
+function ProcessCreditWithServiceFee($flag)
 {
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
     $apiclient = new CyberSource\ApiClient($config);
     $api_instance = new CyberSource\Api\CreditApi($apiclient);
+	
     $cliRefInfoArr = [
-		"code" => "test_credits"
+		"code" => "12345678"
 	];
     $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
 
     $amountDetailsArr = [
 		"totalAmount" => "200",
-		"currency" => "usd"
+        "currency" => "usd",
+        "serviceFeeAmount" =>"30.0"
 	];
     $amountDetInfo = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($amountDetailsArr);
-    $billtoArr = [
+	
+    $billtoArr = [  
 		"firstName" => "John",
 		"lastName" => "Doe",
 		"address1" => "1 Market St",
@@ -39,21 +42,17 @@ function ProcessEcheckCredit($flag)
 	];
     $order_information = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInfoArr);
 
-    $accountInfo = [
-		"number" => "4100",
-		"type" => "C",
-		"checkNumber" => "123456"
+    $paymentCardInfo = [
+		"expirationYear" => "2031",
+		"number" => "4111111111111111",
+		"securityCode" => "123",
+		"expirationMonth" => "12"
 	];
-
-    $bankInfo = [
-		"account" => new CyberSource\Model\Ptsv2paymentsPaymentInformationBankAccount($accountInfo),
-		"routingNumber" => "071923284"
-	];
-    $bank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($bankInfo);
-
+    $card = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentCardInfo);
+	
     $paymentInfoArr = [
-		"bank" => $bank
-	];
+		"card" => $card
+    ];
     $payment_information = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInfoArr);
 
     $paymentRequestArr = [
@@ -61,6 +60,7 @@ function ProcessEcheckCredit($flag)
 		"orderInformation" => $order_information, 
 		"paymentInformation" => $payment_information
 	];
+
     $paymentRequest = new CyberSource\Model\CreateCreditRequest($paymentRequestArr);
 	
     $api_response = list($response, $statusCode, $httpHeader) = null;
@@ -77,7 +77,6 @@ function ProcessEcheckCredit($flag)
         {
             print_r($api_response);
         }
-
     }
     catch(Cybersource\ApiException $e)
     {
@@ -89,8 +88,8 @@ function ProcessEcheckCredit($flag)
 // Call Sample Code
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "Process Credit Samplecode is Running.. \n";
-    ProcessEcheckCredit(false);
+    echo "Process Credit With Service Fee is Running.. \n";
+    ProcessCreditWithServiceFee(false);
 }
 
 ?>
