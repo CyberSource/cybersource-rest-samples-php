@@ -19,8 +19,8 @@ class Configuration
                 $this->merchantID = "testrest";
                 $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
                 $this->screteKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
-                $this->proxyUrl = "userproxy.visa.com";
-                $this->proxyHost = "443";
+                //$this->proxyUrl = "https.proxy.url";
+                //$this->proxyHost = "443";
                 $this->keyAlias = "testrest";
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
@@ -42,8 +42,8 @@ class Configuration
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
                 $confiData = $config->setSecreteKey($this->screteKey);
-                $confiData = $config->setCurlProxyHost($this->proxyUrl);
-                $confiData = $config->setCurlProxyPort($this->proxyHost);
+                //$confiData = $config->setCurlProxyHost($this->proxyUrl);
+                //$confiData = $config->setCurlProxyPort($this->proxyHost);
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
