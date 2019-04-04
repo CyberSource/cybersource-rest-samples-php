@@ -11,7 +11,5 @@
     "logFilename"           : "Cybs.log",
     "logDirectory"          : "D://Log/",
     "logSize"               : "1048576",
-    "runEnvironment"        : "CyberSource.Environment.sandbox",
-    "proxyUrl"              : "userproxy.visa.com",
-    "proxyPort"             :  "443"
+    "runEnvironment"        : "CyberSource.Environment.sandbox"
 }
