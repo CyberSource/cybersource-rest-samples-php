@@ -6,7 +6,8 @@ function CreateAdhocReport()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReportsApi($apiclient);
 	$createReportRequestArr =[
 		"reportDefinitionName"=> "TransactionRequestClass",

@@ -6,7 +6,8 @@ function DownloadFileWithFileIdentifier()
 {
     $commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-    $apiclient = new CyberSource\ApiClient($config);
+    $merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new CyberSource\Api\SecureFileShareApi($apiclient);
     $fileId = "RGVtb19SZXBvcnQtNzg1NWQxM2YtOTM5Ny01MTEzLWUwNTMtYTI1ODhlMGE3MTkyLnhtbC0yMDE4LTEwLTIw";
 

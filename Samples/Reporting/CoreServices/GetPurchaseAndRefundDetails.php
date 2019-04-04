@@ -6,7 +6,8 @@ function GetPurchaseAndRefundDetails()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\PurchaseAndRefundDetailsApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	$startTime="2018-05-01T12:00:00-05:00";

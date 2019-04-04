@@ -6,7 +6,8 @@ function GetReportBasedOnReportid()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReportsApi($apiclient);
 	$reportId = "79642c43-2368-0cd5-e053-a2588e0a7b3c";
 	$api_response = list($response,$statusCode,$httpHeader)=null;

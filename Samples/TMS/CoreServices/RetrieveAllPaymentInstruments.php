@@ -6,7 +6,8 @@ function RetrieveAllPaymentInstruments()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
   	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
   	$tokenId = "7020000000000137654";

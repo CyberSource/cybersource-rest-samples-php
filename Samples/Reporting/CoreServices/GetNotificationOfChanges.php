@@ -6,7 +6,8 @@ function GetNotificationOfChanges()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\NotificationOfChangesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {

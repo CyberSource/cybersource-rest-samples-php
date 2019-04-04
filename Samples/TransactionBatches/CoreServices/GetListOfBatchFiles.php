@@ -6,7 +6,8 @@ function GetListOfBatchFiles()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\TransactionBatchesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	$startTime='2018-10-01T00:00:00.00Z';

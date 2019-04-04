@@ -6,7 +6,8 @@ function GetSearchResults()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\SearchTransactionsApi($apiclient);
 	//$id="4862be87-e01d-427b-bc59-4783a3bcdb25";
 	$id="ebaab624-7799-431f-9499-1262a1b06a3c";
