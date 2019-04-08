@@ -11,4 +11,4 @@ before_script:
     - composer install --prefer-dist
 
 script:
-    - bash runAllSamples.sh
+    - bash sample_code_runner.sh
