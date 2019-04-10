@@ -2,7 +2,7 @@
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
-function GetConversionDetails()
+function GetConversionDetailTransactions()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -25,7 +25,7 @@ function GetConversionDetails()
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Get Conversion Details Samplecode is Running.. \n";
-	GetConversionDetails();
+	GetConversionDetailTransactions();
 
 }
 ?>	

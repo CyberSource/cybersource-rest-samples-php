@@ -2,7 +2,7 @@
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
-function GetNetFundingInformation()
+function GetNetfundingInformationForAccountOrMerchant()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -26,6 +26,6 @@ function GetNetFundingInformation()
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "Get Net Funding Information Samplecode is Running.. \n";
-	GetNetFundingInformation();
+	GetNetfundingInformationForAccountOrMerchant();
 }
 ?>	
