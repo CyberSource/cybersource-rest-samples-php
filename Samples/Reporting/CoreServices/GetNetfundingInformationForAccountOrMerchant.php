@@ -6,7 +6,8 @@ function GetNetfundingInformationForAccountOrMerchant()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$startTime="2018-10-01T00:00:00.0Z";
 	$endTime="2018-10-30T23:59:59.0Z";
 	$groupName="groupName";

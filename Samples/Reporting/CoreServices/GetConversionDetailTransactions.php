@@ -6,7 +6,8 @@ function GetConversionDetailTransactions()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$startTime="2019-03-21T00:00:00.0Z";
 	$endTime="2019-03-21T23:00:00.0Z";
 	$api_instance = new CyberSource\Api\ConversionDetailsApi($apiclient);
