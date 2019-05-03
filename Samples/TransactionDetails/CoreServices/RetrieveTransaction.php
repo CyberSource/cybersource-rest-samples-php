@@ -10,7 +10,7 @@ function RetrieveTransaction()
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\TransactionDetailsApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
-	$id="5526242525726158003003";
+	$id="5568628895326770703005";
 	try {
 		$api_response = $api_instance->getTransaction($id);
 		echo "<pre>";print_r($api_response);
