@@ -31,7 +31,7 @@ function ProcessPaymentWithServiceFee($flag)
     $processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
     $amountDetailsArr = [
-		"totalAmount" => "2325.00",
+		"totalAmount" => "225.00",
 		"currency" => "USD",
 		"serviceFeeAmount" => "30.00"
 	];
