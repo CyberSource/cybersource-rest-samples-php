@@ -8,47 +8,22 @@ function CreateInstrumentIdentifier($flag)
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\InstrumentIdentifiersApi($apiclient);
+	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($apiclient);
 	
   $tmsCardInfo = [
     "number" => "1234567890987200"
   ];
   $card = new CyberSource\Model\Tmsv1instrumentidentifiersCard($tmsCardInfo);
-  $merchantInitiatedTransactionArr = [
-      "previousTransactionId" => "123456789012345"
-      
-  ];
-  $merchantInitiatedTransaction = new CyberSource\Model\Tmsv1instrumentidentifiersMerchantInitiatedTransaction($merchantInitiatedTransactionArr);
-
-
-  $initiatorInfoArr = [
-      "merchantInitiatedTransaction" => $merchantInitiatedTransaction
-      
-  ];
-  $initiatorInformation = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptionsInitiator($initiatorInfoArr);
-
-  $authorizationOptionsArr = [
-      'initiator' => $initiatorInformation
-      
-  ];
-  $authorizationOptions = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformationAuthorizationOptions( $authorizationOptionsArr);
-
-  $processingInformationArr = [
-      "authorizationOptions" => $authorizationOptions
-      
-  ];
-  $processingInformation = new CyberSource\Model\Tmsv1instrumentidentifiersProcessingInformation($processingInformationArr);
 
   $tmsRequestArr = [
-    "card" => $card,
-    "processingInformation" => $processingInformation
+    "card" => $card
   ];
 
-	$tmsRequest = new CyberSource\Model\Body($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\CreateInstrumentIdentifierRequest($tmsRequestArr);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-    $api_response = $api_instance->tmsV1InstrumentidentifiersPost($profileId, $tmsRequest);
+    $api_response = $api_instance->createInstrumentIdentifier($profileId, $tmsRequest);
   	if($flag == true){
       //Returning the ID
         echo "Fetching CreateInstrumentIdentifier ID: ".$api_response[0]['id']."\n";

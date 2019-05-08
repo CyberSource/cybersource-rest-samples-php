@@ -14,7 +14,7 @@ function KeyGenerationNoEnc($flag)
 	$flexRequestArr = [
 		'encryptionType' => "None",
 	];
-	$flexRequest = new CyberSource\Model\KeyParameters($flexRequestArr);
+	$flexRequest = new CyberSource\Model\GeneratePublicKeyRequest($flexRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->generatePublicKey($flexRequest);

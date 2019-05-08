@@ -8,13 +8,13 @@ function RetrievePaymentInstrument($flag)
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
+	$api_instance = new CyberSource\Api\PaymentInstrumentApi($apiclient);
 	require_once __DIR__. DIRECTORY_SEPARATOR .'CreatePaymentInstrument.php';
 	$tokenId = CreatePaymentInstrument(true);
 	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->tmsV1PaymentinstrumentsTokenIdGet($profileId, $tokenId);
+		$api_response = $api_instance->getPaymentInstrument($profileId, $tokenId);
 		if($flag == true){
 			//Returning the ID
 		  	echo "Fetching RetrievePaymentInstrument ID: ".$api_response[0]["id"]."\n";

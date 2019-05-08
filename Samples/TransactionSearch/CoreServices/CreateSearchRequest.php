@@ -18,7 +18,7 @@ function CreateSearchRequest()
   "limit"=> 100,
   "sort"=> "id:asc, submitTimeUtc:asc"
 	];
-	$createSearchRequest = new CyberSource\Model\TssV2TransactionsPostResponse($createSearchRequestArr);
+	$createSearchRequest = new CyberSource\Model\CreateSearchRequest($createSearchRequestArr);
   
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {

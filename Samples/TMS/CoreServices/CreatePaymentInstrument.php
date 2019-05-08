@@ -8,14 +8,14 @@ function CreatePaymentInstrument($flag)
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
+	$api_instance = new CyberSource\Api\PaymentInstrumentApi($apiclient);
 	
   $tmsCardInfo = [
     "expirationMonth" => "09",
     "expirationYear" => "2022",
     "type" => "visa"
   ];
-  $card = new CyberSource\Model\Tmsv1paymentinstrumentsCard($tmsCardInfo);
+  $card = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseCard($tmsCardInfo);
 
   $tmsBillToArr = [
     "firstName" => "John",
@@ -30,28 +30,28 @@ function CreatePaymentInstrument($flag)
     "email" => "john.smith@example.com",
     "phoneNumber" => "555123456"
   ];
-  $tmsBillTo = new CyberSource\Model\Tmsv1paymentinstrumentsBillTo($tmsBillToArr);
+  $tmsBillTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseBillTo($tmsBillToArr);
 
   $cardArr = [
       "number" => "4111111111111111" 
   ];
-  $instrumentidentifiersCard = new CyberSource\Model\Tmsv1instrumentidentifiersCard($cardArr);
+  $instrumentidentifiersCard = new CyberSource\Model\TmsV1InstrumentIdentifiersPost200ResponseCard($cardArr);
 
   $instrumentidentifiersArr = [
       "card" => $instrumentidentifiersCard
   ];
-  $instrumentidentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($instrumentidentifiersArr);
+  $instrumentidentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseInstrumentIdentifier($instrumentidentifiersArr);
 
   $tmsRequestArr = [
     "card" => $card,
     "billTo" => $tmsBillTo,
     "instrumentIdentifier" => $instrumentidentifier
   ];
-	$tmsRequest = new CyberSource\Model\Body2($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\createPaymentInstrumentRequest($tmsRequestArr);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->tmsV1PaymentinstrumentsPost($profileId, $tmsRequest);
+		$api_response = $api_instance->createPaymentInstrument($profileId, $tmsRequest);
 		if($flag == true){
       //Returning the ID
 

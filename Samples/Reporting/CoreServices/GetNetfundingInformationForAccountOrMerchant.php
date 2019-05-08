@@ -15,7 +15,7 @@ function GetNetfundingInformationForAccountOrMerchant()
 	$orgId = "testrest";
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->getNetFundingInfo($startTime,$endTime,$orgId,$groupName);
+		$api_response = $api_instance->getNetFundingDetails($startTime,$endTime,$orgId,$groupName);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
