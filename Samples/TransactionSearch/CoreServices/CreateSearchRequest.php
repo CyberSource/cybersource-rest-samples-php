@@ -2,7 +2,7 @@
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
-function CreateSearchRequests()
+function CreateSearchRequest()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -33,8 +33,8 @@ function CreateSearchRequests()
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "CreateSearchRequests Samplecode is Running.. \n";
-		CreateSearchRequests();
+    echo "CreateSearchRequest Samplecode is Running.. \n";
+		CreateSearchRequest();
 
 }
 ?>	
