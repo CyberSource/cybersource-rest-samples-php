@@ -2,7 +2,7 @@
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
 
-function BasicDMTransaction()
+function CreateDecisionManagerRequest()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -65,8 +65,8 @@ function BasicDMTransaction()
 
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "BasicDMTransaction Samplecode is Running.. \n";
-	BasicDMTransaction();
+    echo "CreateDecisionManagerRequest Samplecode is Running.. \n";
+	CreateDecisionManagerRequest();
 
 }
 ?>	
