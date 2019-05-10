@@ -1,4 +1,5 @@
 Samples/Payments/ElectronicCheck/VoidEcheckRefund.php
+Samples/Payments/ElectronicCheck/VoidEcheckCredit.php
 Samples/Payments/ServiceFee/ProcessAuthorizationReversalWithServiceFee.php
 Samples/Payments/ServiceFee/VoidEcheckCreditWithServiceFee.php
 Samples/Reporting/CoreServices/CreateReportSubscriptionForReportNameByOrganization.php
@@ -8,6 +9,6 @@ Samples/Reporting/CoreServices/GetNotificationOfChanges.php
 Samples/TransactionBatches/CoreServices/GetIndividualBatchFile.php
 Samples/TransactionBatches/CoreServices/GetListOfBatchFiles.php
 Samples/TransactionSearch/CoreServices/GetSearchResults.php
+Samples/Reporting/CoreServices/GetPurchaseAndRefundDetails.php
+Samples/TransactionSearch/CoreServices/CreateSearchRequest.php
 Samples/Payouts/CoreServices/ProcessPayout.php
-Samples/Payments/CoreServices/VoidRefund.php
-Samples/Flex/Verifier.php
