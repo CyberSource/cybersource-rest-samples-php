@@ -14,8 +14,8 @@ function CreateAdhocReport()
 		"timezone"=> "GMT",
 		"reportMimeType"=> "text/csv",
 		"reportName"=> "testrest_v57",
-		"reportStartTime"=> "2018-09-02T12:00:00+05:00",
-		"reportEndTime"=> "2018-09-03T12:00:00+05:00",
+		"reportStartTime"=> "2019-01-02T12:00:00+05:00",
+		"reportEndTime"=> "2019-01-03T12:00:00+05:00",
 		"reportPreferences"=> ["signedAmounts"=>"true","fieldNameConvention"=>"SOAPI"],
 		"reportFields"=>["Request.RequestID","Request.TransactionDate","Request.MerchantID"]
 	];
