@@ -15,7 +15,7 @@ function CreateSearchRequest()
   "timezone"=> "America/Chicago",
   "query"=> "clientReferenceInformation.code:12345",
   "offset"=> 0,
-  "limit"=> 100,
+  "limit"=> 10,
   "sort"=> "id:asc, submitTimeUtc:asc"
 	];
 	$createSearchRequest = new CyberSource\Model\CreateSearchRequest($createSearchRequestArr);

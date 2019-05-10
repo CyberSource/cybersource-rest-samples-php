@@ -15,7 +15,7 @@ function CreatePaymentInstrument($flag)
     "expirationYear" => "2022",
     "type" => "visa"
   ];
-  $card = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseCard($tmsCardInfo);
+  $card = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard($tmsCardInfo);
 
   $tmsBillToArr = [
     "firstName" => "John",
@@ -30,7 +30,7 @@ function CreatePaymentInstrument($flag)
     "email" => "john.smith@example.com",
     "phoneNumber" => "555123456"
   ];
-  $tmsBillTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseBillTo($tmsBillToArr);
+  $tmsBillTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo($tmsBillToArr);
 
   $cardArr = [
       "number" => "4111111111111111" 
@@ -40,7 +40,7 @@ function CreatePaymentInstrument($flag)
   $instrumentidentifiersArr = [
       "card" => $instrumentidentifiersCard
   ];
-  $instrumentidentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseInstrumentIdentifier($instrumentidentifiersArr);
+  $instrumentidentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier($instrumentidentifiersArr);
 
   $tmsRequestArr = [
     "card" => $card,

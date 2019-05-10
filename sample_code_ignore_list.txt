@@ -1,0 +1,16 @@
+Samples/TMS/PaymentsWithToken/AuthorizationwithToken.php
+Samples/TMS/PaymentsWithToken/PaymentsInstrumentsForAuthorization.php
+Samples/Flex/Verifier.php
+Samples/Payments/ElectronicCheck/VoidEcheckRefund.php
+Samples/Payments/ServiceFee/ProcessAuthorizationReversalWithServiceFee.php
+Samples/Payments/ServiceFee/VoidEcheckCreditWithServiceFee.php
+Samples/Reporting/CoreServices/CreateReportSubscriptionForReportNameByOrganization.php
+Samples/Reporting/CoreServices/CreateAdhocReport.php
+Samples/Reporting/CoreServices/DeleteSubscriptionOfReportNameByOrganization.php
+Samples/Reporting/CoreServices/GetNotificationOfChanges.php
+Samples/TransactionBatches/CoreServices/GetIndividualBatchFile.php
+Samples/TransactionBatches/CoreServices/GetListOfBatchFiles.php
+Samples/TransactionSearch/CoreServices/CreateSearchRequest.php
+Samples/TransactionSearch/CoreServices/GetSearchResults.php
+Samples/Payouts/CoreServices/ProcessPayout.php
+Samples/Payments/CoreServices/VoidRefund.php
