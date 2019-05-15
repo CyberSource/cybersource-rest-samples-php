@@ -98,7 +98,7 @@ function ProcessPayout()
     "processingInformation" => $processingInformation
   ];
 
-  $paymentRequest = new CyberSource\Model\octCreatePaymentRequest($paymentRequestArr);
+  $paymentRequest = new CyberSource\Model\OctCreatePaymentRequest($paymentRequestArr);
   $api_response = list($response,$statusCode,$httpHeader)=null;
   try {
     $api_response = $api_instance->octCreatePayment($paymentRequest);
