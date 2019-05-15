@@ -47,7 +47,7 @@ function CreatePaymentInstrument($flag)
     "billTo" => $tmsBillTo,
     "instrumentIdentifier" => $instrumentidentifier
   ];
-	$tmsRequest = new CyberSource\Model\createPaymentInstrumentRequest($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\CreatePaymentInstrumentRequest($tmsRequestArr);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
