@@ -15,10 +15,10 @@ function CreateSearchRequest()
   "timezone"=> "America/Chicago",
   "query"=> "clientReferenceInformation.code:12345",
   "offset"=> 0,
-  "limit"=> 100,
+  "limit"=> 10,
   "sort"=> "id:asc, submitTimeUtc:asc"
 	];
-	$createSearchRequest = new CyberSource\Model\TssV2TransactionsPostResponse($createSearchRequestArr);
+	$createSearchRequest = new CyberSource\Model\CreateSearchRequest($createSearchRequestArr);
   
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
@@ -34,7 +34,7 @@ function CreateSearchRequest()
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "CreateSearchRequest Samplecode is Running.. \n";
-	CreateSearchRequest();
+		CreateSearchRequest();
 
 }
 ?>	

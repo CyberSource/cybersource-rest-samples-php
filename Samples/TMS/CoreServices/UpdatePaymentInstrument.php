@@ -8,14 +8,14 @@ function UpdatePaymentInstrument()
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PaymentInstrumentsApi($apiclient);
+	$api_instance = new CyberSource\Api\PaymentInstrumentApi($apiclient);
 	
   $tmsCardInfo = [
     "expirationMonth" => "09",
     "expirationYear" => "2022",
     "type" => "visa"
   ];
-  $card = new CyberSource\Model\Tmsv1paymentinstrumentsCard($tmsCardInfo);
+  $card = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard($tmsCardInfo);
 
   $tmsBillToArr = [
     "firstName" => "John",
@@ -30,29 +30,29 @@ function UpdatePaymentInstrument()
     "email" => "john.smith@example.com",
     "phoneNumber" => "555123456"
   ];
-  $tmsBillTo = new CyberSource\Model\Tmsv1paymentinstrumentsBillTo($tmsBillToArr);
+  $tmsBillTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo($tmsBillToArr);
   $cardArr = [
       "number" => "4111111111111111" 
   ];
-  $instrumentidentifiersCard = new CyberSource\Model\Tmsv1instrumentidentifiersCard($cardArr);
+  $instrumentidentifiersCard = new CyberSource\Model\TmsV1InstrumentIdentifiersPost200ResponseCard($cardArr);
 
   $strumentidentifiersArr = [
     "card" => $instrumentidentifiersCard ];
 
-  $instrumentIdentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($strumentidentifiersArr);
+  $instrumentIdentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier($strumentidentifiersArr);
   $tmsRequestArr = [
     "card" => $card,
     "billTo" => $tmsBillTo,
     "instrumentIdentifier" => $instrumentIdentifier
   ];
-	$tmsRequest = new CyberSource\Model\Body3($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\updatePaymentInstrumentRequest($tmsRequestArr);
 
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
   require_once __DIR__. DIRECTORY_SEPARATOR .'RetrievePaymentInstrument.php';
   $tokenId = RetrievePaymentInstrument(true);
  	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->tmsV1PaymentinstrumentsTokenIdPatch($profileId, $tokenId, $tmsRequest);
+		$api_response = $api_instance->updatePaymentInstrument($profileId, $tokenId, $tmsRequest);
 		echo "<pre>";print_r($api_response);
 
 	}catch (Cybersource\ApiException $e) {

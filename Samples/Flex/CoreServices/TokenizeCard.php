@@ -11,7 +11,7 @@ function TokenizeCard($keyId, $publicKey)
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\FlexTokenApi($apiclient);
+	$api_instance = new CyberSource\Api\TokenizationApi($apiclient);
 	$publicKey = "-----BEGIN PUBLIC KEY-----\n".$publicKey."\n-----END PUBLIC KEY-----";
 	 
 	$cardInfoArr = [

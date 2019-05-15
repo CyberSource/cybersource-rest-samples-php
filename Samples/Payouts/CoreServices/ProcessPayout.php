@@ -8,7 +8,7 @@ function ProcessPayout()
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\ProcessAPayoutApi($apiclient);
+	$api_instance = new CyberSource\Api\PayoutsApi($apiclient);
 	$cliRefInfoArr = [
     "code" => "33557799"
   ];
@@ -98,7 +98,7 @@ function ProcessPayout()
     "processingInformation" => $processingInformation
   ];
 
-  $paymentRequest = new CyberSource\Model\PtsV2PayoutsPostResponse($paymentRequestArr);
+  $paymentRequest = new CyberSource\Model\octCreatePaymentRequest($paymentRequestArr);
   $api_response = list($response,$statusCode,$httpHeader)=null;
   try {
     $api_response = $api_instance->octCreatePayment($paymentRequest);

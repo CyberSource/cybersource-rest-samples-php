@@ -10,8 +10,8 @@ function GetPurchaseAndRefundDetails()
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\PurchaseAndRefundDetailsApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
-	$startTime="2018-05-01T12:00:00-05:00";
-	$endTime="2018-05-30T12:00:00-05:00";
+	$startTime="2019-02-01T12:00:00-05:00";
+	$endTime="2019-02-20T12:00:00-05:00";
 
 	try {
 		$api_response = $api_instance->getPurchaseAndRefundDetails($startTime, $endTime, $organizationId = null, $paymentSubtype = 'ALL', $viewBy = 'requestDate', $groupName = null, $offset = null, $limit = '2000');

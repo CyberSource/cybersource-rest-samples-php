@@ -15,7 +15,7 @@ function GetListOfFiles()
 
     $api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->getFileDetails($startDate, $endDate, $organizationId = "testrest");
+		$api_response = $api_instance->getFileDetail($startDate, $endDate, $organizationId = "testrest");
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
