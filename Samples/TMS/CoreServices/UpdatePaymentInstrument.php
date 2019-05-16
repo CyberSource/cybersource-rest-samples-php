@@ -45,7 +45,7 @@ function UpdatePaymentInstrument()
     "billTo" => $tmsBillTo,
     "instrumentIdentifier" => $instrumentIdentifier
   ];
-	$tmsRequest = new CyberSource\Model\updatePaymentInstrumentRequest($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\UpdatePaymentInstrumentRequest($tmsRequestArr);
 
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
   require_once __DIR__. DIRECTORY_SEPARATOR .'RetrievePaymentInstrument.php';

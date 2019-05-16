@@ -39,7 +39,7 @@ function UpdateInstrumentIdentifier()
     "processingInformation" => $processingInformation
   ];
 
-	$tmsRequest = new CyberSource\Model\updateInstrumentIdentifierRequest($tmsRequestArr);
+	$tmsRequest = new CyberSource\Model\UpdateInstrumentIdentifierRequest($tmsRequestArr);
   require_once __DIR__. DIRECTORY_SEPARATOR .'RetrieveInstrumentIdentifier.php';
   $tokenId = RetrieveInstrumentIdentifier(true);
   $profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
