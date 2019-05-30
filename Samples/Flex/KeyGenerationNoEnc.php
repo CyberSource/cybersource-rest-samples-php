@@ -8,12 +8,13 @@ function KeyGenerationNoEnc($flag)
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\KeyGenerationApi($apiclient);
 	$flexRequestArr = [
 		'encryptionType' => "None",
 	];
-	$flexRequest = new CyberSource\Model\KeyParameters($flexRequestArr);
+	$flexRequest = new CyberSource\Model\GeneratePublicKeyRequest($flexRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->generatePublicKey($flexRequest);

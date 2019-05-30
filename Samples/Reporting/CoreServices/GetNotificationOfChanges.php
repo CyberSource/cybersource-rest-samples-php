@@ -6,12 +6,13 @@ function GetNotificationOfChanges()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\NotificationOfChangesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$startTime='2018-05-01T12:00:00-05:00';
-		$endTime='2018-05-30T12:00:00-05:00';
+		$startTime='2019-01-01T12:00:00-05:00';
+		$endTime='2019-01-30T12:00:00-05:00';
 		$api_response = $api_instance->getNotificationOfChangeReport($startTime, $endTime);
 		echo "<pre>";print_r($api_response);
 

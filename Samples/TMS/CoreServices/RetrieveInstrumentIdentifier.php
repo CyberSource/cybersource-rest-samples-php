@@ -6,14 +6,16 @@ function RetrieveInstrumentIdentifier($flag)
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($apiclient);
 	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	require_once __DIR__. DIRECTORY_SEPARATOR .'CreateInstrumentIdentifier.php';
-  	$tokenId = CreateInstrumentIdentifier(true);
+		$tokenId = CreateInstrumentIdentifier(true);
+
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->tmsV1InstrumentidentifiersTokenIdGet($profileId, $tokenId);
+		$api_response = $api_instance->getInstrumentIdentifier($profileId, $tokenId);
 		if($flag == true){
 			//Returning the ID
 			echo "Fetching RetrieveInstrumentIdentifier ID: ".$api_response[0]['id']."\n";

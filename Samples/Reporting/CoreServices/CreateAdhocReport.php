@@ -6,21 +6,22 @@ function CreateAdhocReport()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReportsApi($apiclient);
 	$createReportRequestArr =[
 		"reportDefinitionName"=> "TransactionRequestClass",
 		"timezone"=> "GMT",
 		"reportMimeType"=> "text/csv",
 		"reportName"=> "testrest_v57",
-		"reportStartTime"=> "2018-09-02T12:00:00+05:00",
-		"reportEndTime"=> "2018-09-03T12:00:00+05:00",
+		"reportStartTime"=> "2019-01-02T12:00:00+05:00",
+		"reportEndTime"=> "2019-01-03T12:00:00+05:00",
 		"reportPreferences"=> ["signedAmounts"=>"true","fieldNameConvention"=>"SOAPI"],
 		"reportFields"=>["Request.RequestID","Request.TransactionDate","Request.MerchantID"]
 	];
 	  
 	  
-	$reportRequest = new CyberSource\Model\RequestBody1($createReportRequestArr);
+	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->createReport($reportRequest);

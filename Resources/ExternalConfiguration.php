@@ -34,8 +34,8 @@ class ExternalConfiguration
                       $confiData = $config->setDebug($this->enableLog);
 
                 $confiData = $config->setLogSize(trim($this->logSize));
-                $confiData = $config->setDebugFile(trim(__DIR__. DIRECTORY_SEPARATOR."../".$this->logFile));
-                $confiData = $config->setLogFileName(trim($this->logFilename));
+                $confiData = $config->setDebugFile(trim(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->logFile));
+				$confiData = $config->setLogFileName(trim($this->logFilename));
                 $confiData = $config->setauthenticationType(strtoupper(trim($this->authType)));
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);
@@ -43,7 +43,7 @@ class ExternalConfiguration
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
-                $confiData = $config->setKeysDirectory(__DIR__. DIRECTORY_SEPARATOR."../".$this->keyDirectory);
+                $confiData = $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
                 $confiData = $config->setRunEnvironment($this->runEnv);
                 $config->validateMerchantData($confiData);
                 return $config;
@@ -55,7 +55,7 @@ class ExternalConfiguration
                 $config = new Configuration();
                 $config = $config->setHost($merchantConfig->getHost());
                 $config = $config->setDebug($merchantConfig->getDebug());
-                $config = $config->setDebugFile($merchantConfig->getDebugFile().DIRECTORY_SEPARATOR.$merchantConfig->getLogFileName());
+                $config = $config->setDebugFile($merchantConfig->getDebugFile() . DIRECTORY_SEPARATOR . $merchantConfig->getLogFileName());
                 return $config;
         }
 

@@ -6,7 +6,8 @@ function CreateReportSubscriptionForReportNameByOrganization()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReportSubscriptionsApi($apiclient);
 	
   	$createReportRequestArr = [
@@ -15,16 +16,16 @@ function CreateReportSubscriptionForReportNameByOrganization()
                     "Request.TransactionDate",
                     "Request.MerchantID"],
         'reportMimeType' => 'application/xml',
-        'reportFrequency' => 'WEEKLY',
+        'reportFrequency' => 'MONTHLY',
         'reportName' => 'testrests_subcription_v1',
         'timezone' => 'GMT',
-        'startTime' => '0900',
+        'startTime' => '1300',
         'startDay' => "3"      
 	];
-	$reportRequest = new CyberSource\Model\RequestBody($createReportRequestArr);
+	$reportRequest = new CyberSource\Model\RequestBody1($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$api_response = $api_instance->createSubscription(null,$reportRequest);
+		$api_response = $api_instance->createSubscription($reportRequest,null);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {

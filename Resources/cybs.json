@@ -1,0 +1,15 @@
+{
+    "authenticationType"    : "JWT",
+    "merchantID"            : "testrest",
+    "keyAlias"		        : "testrest",
+    "keyFilename"           : "testrest",
+    "keyPass"	            : "testrest",
+    "keysDirectory"	        : "../../CybersourceAuthenticationSdkPhp/resource/",
+    "merchantKeyId"         : "08c94330-f618-42a3-b09d-e1e43be5efda",
+    "merchantsecretKey"     : "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=",
+    "enableLog"             : true,
+    "logFilename"           : "Cybs.log",
+    "logDirectory"          : "D://Log/",
+    "logSize"               : "1048576",
+    "runEnvironment"        : "CyberSource.Environment.sandbox"
+}

@@ -6,13 +6,14 @@ function GetListOfBatchFiles()
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\TransactionBatchesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	$startTime='2018-10-01T00:00:00.00Z';
 	$endTime='2018-10-31T23:59:59.59Z';
 	try {
-		$api_response = $api_instance->ptsV1TransactionBatchesGet($startTime, $endTime);
+		$api_response = $api_instance->getTransactionBatches($startTime, $endTime);
 		echo "<pre>";print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {

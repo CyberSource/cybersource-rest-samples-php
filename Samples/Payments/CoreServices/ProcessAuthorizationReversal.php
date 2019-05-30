@@ -7,7 +7,8 @@ function ProcessAuthorizationReversal($flag)
 {
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
-	$apiclient = new CyberSource\ApiClient($config);
+	$merchantConfig = $commonElement->merchantConfigObject();
+	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReversalApi($apiclient);
   require_once __DIR__. DIRECTORY_SEPARATOR .'ProcessPayment.php';
   $id = ProcessPayment("notallow");
