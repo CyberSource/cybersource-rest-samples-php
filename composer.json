@@ -20,6 +20,6 @@
     ],
     "require": {
         "php": ">=5.6",
-	"cybersource/rest-client-php": "0.0.7"
+	"cybersource/rest-client-php": "0.0.8"
     }
 }
