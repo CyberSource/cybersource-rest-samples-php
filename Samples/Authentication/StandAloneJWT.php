@@ -2,8 +2,6 @@
 
 use Firebase\JWT\JWT as JWT;
 
-require_once 'vendor/autoload.php';
-
 // Initialization of constant data            
 $request_host = "apitest.cybersource.com";
 $merchant_id = "testrest";
@@ -97,24 +95,10 @@ function GetAccessTokenHeader($jwtBody)
 	$cacheKey = "";
 	$cert_store = "";
 	
-	//get certificate from p12
-	if (file_exists($filePath)) 
-	{
-		$cert_store = file_get_contents($filePath);
-		$cacheKey = $keyFileName . "_" . strtotime(date("F d Y H:i:s", filemtime($filePath)));
-	}
+	$cert_store = file_get_contents($filePath);
 	
-	$cache_cert_store = apcu_fetch($cacheKey);
-	if($cache_cert_store == false )
+	if (openssl_pkcs12_read($cert_store, $cert_info, $keyPass)) 
 	{
-		$cache_cert_store = "";
-		$result = apcu_store("$cacheKey", $cert_store);
-		$cache_cert_store = apcu_fetch($cacheKey);
-	}
-	
-	if (openssl_pkcs12_read($cache_cert_store, $cert_info, $keyPass)) 
-	{
-		//Creating public key using certificate Not working in decryption
 		$certdata = openssl_x509_parse($cert_info['cert'], 1);
 		$privateKey = $cert_info['pkey']; 
 		$publicKey = PemToDer($cert_info['cert']); 
