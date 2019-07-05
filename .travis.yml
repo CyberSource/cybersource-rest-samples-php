@@ -8,7 +8,6 @@ php:
 sudo: false
 
 before_script:
-    - echo $PHP
     - composer install --prefer-dist
 
 script:

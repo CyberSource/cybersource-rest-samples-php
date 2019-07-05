@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
+
 // Initialization of constant data            
 $request_host = "apitest.cybersource.com";
 $merchant_id = "testrest";
