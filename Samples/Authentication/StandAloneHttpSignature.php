@@ -2,7 +2,9 @@
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 
-// Initialization of constant data            
+// Initialization of constant data
+// Try with your own credentaials
+// Get Key ID, Secret Key and Merchant Id from EBC portal
 $request_host = "apitest.cybersource.com";
 $merchant_id = "testrest";
 $merchant_key_id = "08c94330-f618-42a3-b09d-e1e43be5efda";
@@ -42,10 +44,11 @@ $payload = "{\n" .
         "    }\n" .
         "  }\n" .
         "}";
-        
+
+// Function to parse response headers
+// ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986
 function httpParseHeaders($raw_headers)
-{
-    // ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986
+{    
     $headers = [];
     $key = '';
     foreach (explode("\n", $raw_headers) as $h) {
@@ -70,7 +73,8 @@ function httpParseHeaders($raw_headers)
     }
     return $headers;
 }
-        
+
+// Function used to generate the digest for the given payload
 function GenerateDigest($requestPayload)
 {
     $utf8EncodedString = utf8_encode($requestPayload);
@@ -78,6 +82,10 @@ function GenerateDigest($requestPayload)
     return base64_encode($digestEncode);
 }
 
+// Function to generate the HTTP Signature
+// param: resourcePath - denotes the resource being accessed
+// param: httpMethod - denotes the HTTP verb
+// param: currentDate - stores the current timestamp
 function GetHttpSignature($resourcePath, $httpMethod, $currentDate)
 {
     global $payload;
@@ -134,7 +142,8 @@ function GetHttpSignature($resourcePath, $httpMethod, $currentDate)
     
     return $headers;
 }
-        
+
+// HTTP POST request
 function ProcessPost()
 {    
     global $payload;
@@ -218,6 +227,7 @@ function ProcessPost()
     return $statusCode;
 }
 
+// HTTP GET request
 function ProcessGet()
 {    
     global $request_host;

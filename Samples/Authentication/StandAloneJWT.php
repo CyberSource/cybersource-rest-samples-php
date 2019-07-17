@@ -4,8 +4,9 @@ use Firebase\JWT\JWT as JWT;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 
-
-// Initialization of constant data            
+// Initialization of constant data 
+// Try with your own credentaials
+// Get Key ID, Secret Key and Merchant Id from EBC portal           
 $request_host = "apitest.cybersource.com";
 $merchant_id = "testrest";
 $merchant_key_id = "08c94330-f618-42a3-b09d-e1e43be5efda";
@@ -45,10 +46,11 @@ $payload = "{\n" .
         "    }\n" .
         "  }\n" .
         "}";
-        
+
+// Function to parse response headers
+// ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986        
 function httpParseHeaders($raw_headers)
 {
-    // ref/credit: http://php.net/manual/en/function.http-parse-headers.php#112986
     $headers = [];
     $key = '';
     foreach (explode("\n", $raw_headers) as $h) {
@@ -73,7 +75,8 @@ function httpParseHeaders($raw_headers)
     }
     return $headers;
 }
-        
+
+// Function used to generate the digest for the given payload
 function GenerateDigest($requestPayload)
 {
     $utf8EncodedString = utf8_encode($requestPayload);
@@ -81,6 +84,7 @@ function GenerateDigest($requestPayload)
     return base64_encode($digestEncode);
 }
 
+// Function to convert the provided pem cert to der
 function PemToDer($Pem)
 {
 	$lines = explode("\n", trim($Pem));
@@ -89,7 +93,8 @@ function PemToDer($Pem)
 	return implode("\n", $lines);
 }
 
-function GetAccessTokenHeader($jwtBody) 
+// Function to generate the JWT
+function GenerateJsonWebToken($jwtBody) 
 {
 	$keyFileName = "testrest";
 	$filePath = __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/' . $keyFileName . ".p12";
@@ -115,6 +120,10 @@ function GetAccessTokenHeader($jwtBody)
 	}
 }
 
+// Function to get the JWT
+// param: resourcePath - denotes the resource being accessed
+// param: httpMethod - denotes the HTTP verb
+// param: currentDate - stores the current timestamp
 function GetJsonWebToken($resourcePath, $httpMethod, $currentDate)
 {
     global $payload;
@@ -135,14 +144,15 @@ function GetJsonWebToken($resourcePath, $httpMethod, $currentDate)
 		
 	}
 	
-	$tokenHeader = GetAccessTokenHeader($jwtBody);
+	$tokenHeader = GenerateJsonWebToken($jwtBody);
 	
 	echo PHP_EOL . " -- TOKEN --" . PHP_EOL;
 	echo $tokenHeader;
 	
 	return "Bearer " . $tokenHeader;
 }
-        
+
+// HTTP POST request
 function ProcessPost()
 {    
     global $payload;
@@ -228,6 +238,7 @@ function ProcessPost()
     return $statusCode;
 }
 
+// HTTP GET request
 function ProcessGet()
 {    
     global $request_host;
@@ -329,7 +340,6 @@ function ProcessStandAloneJWT()
     else
         echo "STATUS : ERROR (HTTP Status = " . strval($statusCode) . ")";
 }
-
 
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
