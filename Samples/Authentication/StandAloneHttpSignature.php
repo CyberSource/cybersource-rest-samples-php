@@ -135,10 +135,10 @@ function GetHttpSignature($resourcePath, $httpMethod, $currentDate)
     if($httpMethod == "post"){
         $digestArray = array("Digest: SHA-256=" . $digest);
         $headers = array_merge($headers, $digestArray);
+		echo "\t" . $digestArray[0] . PHP_EOL;
     }	
-	
-    echo "\tDigest : " . $digest . PHP_EOL;
-    echo "\tSignature : " . $signature . PHP_EOL;
+    
+    echo "\t" . $signatureToken . PHP_EOL;
     
     return $headers;
 }
