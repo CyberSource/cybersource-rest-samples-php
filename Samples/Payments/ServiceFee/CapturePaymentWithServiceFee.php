@@ -21,7 +21,7 @@ function CapturePayment($flag)
     $client_reference_information = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($cliRefInfoArr);
 	
     $amountDetailsArr = [
-		"totalAmount" => "2325.00",
+		"totalAmount" => "225.00",
 		"currency" => "USD",
 		"serviceFeeAmount" => "30.0"
 	];
