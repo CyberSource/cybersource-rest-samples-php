@@ -11,6 +11,7 @@ function RetrievePaymentInstrument($flag)
 	$api_instance = new CyberSource\Api\PaymentInstrumentApi($apiclient);
 	require_once __DIR__. DIRECTORY_SEPARATOR .'CreatePaymentInstrument.php';
 	$tokenId = CreatePaymentInstrument(true);
+	sleep(10);
 	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
