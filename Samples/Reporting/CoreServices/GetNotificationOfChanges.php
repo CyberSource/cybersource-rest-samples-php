@@ -11,10 +11,10 @@ function GetNotificationOfChanges()
 	$api_instance = new CyberSource\Api\NotificationOfChangesApi($apiclient);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
-		$startTime='2019-01-01T12:00:00-05:00';
-		$endTime='2019-01-30T12:00:00-05:00';
+		$startTime='2019-05-01T12:00:00-05:00';
+		$endTime='2019-06-30T12:00:00-05:00';
 		$api_response = $api_instance->getNotificationOfChangeReport($startTime, $endTime);
-		echo "<pre>";print_r($api_response);
+		print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());

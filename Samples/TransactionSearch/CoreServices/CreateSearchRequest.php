@@ -13,7 +13,7 @@ function CreateSearchRequest()
 	"save"=> "false",
   "name"=> "TSS search",
   "timezone"=> "America/Chicago",
-  "query"=> "clientReferenceInformation.code:12345",
+  "query"=> "clientReferenceInformation.code:TC50171_3 AND submitTimeUtc:[NOW/DAY-7DAYS TO NOW/DAY+1DAY}",
   "offset"=> 0,
   "limit"=> 10,
   "sort"=> "id:asc, submitTimeUtc:asc"
