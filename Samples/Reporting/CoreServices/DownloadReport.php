@@ -11,8 +11,8 @@ function DownloadReport()
 	$api_instance = new CyberSource\Api\ReportDownloadsApi($apiclient);
 	
 	$api_response = list($response,$statusCode,$httpHeader)=null;
-	$reportDate="2018-09-02";
-	$reportName="testrest v2";
+	$reportDate="2019-09-05";
+	$reportName="testrest_subcription_v2989";
 	try {
 		$api_response = $api_instance->downloadReport($reportDate, $reportName, $organizationId = null);
 		$downloadData = $api_response[0];

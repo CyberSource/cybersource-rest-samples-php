@@ -11,12 +11,14 @@ function GetTransactionDetailsForGivenBatchId()
 	$apiInstance = new CyberSource\Api\TransactionBatchesApi($apiClient);
 
 	$id = "12345";
-	$uploadDate = "2019-05-01T12:00:00Z";
-	$status = "REJECTED";	
 	
 	try {
-		$apiResponse = $apiInstance->getTransactionBatchDetails( $id, $uploadDate, $status );
+		$apiResponse = $apiInstance->getTransactionBatchDetails( $id );
+		$downloadData = $apiResponse[0];
+		$file_extension = substr($apiResponse[2]["Content-Type"], -3, 3);
+        $filePath = $commonElement->downloadReport($downloadData, "BatchDetailsReport." . $file_extension);
 		print_r($apiResponse);
+		echo "Batch Details has been downloaded in the location: \n".$filePath."\n";
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
 		print_r($e->getMessage());

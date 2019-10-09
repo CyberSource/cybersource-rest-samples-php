@@ -10,7 +10,7 @@ function GetSearchResults()
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\SearchTransactionsApi($apiclient);
 	//$id="4862be87-e01d-427b-bc59-4783a3bcdb25";
-	$id="941fddb1-971b-4147-b214-5e71c4087d29";
+	$id="d43b7a9c-538c-4d23-ae0e-bcbd2f60cbe2";
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->getSearch($id);

@@ -22,7 +22,7 @@ function CreateReportSubscriptionForReportNameByOrganization()
         'startTime' => '1300',
         'startDay' => "3"      
 	];
-	$reportRequest = new CyberSource\Model\RequestBody1($createReportRequestArr);
+	$reportRequest = new CyberSource\Model\CreateReportSubscriptionRequest($createReportRequestArr);
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
 		$api_response = $api_instance->createSubscription($reportRequest,null);

@@ -11,7 +11,7 @@ class GetMethod
 {
     public function getTransactionMethod()
     {        
-        $paymentID    = "5529832142546259903002";
+        $paymentID    = "5700853699426681103005";
         
         require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
 		$merObj            = new CyberSource\ExternalConfiguration();

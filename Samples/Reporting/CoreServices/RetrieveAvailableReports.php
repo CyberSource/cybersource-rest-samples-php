@@ -9,8 +9,8 @@ function RetrieveAvailableReports()
 	$merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\ReportsApi($apiclient);
-	$startTime="2018-10-01T00:00:00.0Z";
-	$endTime="2018-10-30T23:59:59.0Z";
+	$startTime="2019-09-01T00:00:00.0Z";
+	$endTime="2019-09-05T23:59:59.0Z";
 	$timeQueryType="executedTime";
   
 	$api_response = list($response,$statusCode,$httpHeader)=null;

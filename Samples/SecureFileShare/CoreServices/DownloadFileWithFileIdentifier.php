@@ -9,7 +9,7 @@ function DownloadFileWithFileIdentifier()
     $merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new CyberSource\Api\SecureFileShareApi($apiclient);
-    $fileId = "RGVtb19SZXBvcnQtNzg1NWQxM2YtOTM5Ny01MTEzLWUwNTMtYTI1ODhlMGE3MTkyLnhtbC0yMDE4LTEwLTIw";
+    $fileId = "QmF0Y2hGaWxlc0RldGFpbFJlcG9ydC5jc3YtMjAxOS0wOS0zMA==";
 
     $api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
