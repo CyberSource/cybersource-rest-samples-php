@@ -1,0 +1,43 @@
+<?php
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
+
+function GetNetfundingInformationForAccountOrMerchant()
+{
+	$startTime = "2019-08-01T00:00:00.000Z";
+	$endTime = "2019-09-01T23:59:59.999Z";
+	$organizationId = "testrest";
+	$groupName = null;
+
+	$commonElement = new CyberSource\ExternalConfiguration();
+	$config = $commonElement->ConnectionHost();
+	$merchantConfig = $commonElement->merchantConfigObject();
+
+	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
+	$api_instance = new CyberSource\Api\NetFundingsApi($api_client);
+
+	try {
+		$apiResponse = $api_instance->getNetFundingDetails($startTime, $endTime, $organizationId, $groupName);
+		print_r(PHP_EOL);
+		print_r($apiResponse);
+
+		return $apiResponse;
+	} catch (Cybersource\ApiException $e) {
+		print_r($e->getResponseBody());
+		print_r($e->getMessage());
+	}
+}
+
+if(!defined('DO_NOT_RUN_SAMPLES')){
+	echo "\nGetNetfundingInformationForAccountOrMerchant Sample Code is Running..." . PHP_EOL;
+	echo "\nInput missing query parameter <startTime>: ";
+	$startTime = trim(fgets(STDIN));
+	echo "\nInput missing query parameter <endTime>: ";
+	$endTime = trim(fgets(STDIN));
+	echo "\nInput missing query parameter <organizationId>: ";
+	$organizationId = trim(fgets(STDIN));
+	echo "\nInput missing query parameter <groupName>: ";
+	$groupName = trim(fgets(STDIN));
+	GetNetfundingInformationForAccountOrMerchant($startTime, $endTime, $organizationId, $groupName);
+}
+?>
