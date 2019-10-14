@@ -11,5 +11,8 @@ before_script:
     - composer install --prefer-dist
 
 script:
-    - bash sample_code_runner.sh
+    - bash test/sample_code_runner.sh
     - cat output.log
+
+# For RoadRunner
+#    - vendor/bin/phpunit test/RoadRunner.php
