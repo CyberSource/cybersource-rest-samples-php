@@ -2,7 +2,6 @@
 
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../vendor/autoload.php';
 require_once __DIR__. DIRECTORY_SEPARATOR .'../../../Resources/ExternalConfiguration.php';
-require_once __DIR__. DIRECTORY_SEPARATOR .'../Verifier.php';
 
 
 function TokenizeCard($keyId, $publicKey)
@@ -30,14 +29,12 @@ function TokenizeCard($keyId, $publicKey)
 	try {
 		$api_response = $api_instance->tokenize($flexRequest);
 		print_r($api_response);
-		$verifyObj = new Verifier();
-		return $verifyObj->verifySignature($publicKey, $api_response);
-		
-
+		$tokenVerifier = new CyberSource\Utilities\Flex\TokenVerification();
+		print_r("TOKEN VERIFICATION : " . $tokenVerifier->verifyToken($publicKey, $api_response));
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
 		print_r($e->getMessage());
-	  }
+	}
 }    
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "TokenizeCard Samplecode is Processing\n";
