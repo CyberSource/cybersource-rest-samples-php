@@ -39,7 +39,7 @@ function UpdatePaymentInstrument()
   $strumentidentifiersArr = [
     "card" => $instrumentidentifiersCard ];
 
-  $instrumentIdentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier($strumentidentifiersArr);
+  $instrumentIdentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($strumentidentifiersArr);
   $tmsRequestArr = [
     "card" => $card,
     "billTo" => $tmsBillTo,
