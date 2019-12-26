@@ -40,7 +40,7 @@ function CreatePaymentInstrument($flag)
   $instrumentidentifiersArr = [
       "card" => $instrumentidentifiersCard
   ];
-  $instrumentidentifier = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedInstrumentIdentifier($instrumentidentifiersArr);
+  $instrumentidentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($instrumentidentifiersArr);
 
   $tmsRequestArr = [
     "card" => $card,
