@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=5.6",
-		"cybersource/rest-client-php": "0.0.12",
+		"cybersource/rest-client-php": "0.0.13",
 		"firebase/php-jwt": "5.0.0"
     }
 }
