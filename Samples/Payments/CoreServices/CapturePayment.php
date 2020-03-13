@@ -55,6 +55,10 @@ function CapturePayment($flag)
 // Call Sample Code
 if(!defined('DO_NOT_RUN_SAMPLES')){
   echo "Capture payment Samplecode is Running.. \n";
+  
+  // don't trigger the sample code from required files.
+  define('DO_NOT_RUN_SAMPLES', true);
+  
   CapturePayment(false);
 
 }
