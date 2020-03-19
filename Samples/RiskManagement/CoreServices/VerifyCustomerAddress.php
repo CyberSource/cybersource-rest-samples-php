@@ -2,7 +2,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function VerboseRequestWithAllFields()
+function VerifyCustomerAddress()
 {
 	$clientReferenceInformationArr = [
 			"code" => "addressEg",
@@ -84,6 +84,6 @@ function VerboseRequestWithAllFields()
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
 	echo "\nVerboseRequestWithAllFields Sample Code is Running..." . PHP_EOL;
-	VerboseRequestWithAllFields();
+	VerifyCustomerAddress();
 }
 ?>
