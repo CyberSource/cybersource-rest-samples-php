@@ -9,8 +9,8 @@ function GetListOfFiles()
     $merchantConfig = $commonElement->merchantConfigObject();
 	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new CyberSource\Api\SecureFileShareApi($apiclient);
-    $startDate = "2019-09-20";
-    $endDate = "2019-09-30";
+    $startDate = "2020-03-20";
+    $endDate = "2020-03-30";
 
 
     $api_response = list($response,$statusCode,$httpHeader)=null;

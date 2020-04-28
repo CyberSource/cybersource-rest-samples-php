@@ -35,7 +35,6 @@ function RefundEcheckPayment($flag)
 		"administrativeArea" => "CA", 
 		"country" => "US", 
 		"phoneNumber" => "4158880000", 
-		"company" => "ABC Company", 
 		"email" => "test@cybs.com"
 	];
 	

@@ -12,7 +12,7 @@ function ProcessPayout()
 	$cliRefInfoArr = [
     "code" => "33557799"
   ];
-  $client_reference_information = new CyberSource\Model\PtsV2PaymentsPost201ResponseClientReferenceInformation($cliRefInfoArr);
+  $client_reference_information = new CyberSource\Model\Ptsv2payoutsClientReferenceInformation($cliRefInfoArr);
 
   $recipientInformationArr = [
     "firstName" => "John",

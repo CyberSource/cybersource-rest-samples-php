@@ -48,7 +48,7 @@ function DecisionProfileReject()
 
 	$profileInfo = ["name" => "profile2"];
 
-	$profileInformation = new CyberSource\Model\Riskv1decisionsRiskInformationProfile($profileInfo);
+	$profileInformation = new CyberSource\Model\Ptsv2paymentsRiskInformationProfile($profileInfo);
 
 	$riskInfo = ["profile" => $profileInformation];
 

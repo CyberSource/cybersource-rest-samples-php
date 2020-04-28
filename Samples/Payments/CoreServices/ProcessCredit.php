@@ -28,7 +28,6 @@ function ProcessCredit($flag)
     "administrativeArea" => "CA",
     "country" => "US",
     "phoneNumber" => "4158880000",
-    "company" => "Visa",
     "email" => "test@cybs.com"
   ];
   $billto = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($billtoArr);
