@@ -5,8 +5,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 function RetrieveAvailableReports()
 {
 	$organizationId = null;
-	$startTime = "2018-10-01T00:00:00Z";
-	$endTime = "2018-10-30T23:59:59Z";
+	$startTime = "2020-04-01T00:00:00Z";
+	$endTime = "2020-04-03T23:59:59Z";
 	$timeQueryType = "executedTime";
 	$reportMimeType = "application/xml";
 	$reportFrequency = null;

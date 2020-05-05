@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function GetListOfFiles()
 {
-	$startDate = "2018-10-20";
-	$endDate = "2018-10-30";
+	$startDate = "2020-03-20";
+	$endDate = "2020-03-30";
 	$organizationId = "testrest";
 
 	$commonElement = new CyberSource\ExternalConfiguration();

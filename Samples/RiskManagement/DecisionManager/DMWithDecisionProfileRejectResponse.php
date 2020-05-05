@@ -49,7 +49,7 @@ function DMWithDecisionProfileRejectResponse()
 	$riskInformationProfileArr = [
 			"name" => "profile2"
 	];
-	$riskInformationProfile = new CyberSource\Model\Riskv1decisionsRiskInformationProfile($riskInformationProfileArr);
+	$riskInformationProfile = new CyberSource\Model\Ptsv2paymentsRiskInformationProfile($riskInformationProfileArr);
 
 	$riskInformationArr = [
 			"profile" => $riskInformationProfile
