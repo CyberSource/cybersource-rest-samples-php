@@ -48,11 +48,11 @@ function CreateDecisionManagerCase()
 
 	$reqObj = ["clientReferenceInformation" => $clientReferenceInformation, "paymentInformation" => $paymentInformation, "orderInformation" => $orderInformation];
 
-	$requestObj = new CyberSource\Model\CreateDecisionManagerCaseRequest($reqObj);
+	$requestObj = new CyberSource\Model\CreateBundledDecisionManagerCaseRequest($reqObj);
 
 
 	try {
-		$api_response = $api_instance->createDecisionManagerCase($requestObj);
+		$api_response = $api_instance->createBundledDecisionManagerCase($requestObj);
 		print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
