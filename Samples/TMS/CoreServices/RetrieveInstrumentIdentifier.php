@@ -12,6 +12,8 @@ function RetrieveInstrumentIdentifier($flag)
 	$profileId = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 	require_once __DIR__. DIRECTORY_SEPARATOR .'CreateInstrumentIdentifier.php';
 		$tokenId = CreateInstrumentIdentifier(true);
+		
+	sleep(10);
 
 	$api_response = list($response,$statusCode,$httpHeader)=null;
 	try {

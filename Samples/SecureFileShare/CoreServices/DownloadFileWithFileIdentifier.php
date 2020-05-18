@@ -7,9 +7,10 @@ function DownloadFileWithFileIdentifier()
     $commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
     $merchantConfig = $commonElement->merchantConfigObject();
-	$apiclient = new CyberSource\ApiClient($config, $merchantConfig);
+    $apiclient = new CyberSource\ApiClient($config, $merchantConfig);
+    $apiclient->setAcceptHeader('text/csv');
     $api_instance = new CyberSource\Api\SecureFileShareApi($apiclient);
-    $fileId = "QmF0Y2hGaWxlc0RldGFpbFJlcG9ydC5jc3YtMjAxOS0wOS0zMA==";
+    $fileId = "dGVzdHJlc3Rfc3ViY3JpcHRpb25fdjI5ODktYTM3ZmI2ZjUtM2QzYi0wOGVhLWUwNTMtYTI1ODhlMGFkOTJjLnhtbC0yMDIwLTA0LTMw";
 
     $api_response = list($response,$statusCode,$httpHeader)=null;
 	try {
