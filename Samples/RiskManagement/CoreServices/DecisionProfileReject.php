@@ -56,11 +56,11 @@ function DecisionProfileReject()
 
 	$reqObj = ["clientReferenceInformation" => $clientReferenceInformation, "paymentInformation" => $paymentInformation, "riskInformation" => $riskInformation, "orderInformation" => $orderInformation];
 
-	$requestObj = new CyberSource\Model\CreateBundledDecisionManagerCaseRequest($reqObj);
+	$requestObj = new CyberSource\Model\CreateDecisionManagerCaseRequest($reqObj);
 
 
 	try {
-		$api_response = $api_instance->createBundledDecisionManagerCase($requestObj);
+		$api_response = $api_instance->createDecisionManagerCase($requestObj);
 		print_r($api_response);
 
 	} catch (Cybersource\ApiException $e) {
