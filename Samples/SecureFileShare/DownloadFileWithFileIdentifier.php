@@ -1,0 +1,36 @@
+<?php
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
+
+function DownloadFileWithFileIdentifier()
+{
+	$organizationId = "testrest";
+	$fileId = "QmF0Y2hGaWxlc0RldGFpbFJlcG9ydC5jc3YtMjAxOS0wOS0zMA==";
+
+	$commonElement = new CyberSource\ExternalConfiguration();
+	$config = $commonElement->ConnectionHost();
+	$merchantConfig = $commonElement->merchantConfigObject();
+
+	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
+	$api_instance = new CyberSource\Api\SecureFileShareApi($api_client);
+
+	try {
+		$apiResponse = $api_instance->getFile($fileId, $organizationId);
+		print_r(PHP_EOL);
+		print_r($apiResponse);
+
+		$download_data = $apiResponse[0];
+		$file_path = $commonElement->downloadReport($download_data, "DownloadedFileByFileIdentifier.xml");
+		echo "File downloaded in the location: \n" . $file_path . "\n";
+		return $apiResponse;
+	} catch (Cybersource\ApiException $e) {
+		print_r($e->getResponseBody());
+		print_r($e->getMessage());
+	}
+}
+
+if(!defined('DO_NOT_RUN_SAMPLES')){
+	echo "\nDownloadFileWithFileIdentifier Sample Code is Running..." . PHP_EOL;
+	DownloadFileWithFileIdentifier();
+}
+?>
