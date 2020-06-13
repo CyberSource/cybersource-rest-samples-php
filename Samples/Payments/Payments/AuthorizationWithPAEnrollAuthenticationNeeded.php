@@ -2,28 +2,25 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationWithPAEnrollAuthenticationNeeded()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
+	$processingInformationActionList = array();
+	$processingInformationActionList[0] = "CONSUMER_AUTHENTICATION";
 	$processingInformationArr = [
-			"capture" => $capture
+			"actionList" => $processingInformationActionList,
+			"capture" => false
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
+			"number" => "4000000000001091",
 			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+			"expirationYear" => "2023"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
@@ -33,21 +30,22 @@ function SimpleAuthorizationInternet($flag)
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "102.21",
-			"currency" => "USD"
+			"totalAmount" => "100.00",
+			"currency" => "usd"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
 			"firstName" => "John",
-			"lastName" => "Doe",
-			"address1" => "1 Market St",
-			"locality" => "san francisco",
+			"lastName" => "Smith",
+			"address1" => "201 S. Division St._1",
+			"address2" => "Suite 500",
+			"locality" => "Foster City",
 			"administrativeArea" => "CA",
-			"postalCode" => "94105",
+			"postalCode" => "94404",
 			"country" => "US",
-			"email" => "test@cybs.com",
-			"phoneNumber" => "4158880000"
+			"email" => "accept@cybersource.com",
+			"phoneNumber" => "6504327113"
 	];
 	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
 
@@ -57,11 +55,18 @@ function SimpleAuthorizationInternet($flag)
 	];
 	$orderInformation = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInformationArr);
 
+	$consumerAuthenticationInformationArr = [
+			"requestorId" => "123123197675",
+			"referenceId" => "CybsCruiseTester-8ac0b02f"
+	];
+	$consumerAuthenticationInformation = new CyberSource\Model\Ptsv2paymentsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
+
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
 			"processingInformation" => $processingInformation,
 			"paymentInformation" => $paymentInformation,
-			"orderInformation" => $orderInformation
+			"orderInformation" => $orderInformation,
+			"consumerAuthenticationInformation" => $consumerAuthenticationInformation
 	];
 	$requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
 
@@ -86,7 +91,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationWithPAEnrollAuthenticationNeeded Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithPAEnrollAuthenticationNeeded();
 }
 ?>

@@ -17,7 +17,7 @@ function PaymentNetworkTokenization($flag)
 
 	$processingInformationArr = [
 			"capture" => $capture,
-			"commerceIndicator" => "internet"
+			"commerceIndicator" => "vbv"
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 

@@ -2,23 +2,12 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function ElectronicCheckDebits($flag)
+function ElectronicCheckDebits()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
-
-	$processingInformationArr = [
-			"capture" => $capture,
-			"commerceIndicator" => "internet"
-	];
-	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$paymentInformationBankAccountArr = [
 			"type" => "C",
@@ -32,8 +21,14 @@ function ElectronicCheckDebits($flag)
 	];
 	$paymentInformationBank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($paymentInformationBankArr);
 
+	$paymentInformationPaymentTypeArr = [
+			"name" => "CHECK"
+	];
+	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
+
 	$paymentInformationArr = [
-			"bank" => $paymentInformationBank
+			"bank" => $paymentInformationBank,
+			"paymentType" => $paymentInformationPaymentType
 	];
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
@@ -63,7 +58,6 @@ function ElectronicCheckDebits($flag)
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
-			"processingInformation" => $processingInformation,
 			"paymentInformation" => $paymentInformation,
 			"orderInformation" => $orderInformation
 	];
@@ -76,7 +70,7 @@ function ElectronicCheckDebits($flag)
 
 	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\PaymentsApi($api_client);
-	
+
 	try {
 		$apiResponse = $api_instance->createPayment($requestObj);
 		print_r(PHP_EOL);
@@ -91,6 +85,6 @@ function ElectronicCheckDebits($flag)
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
 	echo "\nElectronicCheckDebits Sample Code is Running..." . PHP_EOL;
-	ElectronicCheckDebits('false');
+	ElectronicCheckDebits();
 }
 ?>

@@ -16,8 +16,7 @@ function ServiceFeesWithCreditCardTransaction($flag)
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
 	$processingInformationArr = [
-			"capture" => $capture,
-			"commerceIndicator" => "internet"
+			"capture" => $capture
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 

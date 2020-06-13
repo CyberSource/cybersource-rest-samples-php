@@ -2,67 +2,57 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function PartialAuthorization()
+function SaleUsingEMVTechnologyWithContactRead()
 {
 	$clientReferenceInformationArr = [
-			"code" => "1234567890"
+			"code" => "123456"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031",
-			"securityCode" => "123"
+	$processingInformationAuthorizationOptionsArr = [
+			"partialAuthIndicator" => true,
+			"ignoreAvsResult" => false,
+			"ignoreCvResult" => false
 	];
-	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
+	$processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
-	$paymentInformationArr = [
-			"card" => $paymentInformationCard
+	$processingInformationArr = [
+			"capture" => false,
+			"commerceIndicator" => "retail",
+			"authorizationOptions" => $processingInformationAuthorizationOptions
 	];
-	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
+	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "7012.00",
+			"totalAmount" => "100.00",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
-	$orderInformationBillToArr = [
-			"firstName" => "John",
-			"lastName" => "Doe",
-			"address1" => "1 Market St",
-			"locality" => "san francisco",
-			"administrativeArea" => "CA",
-			"postalCode" => "94105",
-			"country" => "US",
-			"email" => "test@cybs.com",
-			"phoneNumber" => "4158880000"
-	];
-	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
-
 	$orderInformationArr = [
-			"amountDetails" => $orderInformationAmountDetails,
-			"billTo" => $orderInformationBillTo
+			"amountDetails" => $orderInformationAmountDetails
 	];
 	$orderInformation = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInformationArr);
 
 	$pointOfSaleInformationEmvArr = [
-			"fallback" => false,
-			"fallbackCondition" => 1
+			"tags" => "9F3303204000950500000000009F3704518823719F100706011103A000009F26081E1756ED0E2134E29F36020015820200009C01009F1A0208409A030006219F02060000000020005F2A0208409F0306000000000000",
+			"cardSequenceNumber" => "1",
+			"fallback" => false
 	];
 	$pointOfSaleInformationEmv = new CyberSource\Model\Ptsv2paymentsPointOfSaleInformationEmv($pointOfSaleInformationEmvArr);
 
 	$pointOfSaleInformationArr = [
-			"catLevel" => 6,
+			"catLevel" => 1,
+			"entryMode" => "contact",
 			"terminalCapability" => 4,
-			"emv" => $pointOfSaleInformationEmv
+			"emv" => $pointOfSaleInformationEmv,
+			"trackData" => "%B4111111111111111^TEST/CYBS         ^2012121019761100      00868000000?;"
 	];
 	$pointOfSaleInformation = new CyberSource\Model\Ptsv2paymentsPointOfSaleInformation($pointOfSaleInformationArr);
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
-			"paymentInformation" => $paymentInformation,
+			"processingInformation" => $processingInformation,
 			"orderInformation" => $orderInformation,
 			"pointOfSaleInformation" => $pointOfSaleInformation
 	];
@@ -89,7 +79,7 @@ function PartialAuthorization()
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nPartialAuthorization Sample Code is Running..." . PHP_EOL;
-	PartialAuthorization();
+	echo "\nSaleUsingEMVTechnologyWithContactRead Sample Code is Running..." . PHP_EOL;
+	SaleUsingEMVTechnologyWithContactRead();
 }
 ?>

@@ -2,21 +2,15 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationWithCaptureSale()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
 	$processingInformationArr = [
-			"capture" => $capture
+			"capture" => true
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
@@ -86,7 +80,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationWithCaptureSale Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithCaptureSale();
 }
 ?>

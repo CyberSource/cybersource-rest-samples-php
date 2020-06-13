@@ -2,28 +2,31 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationWithCustomerTokenCreation()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
+	$processingInformationActionList = array();
+	$processingInformationActionList[0] = "TOKEN_CREATE";
+	$processingInformationActionTokenTypes = array();
+	$processingInformationActionTokenTypes[0] = "customer";
+	$processingInformationActionTokenTypes[1] = "paymentInstrument";
+	$processingInformationActionTokenTypes[2] = "shippingAddress";
 	$processingInformationArr = [
-			"capture" => $capture
+			"actionList" => $processingInformationActionList,
+			"actionTokenTypes" => $processingInformationActionTokenTypes,
+			"capture" => false
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$paymentInformationCardArr = [
 			"number" => "4111111111111111",
 			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+			"expirationYear" => "2031",
+			"securityCode" => "123"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
@@ -51,9 +54,21 @@ function SimpleAuthorizationInternet($flag)
 	];
 	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
 
+	$orderInformationShipToArr = [
+			"firstName" => "John",
+			"lastName" => "Doe",
+			"address1" => "1 Market St",
+			"locality" => "san francisco",
+			"administrativeArea" => "CA",
+			"postalCode" => "94105",
+			"country" => "US"
+	];
+	$orderInformationShipTo = new CyberSource\Model\Ptsv2paymentsOrderInformationShipTo($orderInformationShipToArr);
+
 	$orderInformationArr = [
 			"amountDetails" => $orderInformationAmountDetails,
-			"billTo" => $orderInformationBillTo
+			"billTo" => $orderInformationBillTo,
+			"shipTo" => $orderInformationShipTo
 	];
 	$orderInformation = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInformationArr);
 
@@ -86,7 +101,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationWithCustomerTokenCreation Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithCustomerTokenCreation();
 }
 ?>

@@ -17,7 +17,6 @@ function DigitalPaymentsApplePay($flag)
 
 	$processingInformationArr = [
 			"capture" => $capture,
-			"commerceIndicator" => "internet",
 			"paymentSolution" => "001"
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
@@ -46,7 +45,6 @@ function DigitalPaymentsApplePay($flag)
 			"firstName" => "John",
 			"lastName" => "Deo",
 			"address1" => "901 Metro Center Blvd",
-			"address2" => "Desk M3-5573",
 			"locality" => "Foster City",
 			"administrativeArea" => "CA",
 			"postalCode" => "94404",

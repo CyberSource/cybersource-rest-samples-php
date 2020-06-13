@@ -2,38 +2,25 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function PaymentWithLegacyToken()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$processingInformationArr = [
-			"capture" => $capture
+	$paymentInformationLegacyTokenArr = [
+			"id" => "7500BB199B4270EFE05340588D0AFCAD"
 	];
-	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
-
-	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031"
-	];
-	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
+	$paymentInformationLegacyToken = new CyberSource\Model\Ptsv2paymentsPaymentInformationLegacyToken($paymentInformationLegacyTokenArr);
 
 	$paymentInformationArr = [
-			"card" => $paymentInformationCard
+			"legacyToken" => $paymentInformationLegacyToken
 	];
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "102.21",
+			"totalAmount" => "22",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
@@ -59,7 +46,6 @@ function SimpleAuthorizationInternet($flag)
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
-			"processingInformation" => $processingInformation,
 			"paymentInformation" => $paymentInformation,
 			"orderInformation" => $orderInformation
 	];
@@ -86,7 +72,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nPaymentWithLegacyToken Sample Code is Running..." . PHP_EOL;
+	PaymentWithLegacyToken();
 }
 ?>

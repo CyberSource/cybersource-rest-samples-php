@@ -2,28 +2,25 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationSkipDecisionManagerForSingleTransaction()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
-			"code" => "TC50171_3"
+			"code" => "TC50171_16"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
+	$processingInformationActionList = array();
+	$processingInformationActionList[0] = "DECISION_SKIP";
 	$processingInformationArr = [
-			"capture" => $capture
+			"actionList" => $processingInformationActionList,
+			"capture" => false
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$paymentInformationCardArr = [
 			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+			"expirationMonth" => "11",
+			"expirationYear" => "2025"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
@@ -33,7 +30,7 @@ function SimpleAuthorizationInternet($flag)
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "102.21",
+			"totalAmount" => "10",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
@@ -86,7 +83,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationSkipDecisionManagerForSingleTransaction Sample Code is Running..." . PHP_EOL;
+	AuthorizationSkipDecisionManagerForSingleTransaction();
 }
 ?>

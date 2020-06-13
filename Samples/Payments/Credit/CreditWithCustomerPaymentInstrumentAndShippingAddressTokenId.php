@@ -2,59 +2,43 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function ElectronicCheckStandAloneCredits()
+function CreditWithCustomerPaymentInstrumentAndShippingAddressTokenId()
 {
 	$clientReferenceInformationArr = [
-			"code" => "TC46125-1"
+			"code" => "12345678"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$paymentInformationBankAccountArr = [
-			"type" => "C",
-			"number" => "4100",
-			"checkNumber" => "123456"
+	$paymentInformationCustomerArr = [
+			"id" => "7500BB199B4270EFE05340588D0AFCAD"
 	];
-	$paymentInformationBankAccount = new CyberSource\Model\Ptsv2paymentsPaymentInformationBankAccount($paymentInformationBankAccountArr);
+	$paymentInformationCustomer = new CyberSource\Model\Ptsv2paymentsPaymentInformationCustomer($paymentInformationCustomerArr);
 
-	$paymentInformationBankArr = [
-			"account" => $paymentInformationBankAccount,
-			"routingNumber" => "071923284"
+	$paymentInformationPaymentInstrumentArr = [
+			"id" => "7500BB199B4270EFE05340588D0AFCPI"
 	];
-	$paymentInformationBank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($paymentInformationBankArr);
+	$paymentInformationPaymentInstrument = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentInstrument($paymentInformationPaymentInstrumentArr);
 
-	$paymentInformationPaymentTypeArr = [
-			"name" => "CHECK"
+	$paymentInformationShippingAddressArr = [
+			"id" => "7500BB199B4270EFE05340588D0AFCSA"
 	];
-	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
+	$paymentInformationShippingAddress = new CyberSource\Model\Ptsv2paymentsPaymentInformationShippingAddress($paymentInformationShippingAddressArr);
 
 	$paymentInformationArr = [
-			"bank" => $paymentInformationBank,
-			"paymentType" => $paymentInformationPaymentType
+			"customer" => $paymentInformationCustomer,
+			"paymentInstrument" => $paymentInformationPaymentInstrument,
+			"shippingAddress" => $paymentInformationShippingAddress
 	];
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsidrefundsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "100",
-			"currency" => "USD"
+			"totalAmount" => "200",
+			"currency" => "usd"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsidcapturesOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
-	$orderInformationBillToArr = [
-			"firstName" => "John",
-			"lastName" => "Doe",
-			"address1" => "1 Market St",
-			"locality" => "san francisco",
-			"administrativeArea" => "CA",
-			"postalCode" => "94105",
-			"country" => "US",
-			"email" => "test@cybs.com",
-			"phoneNumber" => "4158880000"
-	];
-	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsidcapturesOrderInformationBillTo($orderInformationBillToArr);
-
 	$orderInformationArr = [
-			"amountDetails" => $orderInformationAmountDetails,
-			"billTo" => $orderInformationBillTo
+			"amountDetails" => $orderInformationAmountDetails
 	];
 	$orderInformation = new CyberSource\Model\Ptsv2paymentsidrefundsOrderInformation($orderInformationArr);
 
@@ -86,7 +70,7 @@ function ElectronicCheckStandAloneCredits()
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nElectronicCheckStandAloneCredits Sample Code is Running..." . PHP_EOL;
-	ElectronicCheckStandAloneCredits();
+	echo "\nCreditWithCustomerPaymentInstrumentAndShippingAddressTokenId Sample Code is Running..." . PHP_EOL;
+	CreditWithCustomerPaymentInstrumentAndShippingAddressTokenId();
 }
 ?>

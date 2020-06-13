@@ -2,28 +2,26 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationWithDMReviewPAEnroll()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
+	$processingInformationActionList = array();
+	$processingInformationActionList[0] = "CONSUMER_AUTHENTICATION";
 	$processingInformationArr = [
-			"capture" => $capture
+			"actionList" => $processingInformationActionList,
+			"capture" => false
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
 	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
+			"number" => "372425119311008",
 			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+			"expirationYear" => "2031",
+			"securityCode" => "1234"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
@@ -46,7 +44,7 @@ function SimpleAuthorizationInternet($flag)
 			"administrativeArea" => "CA",
 			"postalCode" => "94105",
 			"country" => "US",
-			"email" => "test@cybs.com",
+			"email" => "review@domain.com",
 			"phoneNumber" => "4158880000"
 	];
 	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
@@ -86,7 +84,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationWithDMReviewPAEnroll Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithDMReviewPAEnroll();
 }
 ?>

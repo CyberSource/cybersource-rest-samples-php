@@ -7,15 +7,8 @@ function IncrementalAuthorization()
 {
 	$id = AuthorizationForIncrementalAuthorizationFlow()[0]['id'];
 
-	$clientReferenceInformationPartnerArr = [
-			"originalTransactionId" => "12345",
-			"developerId" => "12345",
-			"solutionId" => "12345"
-	];
-	$clientReferenceInformationPartner = new CyberSource\Model\Ptsv2paymentsidClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
-
 	$clientReferenceInformationArr = [
-			"partner" => $clientReferenceInformationPartner
+			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsidClientReferenceInformation($clientReferenceInformationArr);
 
@@ -35,7 +28,7 @@ function IncrementalAuthorization()
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsidProcessingInformation($processingInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"additionalAmount" => "100",
+			"additionalAmount" => "22.49",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsidOrderInformationAmountDetails($orderInformationAmountDetailsArr);
@@ -46,11 +39,12 @@ function IncrementalAuthorization()
 	$orderInformation = new CyberSource\Model\Ptsv2paymentsidOrderInformation($orderInformationArr);
 
 	$merchantInformationArr = [
+			"transactionLocalDateTime" => "20191002080000"
 	];
 	$merchantInformation = new CyberSource\Model\Ptsv2paymentsidMerchantInformation($merchantInformationArr);
 
 	$travelInformationArr = [
-			"duration" => "3"
+			"duration" => "4"
 	];
 	$travelInformation = new CyberSource\Model\Ptsv2paymentsidTravelInformation($travelInformationArr);
 

@@ -2,38 +2,31 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function ElectronicCheckDebitsWithLegacyToken()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$processingInformationArr = [
-			"capture" => $capture
+	$paymentInformationLegacyTokenArr = [
+			"id" => "7500BB199B4270EFE05340588D0AFCAD"
 	];
-	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
+	$paymentInformationLegacyToken = new CyberSource\Model\Ptsv2paymentsPaymentInformationLegacyToken($paymentInformationLegacyTokenArr);
 
-	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+	$paymentInformationPaymentTypeArr = [
+			"name" => "CHECK"
 	];
-	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
+	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
 
 	$paymentInformationArr = [
-			"card" => $paymentInformationCard
+			"legacyToken" => $paymentInformationLegacyToken,
+			"paymentType" => $paymentInformationPaymentType
 	];
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "102.21",
+			"totalAmount" => "100",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
@@ -46,8 +39,7 @@ function SimpleAuthorizationInternet($flag)
 			"administrativeArea" => "CA",
 			"postalCode" => "94105",
 			"country" => "US",
-			"email" => "test@cybs.com",
-			"phoneNumber" => "4158880000"
+			"email" => "test@cybs.com"
 	];
 	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
 
@@ -59,7 +51,6 @@ function SimpleAuthorizationInternet($flag)
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
-			"processingInformation" => $processingInformation,
 			"paymentInformation" => $paymentInformation,
 			"orderInformation" => $orderInformation
 	];
@@ -86,7 +77,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nElectronicCheckDebitsWithLegacyToken Sample Code is Running..." . PHP_EOL;
+	ElectronicCheckDebitsWithLegacyToken();
 }
 ?>

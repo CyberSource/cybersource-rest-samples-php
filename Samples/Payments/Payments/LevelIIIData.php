@@ -17,7 +17,6 @@ function LevelIIIData($flag)
 
 	$processingInformationArr = [
 			"capture" => $capture,
-			"commerceIndicator" => "internet",
 			"purchaseLevel" => "3"
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);

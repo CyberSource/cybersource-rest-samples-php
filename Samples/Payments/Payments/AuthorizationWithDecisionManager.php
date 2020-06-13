@@ -2,28 +2,17 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function SimpleAuthorizationInternet($flag)
+function AuthorizationWithDecisionManager()
 {
-	if (isset($flag) && $flag == "true") {
-		$capture = true;
-	} else {
-		$capture = false;
-	}
-	
 	$clientReferenceInformationArr = [
-			"code" => "TC50171_3"
+			"code" => "TSYS_Eh_FE_01"
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$processingInformationArr = [
-			"capture" => $capture
-	];
-	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
-
 	$paymentInformationCardArr = [
 			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031"
+			"expirationMonth" => "11",
+			"expirationYear" => "2025"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
@@ -33,21 +22,21 @@ function SimpleAuthorizationInternet($flag)
 	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
 	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "102.21",
+			"totalAmount" => "10",
 			"currency" => "USD"
 	];
 	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
-			"firstName" => "John",
-			"lastName" => "Doe",
-			"address1" => "1 Market St",
-			"locality" => "san francisco",
+			"firstName" => "JSON",
+			"lastName" => "RTS",
+			"address1" => "201 S. Division St._1",
+			"locality" => "Foster City",
 			"administrativeArea" => "CA",
-			"postalCode" => "94105",
+			"postalCode" => "94404",
 			"country" => "US",
-			"email" => "test@cybs.com",
-			"phoneNumber" => "4158880000"
+			"email" => "beforeauth@cybersource.com",
+			"phoneNumber" => "6504327113"
 	];
 	$orderInformationBillTo = new CyberSource\Model\Ptsv2paymentsOrderInformationBillTo($orderInformationBillToArr);
 
@@ -59,7 +48,6 @@ function SimpleAuthorizationInternet($flag)
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,
-			"processingInformation" => $processingInformation,
 			"paymentInformation" => $paymentInformation,
 			"orderInformation" => $orderInformation
 	];
@@ -86,7 +74,7 @@ function SimpleAuthorizationInternet($flag)
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-	SimpleAuthorizationInternet('false');
+	echo "\nAuthorizationWithDecisionManager Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithDecisionManager();
 }
 ?>

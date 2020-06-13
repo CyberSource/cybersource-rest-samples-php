@@ -17,7 +17,6 @@ function DigitalPaymentGooglePay($flag)
 
 	$processingInformationArr = [
 			"capture" => $capture,
-			"commerceIndicator" => "internet",
 			"paymentSolution" => "012"
 	];
 	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
