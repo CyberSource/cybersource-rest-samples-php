@@ -2,7 +2,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function AuthorizationWithDecisionManagercustomSetup()
+function AuthorizationWithDecisionManagerCustomSetup()
 {
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_16"
@@ -83,7 +83,7 @@ function AuthorizationWithDecisionManagercustomSetup()
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nAuthorizationWithDecisionManagercustomSetup Sample Code is Running..." . PHP_EOL;
-	AuthorizationWithDecisionManagercustomSetup();
+	echo "\nAuthorizationWithDecisionManagerCustomSetup Sample Code is Running..." . PHP_EOL;
+	AuthorizationWithDecisionManagerCustomSetup();
 }
 ?>
