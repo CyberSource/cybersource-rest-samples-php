@@ -7,7 +7,7 @@ function PayoutCardNotToken()
 	$clientReferenceInformationArr = [
 			"code" => "33557799"
 	];
-	$clientReferenceInformation = new CyberSource\Model\PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Ptsv2payoutsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"totalAmount" => "100.00",

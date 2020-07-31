@@ -73,7 +73,7 @@ function DMWithTravelInformation()
 			"orderInformation" => $orderInformation,
 			"travelInformation" => $travelInformation
 	];
-	$requestObj = new CyberSource\Model\CreateDecisionManagerCaseRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\CreateBundledDecisionManagerCaseRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();
@@ -84,7 +84,7 @@ function DMWithTravelInformation()
 	$api_instance = new CyberSource\Api\DecisionManagerApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->createDecisionManagerCase($requestObj);
+		$apiResponse = $api_instance->createBundledDecisionManagerCase($requestObj);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

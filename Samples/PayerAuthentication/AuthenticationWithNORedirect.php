@@ -7,13 +7,13 @@ function AuthenticationWithNORedirect()
 	$clientReferenceInformationArr = [
 			"code" => "cybs_test"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",
 			"totalAmount" => "10.99"
 	];
-	$orderInformationAmountDetails = new CyberSource\Model\Riskv1decisionsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+	$orderInformationAmountDetails = new CyberSource\Model\Riskv1authenticationsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "1 Market St",

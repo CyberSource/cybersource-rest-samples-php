@@ -16,7 +16,7 @@ function DeleteInstrumentIdentifier()
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->deleteInstrumentIdentifier($profileid, $tokenId);
+		$apiResponse = $api_instance->deleteInstrumentIdentifier($tokenId, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

@@ -1,13 +1,14 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../Payments/AuthorizationForTimeoutReversalFlow.php';
 
 function TimeoutReversal()
 {
+	include __DIR__ . DIRECTORY_SEPARATOR . '../Payments/AuthorizationForTimeoutReversalFlow.php';
+	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3",
-			"transactionId" => "313461984879"
+			"transactionId" => $timeoutReversalTransactionId
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 

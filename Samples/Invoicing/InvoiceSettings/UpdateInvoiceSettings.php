@@ -15,7 +15,9 @@ function UpdateInvoiceSettings()
 			"merchantDisplayName" => "Custom Merchant Display Name",
 			"customEmailMessage" => "Custom merchant email message",
 			"enableReminders" => true,
-			"headerStyle" => $invoiceSettingsInformationHeaderStyle
+			"headerStyle" => $invoiceSettingsInformationHeaderStyle,
+			"deliveryLanguage" => "en-US",
+			"defaultCurrencyCode" => "USD"
 	];
 	$invoiceSettingsInformation = new CyberSource\Model\InvoicingV2InvoiceSettingsGet200ResponseInvoiceSettingsInformation($invoiceSettingsInformationArr);
 

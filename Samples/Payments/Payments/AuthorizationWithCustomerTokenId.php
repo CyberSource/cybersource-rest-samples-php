@@ -10,7 +10,7 @@ function AuthorizationWithCustomerTokenId()
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
 	$paymentInformationCustomerArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCAD"
+			"id" => "AB695DA801DD1BB6E05341588E0A3BDC"
 	];
 	$paymentInformationCustomer = new CyberSource\Model\Ptsv2paymentsPaymentInformationCustomer($paymentInformationCustomerArr);
 

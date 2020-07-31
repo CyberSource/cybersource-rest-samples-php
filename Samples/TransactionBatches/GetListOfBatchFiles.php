@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function GetListOfBatchFiles()
 {
-	$startTime = "2019-05-22T01:47:57.000Z";
-	$endTime = "2019-07-22T22:47:57.000Z";
+	$startTime = "2020-02-22T01:47:57.000Z";
+	$endTime = "2020-02-22T22:47:57.000Z";
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();

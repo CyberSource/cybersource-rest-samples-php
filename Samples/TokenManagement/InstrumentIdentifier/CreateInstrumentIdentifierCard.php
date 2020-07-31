@@ -7,14 +7,14 @@ function CreateInstrumentIdentifierCard()
 	$profileid = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 
 	$cardArr = [
-			"number" => "411111111111111"
+			"number" => "4111111111111111"
 	];
-	$card = new CyberSource\Model\Tmsv1instrumentidentifiersCard($cardArr);
+	$card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard($cardArr);
 
 	$requestObjArr = [
 			"card" => $card
 	];
-	$requestObj = new CyberSource\Model\CreateInstrumentIdentifierRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostInstrumentIdentifierRequest($requestObjArr);
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -24,7 +24,7 @@ function CreateInstrumentIdentifierCard()
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->createInstrumentIdentifier($profileid, $requestObj);
+		$apiResponse = $api_instance->postInstrumentIdentifier($requestObj, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

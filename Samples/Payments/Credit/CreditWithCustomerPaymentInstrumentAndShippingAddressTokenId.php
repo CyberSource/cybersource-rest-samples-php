@@ -10,17 +10,17 @@ function CreditWithCustomerPaymentInstrumentAndShippingAddressTokenId()
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
 	$paymentInformationCustomerArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCAD"
+			"id" => "AB695DA801DD1BB6E05341588E0A3BDC"
 	];
 	$paymentInformationCustomer = new CyberSource\Model\Ptsv2paymentsPaymentInformationCustomer($paymentInformationCustomerArr);
 
 	$paymentInformationPaymentInstrumentArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCPI"
+			"id" => "AB6A54B982A6FCB6E05341588E0A3935"
 	];
 	$paymentInformationPaymentInstrument = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentInstrument($paymentInformationPaymentInstrumentArr);
 
 	$paymentInformationShippingAddressArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCSA"
+			"id" => "AB6A54B97C00FCB6E05341588E0A3935"
 	];
 	$paymentInformationShippingAddress = new CyberSource\Model\Ptsv2paymentsPaymentInformationShippingAddress($paymentInformationShippingAddressArr);
 

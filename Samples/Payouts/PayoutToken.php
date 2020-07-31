@@ -7,7 +7,7 @@ function PayoutToken()
 	$clientReferenceInformationArr = [
 			"code" => "111111113"
 	];
-	$clientReferenceInformation = new CyberSource\Model\PtsV2IncrementalAuthorizationPatch201ResponseClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Ptsv2payoutsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"totalAmount" => "111.00",

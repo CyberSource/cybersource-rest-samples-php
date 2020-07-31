@@ -1,14 +1,16 @@
 <?php
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
 
 function GenerateKey()
 {
 	$requestObjArr = [
-		"encryptionType" => "None"
+			"encryptionType" => "RsaOaep",
+			"targetOrigin" => "https://www.test.com"
 	];
 	$requestObj = new CyberSource\Model\GeneratePublicKeyRequest($requestObjArr);
 
+	$format = "JWT";
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -18,7 +20,7 @@ function GenerateKey()
 	$api_instance = new CyberSource\Api\KeyGenerationApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->generatePublicKey($requestObj);
+		$apiResponse = $api_instance->generatePublicKey($format, $requestObj);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

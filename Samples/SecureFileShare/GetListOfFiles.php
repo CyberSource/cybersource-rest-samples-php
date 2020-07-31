@@ -7,6 +7,7 @@ function GetListOfFiles()
 	$startDate = "2020-03-20";
 	$endDate = "2020-03-30";
 	$organizationId = "testrest";
+	$name = null;
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -16,7 +17,7 @@ function GetListOfFiles()
 	$api_instance = new CyberSource\Api\SecureFileShareApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->getFileDetail($startDate, $endDate, $organizationId);
+		$apiResponse = $api_instance->getFileDetail($startDate, $endDate, $organizationId, $name);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

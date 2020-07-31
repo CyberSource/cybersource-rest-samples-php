@@ -7,13 +7,13 @@ function EnrollWithTravelInformation()
 	$clientReferenceInformationArr = [
 			"code" => "cybs_test"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",
 			"totalAmount" => "10.99"
 	];
-	$orderInformationAmountDetails = new CyberSource\Model\Riskv1decisionsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+	$orderInformationAmountDetails = new CyberSource\Model\Riskv1authenticationsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "1 Market St",
@@ -56,7 +56,7 @@ function EnrollWithTravelInformation()
 	$consumerAuthenticationInformationArr = [
 			"transactionMode" => "MOTO"
 	];
-	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1authenticationsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
+	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1decisionsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
 
 	$travelInformationLegs = array();
 	$travelInformationLegs_0 = [
@@ -64,27 +64,27 @@ function EnrollWithTravelInformation()
 			"carrierCode" => "UA",
 			"departureDate" => "2019-01-01"
 	];
-	$travelInformationLegs[0] = new CyberSource\Model\Riskv1authenticationsTravelInformationLegs($travelInformationLegs_0);
+	$travelInformationLegs[0] = new CyberSource\Model\Riskv1decisionsTravelInformationLegs($travelInformationLegs_0);
 
 	$travelInformationLegs_1 = [
 			"destination" => "RES",
 			"carrierCode" => "AS",
 			"departureDate" => "2019-02-21"
 	];
-	$travelInformationLegs[1] = new CyberSource\Model\Riskv1authenticationsTravelInformationLegs($travelInformationLegs_1);
+	$travelInformationLegs[1] = new CyberSource\Model\Riskv1decisionsTravelInformationLegs($travelInformationLegs_1);
 
 	$travelInformationPassengers = array();
 	$travelInformationPassengers_0 = [
 			"firstName" => "Raj",
 			"lastName" => "Charles"
 	];
-	$travelInformationPassengers[0] = new CyberSource\Model\Riskv1authenticationsTravelInformationPassengers($travelInformationPassengers_0);
+	$travelInformationPassengers[0] = new CyberSource\Model\Riskv1decisionsTravelInformationPassengers($travelInformationPassengers_0);
 
 	$travelInformationPassengers_1 = [
 			"firstName" => "Potter",
 			"lastName" => "Suhember"
 	];
-	$travelInformationPassengers[1] = new CyberSource\Model\Riskv1authenticationsTravelInformationPassengers($travelInformationPassengers_1);
+	$travelInformationPassengers[1] = new CyberSource\Model\Riskv1decisionsTravelInformationPassengers($travelInformationPassengers_1);
 
 	$travelInformationArr = [
 			"legs" => $travelInformationLegs,

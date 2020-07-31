@@ -10,12 +10,12 @@ function CreateInstrumentIdentifierBankAccount()
 			"number" => "4100",
 			"routingNumber" => "071923284"
 	];
-	$bankAccount = new CyberSource\Model\Tmsv1instrumentidentifiersBankAccount($bankAccountArr);
+	$bankAccount = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBankAccount($bankAccountArr);
 
 	$requestObjArr = [
 		"bankAccount" => $bankAccount
 	];
-	$requestObj = new CyberSource\Model\CreateInstrumentIdentifierRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostInstrumentIdentifierRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();
@@ -26,7 +26,7 @@ function CreateInstrumentIdentifierBankAccount()
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->createInstrumentIdentifier($profileid, $requestObj);
+		$apiResponse = $api_instance->postInstrumentIdentifier($requestObj, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

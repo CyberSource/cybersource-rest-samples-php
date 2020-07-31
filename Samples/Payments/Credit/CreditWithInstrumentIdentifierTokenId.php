@@ -17,7 +17,7 @@ function CreditWithInstrumentIdentifierTokenId()
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsidrefundsPaymentInformationCard($paymentInformationCardArr);
 
 	$paymentInformationInstrumentIdentifierArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCII"
+			"id" => "7010000000016241111"
 	];
 	$paymentInformationInstrumentIdentifier = new CyberSource\Model\Ptsv2paymentsPaymentInformationInstrumentIdentifier($paymentInformationInstrumentIdentifierArr);
 

@@ -5,7 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 function DownloadFileWithFileIdentifier()
 {
 	$organizationId = "testrest";
-	$fileId = "QmF0Y2hGaWxlc0RldGFpbFJlcG9ydC5jc3YtMjAxOS0wOS0zMA==";
+	$fileId = "VFJSXzEzODMtYTIwZjUyNDgtNWNlYy0yN2QzLWUwNTMtYTI1ODhlMGFkZjMxLnhtbC0yMDIwLTAzLTMw";
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();

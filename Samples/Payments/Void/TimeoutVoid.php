@@ -1,13 +1,14 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../Payments/AuthorizationCaptureForTimeoutVoidFlow.php';
 
 function TimeoutVoid()
 {
+	include __DIR__ . DIRECTORY_SEPARATOR . '../Payments/AuthorizationCaptureForTimeoutVoidFlow.php';
+	
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3",
-			"transactionId" => "1994947474894167"
+			"transactionId" => $timeoutVoidTransactionId
 	];
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 

@@ -1,12 +1,12 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'RetrievePaymentInstrument.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'CreatePaymentInstrumentCard.php';
 
 function DeletePaymentInstrument()
 {
 	$profileid = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
-	$tokenId = RetrievePaymentInstrument()[0]['id'];
+	$tokenId = CreatePaymentInstrumentCard()[0]['id'];
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -16,7 +16,7 @@ function DeletePaymentInstrument()
 	$api_instance = new CyberSource\Api\PaymentInstrumentApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->deletePaymentInstrument($profileid, $tokenId);
+		$apiResponse = $api_instance->deletePaymentInstrument($tokenId, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

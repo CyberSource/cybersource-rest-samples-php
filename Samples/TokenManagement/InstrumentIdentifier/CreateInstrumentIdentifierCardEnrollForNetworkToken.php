@@ -7,29 +7,28 @@ function CreateInstrumentIdentifierCardEnrollForNetworkToken()
 	$profileid = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 
 	$cardArr = [
-		"number" => "4622943127013705",
+		"number" => "4111111111111111",
 		"expirationMonth" => "12",
-		"expirationYear" => "2022",
-		"securityCode" => "838"
+		"expirationYear" => "2031",
+		"securityCode" => "123"
 	];
-	$card = new CyberSource\Model\Tmsv1instrumentidentifiersCard($cardArr);
+	$card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard($cardArr);
 
 	$billToArr = [
-		"address1" => "8310 Capital of Texas Highway North",
-		"address2" => "Bluffstone Drive",
-		"locality" => "Austin",
-		"administrativeArea" => "TX",
-		"postalCode" => "78731",
+			"address1" => "1 Market St",
+			"locality" => "San Francisco",
+			"administrativeArea" => "CA",
+			"postalCode" => "94105",
 		"country" => "US"
 	];
-	$billTo = new CyberSource\Model\Tmsv1instrumentidentifiersBillTo($billToArr);
+	$billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo($billToArr);
 
 	$requestObjArr = [
 		"type" => "enrollable card",
 		"card" => $card,
 		"billTo" => $billTo
 	];
-	$requestObj = new CyberSource\Model\CreateInstrumentIdentifierRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostInstrumentIdentifierRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();
@@ -40,7 +39,7 @@ function CreateInstrumentIdentifierCardEnrollForNetworkToken()
 	$api_instance = new CyberSource\Api\InstrumentIdentifierApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->createInstrumentIdentifier($profileid, $requestObj);
+		$apiResponse = $api_instance->postInstrumentIdentifier($requestObj, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

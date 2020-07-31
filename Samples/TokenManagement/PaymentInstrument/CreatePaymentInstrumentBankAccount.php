@@ -9,19 +9,19 @@ function CreatePaymentInstrumentBankAccount()
 	$bankAccountArr = [
 		"type" => "savings"
 	];
-	$bankAccount = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBankAccount($bankAccountArr);
+	$bankAccount = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBankAccount($bankAccountArr);
 
 	$buyerInformationPersonalIdentification = array();
 	$buyerInformationPersonalIdentificationIssuedBy_0Arr = [
 		"administrativeArea" => "CA"
 	];
-	$buyerInformationPersonalIdentificationIssuedBy_0 = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationIssuedBy($buyerInformationPersonalIdentificationIssuedBy_0Arr);
+	$buyerInformationPersonalIdentificationIssuedBy_0 = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy($buyerInformationPersonalIdentificationIssuedBy_0Arr);
 
 	$buyerInformationPersonalIdentification_0 = [
 		"id" => "57684432111321",
 		"type" => "driver license", "issuedBy" => $buyerInformationPersonalIdentificationIssuedBy_0
 	];
-	$buyerInformationPersonalIdentification[0] = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
+	$buyerInformationPersonalIdentification[0] = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
 
 	$buyerInformationArr = [
 		"companyTaxID" => "12345",
@@ -29,64 +29,45 @@ function CreatePaymentInstrumentBankAccount()
 		"dateOfBirth" => "2000-12-13",
 		"personalIdentification" => $buyerInformationPersonalIdentification
 	];
-	$buyerInformation = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation($buyerInformationArr);
+	$buyerInformation = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBuyerInformation($buyerInformationArr);
 
 	$billToArr = [
 		"firstName" => "John",
-		"lastName" => "Smith",
+		"lastName" => "Doe",
 		"company" => "Cybersource",
-		"address1" => "8310 Capital of Texas Highwas North",
-		"address2" => "Bluffstone Drive",
-		"locality" => "Austin",
-		"administrativeArea" => "TX",
-		"postalCode" => "78731",
+		"address1" => "1 Market St",
+		"locality" => "San Francisco",
+		"administrativeArea" => "CA",
+		"postalCode" => "94105",
 		"country" => "US",
-		"email" => "john.smith@test.com",
-		"phoneNumber" => "+44 2890447951"
+		"email" => "test@cybs.com",
+		"phoneNumber" => "4158880000"
 	];
-	$billTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo($billToArr);
+	$billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
 
 	$processingInformationBankTransferOptionsArr = [
 		"seCCode" => "WEB"
 	];
-	$processingInformationBankTransferOptions = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformationBankTransferOptions($processingInformationBankTransferOptionsArr);
+	$processingInformationBankTransferOptions = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions($processingInformationBankTransferOptionsArr);
 
 	$processingInformationArr = [
-		"billPaymentProgramEnabled" => true,
 		"bankTransferOptions" => $processingInformationBankTransferOptions
 	];
-	$processingInformation = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation($processingInformationArr);
-
-	$merchantInformationMerchantDescriptorArr = [
-		"alternateName" => "Branch Name"
-	];
-	$merchantInformationMerchantDescriptor = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformationMerchantDescriptor($merchantInformationMerchantDescriptorArr);
-
-	$merchantInformationArr = [
-		"merchantDescriptor" => $merchantInformationMerchantDescriptor
-	];
-	$merchantInformation = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedMerchantInformation($merchantInformationArr);
-
-	$instrumentIdentifierBankAccountArr = [
-		"number" => "4100",
-		"routingNumber" => "071923284"
-	];
-	$instrumentIdentifierBankAccount = new CyberSource\Model\Tmsv1instrumentidentifiersBankAccount($instrumentIdentifierBankAccountArr);
+	$processingInformation = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation($processingInformationArr);
 
 	$instrumentIdentifierArr = [
-		"bankAccount" => $instrumentIdentifierBankAccount
+			"id" => "A7A91A2CA872B272E05340588D0A0699"
 	];
-	$instrumentIdentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($instrumentIdentifierArr);
+	$instrumentIdentifier = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
 	$requestObjArr = [
 		"bankAccount" => $bankAccount,
 		"buyerInformation" => $buyerInformation,
 		"billTo" => $billTo,
 		"processingInformation" => $processingInformation,
-		"merchantInformation" => $merchantInformation,
 		"instrumentIdentifier" => $instrumentIdentifier
 	];
-	$requestObj = new CyberSource\Model\CreatePaymentInstrumentRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostPaymentInstrumentRequest($requestObjArr);
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -96,7 +77,7 @@ function CreatePaymentInstrumentBankAccount()
 	$api_instance = new CyberSource\Api\PaymentInstrumentApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->createPaymentInstrument($profileid, $requestObj);
+		$apiResponse = $api_instance->postPaymentInstrument($requestObj, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

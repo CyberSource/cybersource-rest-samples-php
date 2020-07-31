@@ -7,7 +7,7 @@ function RetrieveTransaction()
 {
 	$id = SimpleAuthorizationInternet('false')[0]['id'];
 
-	sleep(10);
+	sleep(20);
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();

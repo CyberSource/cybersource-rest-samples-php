@@ -4,7 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function CaptureOfAuthorizationThatUsedSwipedTrackData()
 {	
-	require_once __DIR__. DIRECTORY_SEPARATOR .'AuthorizationUsingSwipedTrackData.php';
+	require_once __DIR__. DIRECTORY_SEPARATOR .'../Payments/AuthorizationUsingSwipedTrackData.php';
 	$id = AuthorizationUsingSwipedTrackData()[0]['id'];
 	
 	$clientReferenceInformationPartnerArr = [

@@ -7,13 +7,13 @@ function AuthenticationWithNewAccount()
 	$clientReferenceInformationArr = [
 			"code" => "New Account"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",
 			"totalAmount" => "10.99"
 	];
-	$orderInformationAmountDetails = new CyberSource\Model\Riskv1decisionsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+	$orderInformationAmountDetails = new CyberSource\Model\Riskv1authenticationsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "1 Market St",
@@ -51,7 +51,7 @@ function AuthenticationWithNewAccount()
 	$consumerAuthenticationInformationArr = [
 			"transactionMode" => "MOTO"
 	];
-	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1authenticationsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
+	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1decisionsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
 
 	$riskInformationBuyerHistoryCustomerAccountArr = [
 			"creationHistory" => "NEW_ACCOUNT"

@@ -10,7 +10,7 @@ function ElectronicCheckDebitsWithLegacyToken()
 	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
 	$paymentInformationLegacyTokenArr = [
-			"id" => "7500BB199B4270EFE05340588D0AFCAD"
+			"id" => "AB7C01E66529EA42E05341588E0A22AD"
 	];
 	$paymentInformationLegacyToken = new CyberSource\Model\Ptsv2paymentsPaymentInformationLegacyToken($paymentInformationLegacyTokenArr);
 

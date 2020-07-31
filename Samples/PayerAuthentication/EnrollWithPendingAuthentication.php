@@ -7,13 +7,13 @@ function EnrollWithPendingAuthentication()
 	$clientReferenceInformationArr = [
 			"code" => "cybs_test"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",
 			"totalAmount" => "10.99"
 	];
-	$orderInformationAmountDetails = new CyberSource\Model\Riskv1decisionsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+	$orderInformationAmountDetails = new CyberSource\Model\Riskv1authenticationsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "1 Market St",
@@ -54,9 +54,10 @@ function EnrollWithPendingAuthentication()
 	$buyerInformation = new CyberSource\Model\Riskv1authenticationsBuyerInformation($buyerInformationArr);
 
 	$consumerAuthenticationInformationArr = [
+			"returnUrl" => "http://localhost:8189/cart/enterprise/collect-term",
 			"transactionMode" => "MOTO"
 	];
-	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1authenticationsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
+	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1decisionsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
 
 	$requestObjArr = [
 			"clientReferenceInformation" => $clientReferenceInformation,

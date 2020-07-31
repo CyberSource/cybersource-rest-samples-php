@@ -5,6 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 function GetSubscriptionForReportName()
 {
 	$reportName = "testv2_subscription";
+	$organizationId = null;
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
@@ -14,7 +15,7 @@ function GetSubscriptionForReportName()
 	$api_instance = new CyberSource\Api\ReportSubscriptionsApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->getSubscription($reportName);
+		$apiResponse = $api_instance->getSubscription($reportName, $organizationId);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

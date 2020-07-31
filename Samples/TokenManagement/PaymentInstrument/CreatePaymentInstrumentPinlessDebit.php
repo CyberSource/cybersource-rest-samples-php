@@ -7,60 +7,41 @@ function CreatePaymentInstrumentPinlessDebit()
 	$profileid = '93B32398-AD51-4CC2-A682-EA3E93614EB1';
 
 	$cardArr = [
-			"expirationMonth" => "09",
-			"expirationYear" => "2017",
-			"type" => "visa",
-			"issueNumber" => "01",
-			"startMonth" => "01",
-			"startYear" => "2016",
-			"useAs" => "pinless debit"
+		"expirationMonth" => "12",
+		"expirationYear" => "2031",
+		"type" => "visa",
+		"issueNumber" => "01",
+		"startMonth" => "01",
+		"startYear" => "2020",
+		"useAs" => "pinless debit"
 	];
-	$card = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedCard($cardArr);
-
-	$buyerInformationArr = [
-			"companyTaxID" => "12345",
-			"currency" => "USD"
-	];
-	$buyerInformation = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBuyerInformation($buyerInformationArr);
+	$card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentCard($cardArr);
 
 	$billToArr = [
-			"firstName" => "John",
-			"lastName" => "Smith",
-			"company" => "Cybersource",
-			"address1" => "8310 Capital of Texas Highwas North",
-			"address2" => "Bluffstone Drive",
-			"locality" => "Austin",
-			"administrativeArea" => "TX",
-			"postalCode" => "78731",
-			"country" => "US",
-			"email" => "john.smith@test.com",
-			"phoneNumber" => "+44 2890447951"
+		"firstName" => "John",
+		"lastName" => "Doe",
+		"company" => "Cybersource",
+		"address1" => "1 Market St",
+		"locality" => "San Francisco",
+		"administrativeArea" => "CA",
+		"postalCode" => "94105",
+		"country" => "US",
+		"email" => "test@cybs.com",
+		"phoneNumber" => "4158880000"
 	];
-	$billTo = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedBillTo($billToArr);
-
-	$processingInformationArr = [
-			"billPaymentProgramEnabled" => true
-	];
-	$processingInformation = new CyberSource\Model\TmsV1InstrumentIdentifiersPaymentInstrumentsGet200ResponseEmbeddedProcessingInformation($processingInformationArr);
-
-	$instrumentIdentifierCardArr = [
-			"number" => "411111111111111"
-	];
-	$instrumentIdentifierCard = new CyberSource\Model\TmsV1InstrumentIdentifiersPost200ResponseCard($instrumentIdentifierCardArr);
+	$billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
 
 	$instrumentIdentifierArr = [
-			"card" => $instrumentIdentifierCard
+			"id" => "7010000000016241111"
 	];
-	$instrumentIdentifier = new CyberSource\Model\Tmsv1paymentinstrumentsInstrumentIdentifier($instrumentIdentifierArr);
+	$instrumentIdentifier = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
 	$requestObjArr = [
 			"card" => $card,
-			"buyerInformation" => $buyerInformation,
 			"billTo" => $billTo,
-			"processingInformation" => $processingInformation,
 			"instrumentIdentifier" => $instrumentIdentifier
 	];
-	$requestObj = new CyberSource\Model\CreatePaymentInstrumentRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostPaymentInstrumentRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();
@@ -71,7 +52,7 @@ function CreatePaymentInstrumentPinlessDebit()
 	$api_instance = new CyberSource\Api\PaymentInstrumentApi($api_client);
 	
 	try {
-		$apiResponse = $api_instance->createPaymentInstrument($profileid, $requestObj);
+		$apiResponse = $api_instance->postPaymentInstrument($requestObj, $profileid);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 

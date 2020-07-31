@@ -4,7 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function RestaurantCaptureWithGratuity()
 {
-	require_once __DIR__. DIRECTORY_SEPARATOR .'RestaurantAuthorization.php';
+	require_once __DIR__. DIRECTORY_SEPARATOR .'../Payments/RestaurantAuthorization.php';
 	$id = RestaurantAuthorization()[0]['id'];
 
 	$clientReferenceInformationPartnerArr = [
