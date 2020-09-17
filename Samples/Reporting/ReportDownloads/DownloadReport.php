@@ -5,7 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 function DownloadReport()
 {
 	$organizationId = "testrest";
-	$reportDate = "2020-03-05";
+	$reportDate = "2020-07-05";
 	$reportName = "testrest_subcription_v2989";
 	$reportTime = "00:00:00Z";
 

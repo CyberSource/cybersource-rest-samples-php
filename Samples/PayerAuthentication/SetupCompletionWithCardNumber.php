@@ -13,7 +13,7 @@ function SetupCompletionWithCardNumber()
 			"type" => "001",
 			"expirationMonth" => "12",
 			"expirationYear" => "2025",
-			"number" => "4111111111111111"
+			"number" => "4000000000000101"
 	];
 	$paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 

@@ -54,7 +54,6 @@ function EnrollWithPendingAuthentication()
 	$buyerInformation = new CyberSource\Model\Riskv1authenticationsBuyerInformation($buyerInformationArr);
 
 	$consumerAuthenticationInformationArr = [
-			"returnUrl" => "http://localhost:8189/cart/enterprise/collect-term",
 			"transactionMode" => "MOTO"
 	];
 	$consumerAuthenticationInformation = new CyberSource\Model\Riskv1decisionsConsumerAuthenticationInformation($consumerAuthenticationInformationArr);
