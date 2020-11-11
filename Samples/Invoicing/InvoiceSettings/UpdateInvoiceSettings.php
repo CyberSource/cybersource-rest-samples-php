@@ -17,9 +17,10 @@ function UpdateInvoiceSettings()
 			"enableReminders" => true,
 			"headerStyle" => $invoiceSettingsInformationHeaderStyle,
 			"deliveryLanguage" => "en-US",
-			"defaultCurrencyCode" => "USD"
+			"defaultCurrencyCode" => "USD",
+			"payerAuthenticationInInvoicing" => "enable"
 	];
-	$invoiceSettingsInformation = new CyberSource\Model\InvoicingV2InvoiceSettingsGet200ResponseInvoiceSettingsInformation($invoiceSettingsInformationArr);
+	$invoiceSettingsInformation = new CyberSource\Model\Invoicingv2invoiceSettingsInvoiceSettingsInformation($invoiceSettingsInformationArr);
 
 	$requestObjArr = [
 			"invoiceSettingsInformation" => $invoiceSettingsInformation

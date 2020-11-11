@@ -2,7 +2,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function CreateCustomerPaymentInstrumentCard()
+function CreateCustomerNonDefaultPaymentInstrumentCard()
 {
 	$customerTokenId = 'AB695DA801DD1BB6E05341588E0A3BDC';
 	$cardArr = [
@@ -32,6 +32,7 @@ function CreateCustomerPaymentInstrumentCard()
 	$instrumentIdentifier = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
 	$requestObjArr = [
+			"_default" => false,
 			"card" => $card,
 			"billTo" => $billTo,
 			"instrumentIdentifier" => $instrumentIdentifier
@@ -59,6 +60,6 @@ function CreateCustomerPaymentInstrumentCard()
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	CreateCustomerPaymentInstrumentCard();
+	CreateCustomerNonDefaultPaymentInstrumentCard();
 }
 ?>

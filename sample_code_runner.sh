@@ -10,13 +10,13 @@ while IFS="" read -r p || [ -n "$p" ]
 do
   if [[ "$p" =~ $(echo ^\($(sed 's/[[:blank:]]//g' sample_code_ignore_list.txt | paste -sd '|' /dev/stdin)\)$) ]]; then
     printf '\n\n#### SKIPPED - %s ####\n' "$p"
-	printf '\n\n#### SKIPPED - %s ####\n' "$p" >> output.log
+    printf '\n\n#### SKIPPED - %s ####\n' "$p" >> output.log
   else
     printf '\n\n**** RUNNING - %s ****\n' "$p"
-	printf '\n\n%s **** RUNNING - %s ****\n' "$SAMPLECOUNT" "$p" >> output.log
+    printf '\n\n%s **** RUNNING - %s ****\n' "$SAMPLECOUNT" "$p" >> output.log
     php "$p"	>> output.log
     printf '\n\n**** END RUNNING - %s ****\n' "$p" >> output.log
-	FILECOUNT=$((FILECOUNT+1))
+    FILECOUNT=$((FILECOUNT+1))
   fi
 
   SAMPLECOUNT=$((SAMPLECOUNT+1))

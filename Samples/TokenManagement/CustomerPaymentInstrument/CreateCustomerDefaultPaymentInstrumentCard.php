@@ -2,10 +2,17 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
-function CreateShippingAddress()
+function CreateCustomerDefaultPaymentInstrumentCard()
 {
 	$customerTokenId = 'AB695DA801DD1BB6E05341588E0A3BDC';
-	$shipToArr = [
+	$cardArr = [
+			"expirationMonth" => "12",
+			"expirationYear" => "2031",
+			"type" => "001"
+	];
+	$card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentCard($cardArr);
+
+	$billToArr = [
 			"firstName" => "John",
 			"lastName" => "Doe",
 			"company" => "CyberSource",
@@ -17,12 +24,20 @@ function CreateShippingAddress()
 			"email" => "test@cybs.com",
 			"phoneNumber" => "4158880000"
 	];
-	$shipTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultShippingAddressShipTo($shipToArr);
+	$billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
+
+	$instrumentIdentifierArr = [
+			"id" => "7010000000016241111"
+	];
+	$instrumentIdentifier = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
 	$requestObjArr = [
-			"shipTo" => $shipTo
+			"_default" => true,
+			"card" => $card,
+			"billTo" => $billTo,
+			"instrumentIdentifier" => $instrumentIdentifier
 	];
-	$requestObj = new CyberSource\Model\PostCustomerShippingAddressRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostCustomerPaymentInstrumentRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();
@@ -30,10 +45,10 @@ function CreateShippingAddress()
 	$merchantConfig = $commonElement->merchantConfigObject();
 
 	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\CustomerShippingAddressApi($api_client);
+	$api_instance = new CyberSource\Api\CustomerPaymentInstrumentApi($api_client);
 
 	try {
-		$apiResponse = $api_instance->postCustomerShippingAddress($customerTokenId, $requestObj, null);
+		$apiResponse = $api_instance->postCustomerPaymentInstrument($customerTokenId, $requestObj, null);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
 
@@ -45,6 +60,6 @@ function CreateShippingAddress()
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	CreateShippingAddress();
+	CreateCustomerDefaultPaymentInstrumentCard();
 }
 ?>

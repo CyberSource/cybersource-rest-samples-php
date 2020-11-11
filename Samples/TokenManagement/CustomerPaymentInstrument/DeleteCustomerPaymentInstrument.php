@@ -1,12 +1,12 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'CreateCustomerPaymentInstrumentCard.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'CreateCustomerNonDefaultPaymentInstrumentCard.php';
 
 function DeleteCustomerPaymentInstrument()
 {
 	$customerTokenId = 'AB695DA801DD1BB6E05341588E0A3BDC';
-	$paymentInstrumentTokenId = CreateCustomerPaymentInstrumentCard()[0]['id'];
+	$paymentInstrumentTokenId = CreateCustomerNonDefaultPaymentInstrumentCard()[0]['id'];
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();

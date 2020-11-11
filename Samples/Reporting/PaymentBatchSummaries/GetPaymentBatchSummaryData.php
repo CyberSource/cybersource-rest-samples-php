@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function GetPaymentBatchSummaryData()
 {
-	$startTime = "2019-05-01T12:00:00Z";
-	$endTime = "2019-08-30T12:00:00Z";
+	$startTime = "2020-09-01T12:00:00Z";
+	$endTime = "2020-09-30T12:00:00Z";
 	$organizationId = "testrest";
 	$rollUp = null;
 	$breakdown = null;
