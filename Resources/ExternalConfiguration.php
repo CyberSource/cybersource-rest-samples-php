@@ -18,7 +18,11 @@ class ExternalConfiguration
                 $this->logFilename = "Cybs.log";
                 $this->merchantID = "testrest";
                 $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
-                $this->secretKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
+                $this->secretKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";       
+                // meta key config         
+                $this->useMetaKey = false;
+                $this->portfolioID = "";
+                // end meta key config
                 $this->keyAlias = "testrest";
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
