@@ -47,6 +47,8 @@ class ExternalConfiguration
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
+                $confiData = $config->setUseMetaKey($this->useMetaKey);
+                $confiData = $config->setPortfolioID($this->portfolioID);
                 $confiData = $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
                 $confiData = $config->setRunEnvironment($this->runEnv);
                 $config->validateMerchantData($confiData);

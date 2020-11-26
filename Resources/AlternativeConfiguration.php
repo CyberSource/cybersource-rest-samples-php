@@ -19,6 +19,10 @@ class ExternalConfiguration
                 $this->merchantID = "testrest_cpctv";
                 $this->apiKeyID = "e547c3d3-16e4-444c-9313-2a08784b906a";
                 $this->secretKey = "JXm4dqKYIxWofM1TIbtYY9HuYo7Cg1HPHxn29f6waRo=";
+                // meta key config         
+                $this->useMetaKey = false;
+                $this->portfolioID = "";
+                // end meta key config
                 $this->keyAlias = "testrest_cpctv";
                 $this->keyPass = "testrest_cpctv";
                 $this->keyFilename = "testrest_cpctv";
@@ -43,6 +47,8 @@ class ExternalConfiguration
                 $confiData = $config->setKeyFileName(trim($this->keyFilename));
                 $confiData = $config->setKeyAlias($this->keyAlias);
                 $confiData = $config->setKeyPassword($this->keyPass);
+                $confiData = $config->setUseMetaKey($this->useMetaKey);
+                $confiData = $config->setPortfolioID($this->portfolioID);
                 $confiData = $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
                 $confiData = $config->setRunEnvironment($this->runEnv);
                 $config->validateMerchantData($confiData);
