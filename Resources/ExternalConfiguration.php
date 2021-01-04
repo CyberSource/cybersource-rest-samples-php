@@ -73,7 +73,7 @@ class ExternalConfiguration
 
         function CallTestLogging($testId, $apiName, $responseMessage){
                 $runtime = date('d-m-Y H:i:s');
-                $file = fopen("./CSV_Files/TestReport/TestResults.csv", "a+");
+                $file = fopen("./SamplesQA/CSV_Files/TestReport/TestResults.csv", "a+");
                 fputcsv($file, array($testId, $runtime, $apiName, $responseMessage));
                 fclose($file);
         }
