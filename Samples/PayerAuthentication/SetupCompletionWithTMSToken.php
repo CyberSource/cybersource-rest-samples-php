@@ -7,7 +7,7 @@ function SetupCompletionWithTMSToken()
 	$clientReferenceInformationArr = [
 			"code" => "cybs_test"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$paymentInformationCustomerArr = [
 			"customerId" => "AB695DA801DD1BB6E05341588E0A3BDC"

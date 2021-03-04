@@ -32,8 +32,15 @@ function AddDataToList()
 	];
 	$paymentInformation = new CyberSource\Model\Riskv1liststypeentriesPaymentInformation($paymentInformationArr);
 
+	$clientReferenceInformationPartnerArr = [
+			"developerId" => "7891234",
+			"solutionId" => "89012345"
+	];
+	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+
 	$clientReferenceInformationArr = [
-			"code" => "54323007"
+			"code" => "54323007",
+			"partner" => $clientReferenceInformationPartner
 	];
 	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 

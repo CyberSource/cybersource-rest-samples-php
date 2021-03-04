@@ -54,20 +54,43 @@ Then run `composer update` again. You might have to restart your machine before 
   * Http
 
 ```php
-$this->authType = "http_signature";
-$this->merchantID = "your_merchant_id";
-$this->apiKeyID = "your_key_serial_number";
-$this->screteKey = "your_shared_secret";
+$this->authType           = "http_signature";
+$this->merchantID         = "your_merchant_id";
+$this->apiKeyID           = "your_key_serial_number";
+$this->secretKey          = "your_shared_secret";
 ```
   * Jwt
 
 ```php
-$this->authType = "jwt";
-$this->merchantID = "your_merchant_id";
-$this->keyAlias = "your_merchant_id";
-$this->keyPass = "your_merchant_id";
-$this->keyFilename = "your_merchant_id";
-$this->keyDirectory = "./Resources/";
+$this->authType           = "jwt";
+$this->merchantID         = "your_merchant_id";
+$this->keyAlias           = "your_merchant_id";
+$this->keyPass            = "your_merchant_id";
+$this->keyFilename        = "your_merchant_id";
+$this->keyDirectory       = "./Resources/";
+```
+
+  * MetaKey Http
+
+```php
+$this->authType           = "http_Signature";
+$this->merchantID         = "your_child_merchant_id";
+$this->apiKeyId           = "your_metakey_serial_number";
+$this->secretKey          = "your_metakey_shared_secret";
+$this->portfolioId        = "your_portfolio_id";
+$this->useMetaKey         = true;
+```
+
+  * MetaKey JWT
+
+```php
+$this->authType            = "jwt";
+$this->merchantID          = "your_child_merchant_id";
+$this->keyAlias            = "your_child_merchant_id";
+$this->keyPass             = "your_portfolio_id";
+$this->keyFilename         = "your_portfolio_id";
+$this->keyDirectory        = "./Resources/";
+$this->useMetaKey          = true;
 ```
 
 ### Switching between the sandbox environment and the production environment
@@ -77,11 +100,10 @@ configured to communicate with the sandbox environment. To switch to the product
 constant.  For example:
 
 ```php
-// For TESTING use
-  $this->runEnv = "cyberSource.environment.SANDBOX";
-// For PRODUCTION use
-  $this->runEnv = "cyberSource.environment.PRODUCTION";
+   // For TESTING use
+   $this->runEnv = "cyberSource.environment.SANDBOX";
+   // For PRODUCTION use
+   $this->runEnv = "cyberSource.environment.PRODUCTION";
 ```
 
-The [API Reference Guide](https://developer.cybersource.com/api/reference/api-reference.html) provides examples of what information is needed for a particular request and how that information would be formatted. Using those examples, you can easily determine what methods would be necessary to include that information in a request
-using this SDK.
+The [API Reference Guide](https://developer.cybersource.com/api/reference/api-reference.html) provides examples of what information is needed for a particular request and how that information would be formatted. Using those examples, you can easily determine what methods would be necessary to include that information in a request using this SDK.

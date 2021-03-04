@@ -28,7 +28,7 @@ function EnrollInstrumentIdentifierForNetworkTokenization()
 			"card" => $card,
 			"billTo" => $billTo
 	];
-	$requestObj = new CyberSource\Model\PostInstrumentIdentifierRequest($requestObjArr);
+	$requestObj = new CyberSource\Model\PostInstrumentIdentifierEnrollmentRequest($requestObjArr);
 
 
 	$commonElement = new CyberSource\ExternalConfiguration();

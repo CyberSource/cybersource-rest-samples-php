@@ -22,8 +22,21 @@ function MarkAsSuspect()
 	];
 	$riskInformation = new CyberSource\Model\Riskv1decisionsidmarkingRiskInformation($riskInformationArr);
 
+	$clientReferenceInformationPartnerArr = [
+			"developerId" => "1234",
+			"solutionId" => "3321"
+	];
+	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+
+	$clientReferenceInformationArr = [
+			"code" => "12345",
+			"partner" => $clientReferenceInformationPartner
+	];
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+
 	$requestObjArr = [
-			"riskInformation" => $riskInformation
+			"riskInformation" => $riskInformation,
+			"clientReferenceInformation" => $clientReferenceInformation
 	];
 	$requestObj = new CyberSource\Model\FraudMarkingActionRequest($requestObjArr);
 

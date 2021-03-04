@@ -4,11 +4,18 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function CustomerMatchDeniedPartiesList()
 {
+	$clientReferenceInformationPartnerArr = [
+			"developerId" => "7891234",
+			"solutionId" => "89012345"
+	];
+	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+
 	$clientReferenceInformationArr = [
 			"code" => "verification example",
-			"comments" => "Export-basic"
+			"comments" => "Export-basic",
+			"partner" => $clientReferenceInformationPartner
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToCompanyArr = [
 			"name" => "A & C International Trade, Inc"
