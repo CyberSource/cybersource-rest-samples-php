@@ -4,10 +4,17 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function AuthenticationWithNORedirect()
 {
-	$clientReferenceInformationArr = [
-			"code" => "cybs_test"
+	$clientReferenceInformationPartnerArr = [
+			"developerId" => "7891234",
+			"solutionId" => "89012345"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+
+	$clientReferenceInformationArr = [
+			"code" => "cybs_test",
+			"partner" => $clientReferenceInformationPartner
+	];
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",

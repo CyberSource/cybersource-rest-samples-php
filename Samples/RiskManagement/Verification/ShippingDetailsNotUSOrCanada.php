@@ -8,7 +8,7 @@ function ShippingDetailsNotUSOrCanada()
 			"code" => "addressEg",
 			"comments" => "dav-All fields"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "12301 research st",

@@ -7,7 +7,7 @@ function EnrollWithTravelInformation()
 	$clientReferenceInformationArr = [
 			"code" => "cybs_test"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",

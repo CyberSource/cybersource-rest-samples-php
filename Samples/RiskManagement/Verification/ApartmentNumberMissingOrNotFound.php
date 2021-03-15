@@ -8,7 +8,7 @@ function ApartmentNumberMissingOrNotFound()
 			"code" => "addressEg",
 			"comments" => "dav-error response check"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "6th 4th ave",

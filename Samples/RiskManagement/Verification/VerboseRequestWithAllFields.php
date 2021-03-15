@@ -4,11 +4,18 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function VerboseRequestWithAllFields()
 {
+	$clientReferenceInformationPartnerArr = [
+			"developerId" => "7891234",
+			"solutionId" => "89012345"
+	];
+	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+
 	$clientReferenceInformationArr = [
 			"code" => "addressEg",
-			"comments" => "dav-All fields"
+			"comments" => "dav-All fields",
+			"partner" => $clientReferenceInformationPartner
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "12301 research st",

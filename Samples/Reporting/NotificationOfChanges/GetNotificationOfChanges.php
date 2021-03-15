@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function GetNotificationOfChanges()
 {
-	$startTime = "2020-03-01T12:00:00Z";
-	$endTime = "2020-03-10T12:00:00Z";
+	$startTime = "2020-10-01T12:00:00Z";
+	$endTime = "2020-10-10T12:00:00Z";
 
 	$commonElement = new CyberSource\ExternalConfiguration();
 	$config = $commonElement->ConnectionHost();

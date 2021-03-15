@@ -8,7 +8,7 @@ function ExportComplianceInformationProvided()
 			"code" => "verification example",
 			"comments" => "Export -fields"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToCompanyArr = [
 			"name" => "A & C International Trade, Inc"

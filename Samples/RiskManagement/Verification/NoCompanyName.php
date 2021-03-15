@@ -7,7 +7,7 @@ function NoCompanyName()
 	$clientReferenceInformationArr = [
 			"code" => "verification example"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "901 Metro Centre Blvd",

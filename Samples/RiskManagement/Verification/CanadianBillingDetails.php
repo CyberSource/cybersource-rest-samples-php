@@ -8,7 +8,7 @@ function CanadianBillingDetails()
 			"code" => "addressEg",
 			"comments" => "dav-All fields"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1addressverificationsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationBillToArr = [
 			"address1" => "1650 Burton Ave",

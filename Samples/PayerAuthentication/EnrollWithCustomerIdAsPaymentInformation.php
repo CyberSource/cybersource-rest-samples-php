@@ -7,7 +7,7 @@ function EnrollWithCustomerIdAsPaymentInformation()
 	$clientReferenceInformationArr = [
 			"code" => "UNKNOWN"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"currency" => "USD",
