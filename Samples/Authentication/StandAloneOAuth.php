@@ -156,15 +156,15 @@ if(!defined('DO_NOT_RUN_SAMPLES')){
 
     if($createUsingAuthCode)
     {
-        $code = "URvXIU";
+        $code = "s";
         $grantType = "authorization_code";
         $result = postAccessTokenFromAuthCode($code, $grantType);
     }
     else
     {
         $grantType = "refresh_token";
-        $refreshToken = "eyJraWQiOiIxMGM2MTYxNzg2MzE2ZWMzMGJjZmI5ZDcyZGU4MzFjOSIsImFsZyI6IlJTMjU2In0.eyJqdGkiOiJjMjM4ZjFjZi0zOWEzLTRmMDctODBjZi0yZTU3NThjYzI1NmIiLCJzY29wZXMiOlsiYWx0ZXJuYXRlX3BheW1lbnRzIiwiYmFua190cmFuc2ZlcnMiLCJib2FyZGluZyIsImNvbW1lcmNlX3NlcnZpY2VzIiwiZnJhdWRfbWFuYWdlbWVudCIsImludm9pY2luZyIsImtleXMiLCJtYW5hZ2Vfc2VjdXJlX2FjY2VwdGFuY2UiLCJwYXltZW50c193aXRoX3N0YW5kYWxvbmVfY3JlZGl0IiwicGF5bWVudHNfd2l0aG91dF9zdGFuZGFsb25lX2NyZWRpdCIsInBheW91dHMiLCJyZXBvcnRpbmciLCJ0b2tlbml6YXRpb25fc2VydmljZXMiLCJ0cmFuc2FjdGlvbnMiLCJ1c2VycyJdLCJpYXQiOjE2MTY3NDY3MTY1ODcsImFzc29jaWF0ZWRfaWQiOiJzYW1wbGVwYXJ0bmVyIiwiY2xpZW50X2lkIjoidjZUSkgxSXFoTSIsIm1lcmNoYW50X2lkIjoiY2drMl9wdXNoX3Rlc3RzIiwiZXhwaXJlc19pbiI6MTY0ODI4MjcxNjU4NywidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4iLCJncmFudF90eXBlIjoiYXV0aG9yaXphdGlvbl9jb2RlIiwiZ3JhbnRfdGltZSI6IjIwMjEwMzI2MDExOCJ9.UO9RoE8yz-XE-g3_ftcMu3BwbgslQXC8FjXNqquVujSNmx5Z5E2XlHGk8yMYAzjQ2OI5X2JXEzvQ5-CruAI0oIXAovhUz-20mlgcft80VdLnET6WrZpGCVksdT-KVt7s9neBTZcBq_xIBrzEiL8i-twRXYcU644-9PhKHV2awJD_nl7Es3BOsayHZJf-Dy1I4IYayF61Mgol9niSyzL94-eN_aV45-GEKGd7vnoTctQJmkh1QTykbVehmZ6Xkq1KyMojIkOSjX3ZhLF0jXkjV4K3oul2lT4A7UpdEmhVHLbQvY2G8UrwPzrCz7gML674OvU8PseT-FhI1-ZgfE1rpA";
-        $result = postAccessTokenFromRefreshToken($refreshToken, $grantType);
+        $refreshToken = "";
+		$result = postAccessTokenFromRefreshToken($refreshToken, $grantType);
     }
 
     if($result != null) {

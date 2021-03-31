@@ -27,14 +27,14 @@ class ExternalConfiguration
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
                 $this->keyDirectory = "Resources/";
-                $this->runEnv = "cyberSource.environment.mutualauth.SANDBOX";
+                $this->runEnv = "cyberSource.environment.SANDBOX";
                 //OAuth related config
-                $this->enableClientCert = true;
+                $this->enableClientCert = false;
                 $this->clientCertDirectory = "Resources/";
-                $this->clientCertFile = "certificate.p12";
-                $this->clientCertPassword = "password";
-                $this->clientId = "v6TJH1IqhM";
-                $this->clientSecret = "45f440af-2433-4faf-ab0b-c5d6dba4a45c";
+                $this->clientCertFile = "";
+                $this->clientCertPassword = "";
+                $this->clientId = "";
+                $this->clientSecret = "";
                 $this->merchantConfigObject();
         }
         //creating merchant config object
