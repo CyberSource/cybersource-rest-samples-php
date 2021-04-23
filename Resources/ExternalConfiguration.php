@@ -28,6 +28,13 @@ class ExternalConfiguration
                 $this->keyFilename = "testrest";
                 $this->keyDirectory = "Resources/";
                 $this->runEnv = "cyberSource.environment.SANDBOX";
+                //OAuth related config
+                $this->enableClientCert = false;
+                $this->clientCertDirectory = "Resources/";
+                $this->clientCertFile = "";
+                $this->clientCertPassword = "";
+                $this->clientId = "";
+                $this->clientSecret = "";
                 $this->merchantConfigObject();
         }
         //creating merchant config object
@@ -49,6 +56,12 @@ class ExternalConfiguration
                 $confiData = $config->setKeyPassword($this->keyPass);
                 $confiData = $config->setUseMetaKey($this->useMetaKey);
                 $confiData = $config->setPortfolioID($this->portfolioID);
+                $confiData = $config->setEnableClientCert($this->enableClientCert);
+                $confiData = $config->setClientCertDirectory($this->clientCertDirectory);
+                $confiData = $config->setClientCertFile($this->clientCertFile);
+                $confiData = $config->setClientCertPassword($this->clientCertPassword);
+                $confiData = $config->setClientId($this->clientId);
+                $confiData = $config->setClientSecret($this->clientSecret);
                 $confiData = $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
                 $confiData = $config->setRunEnvironment($this->runEnv);
                 $config->validateMerchantData($confiData);
