@@ -6,11 +6,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 function merchantConfigObject()
 {     
         $authType = "http_signature";
-        $merchantID = "merchannt998";
-        $apiKeyID = "7a7f20a6-1f7f-4780-9a79-3ff8acf7cc83";
-        $secretKey = "X+ynT3aTCD643tZgnEnnLD+sd5pplDGMw5vG5klPvVY=";
+        $merchantID = "";
+        $apiKeyID = "";
+        $secretKey = "";
         $useMetaKey = true;
-        $portfolioID = "developercp";
+        $portfolioID = "";
         $runEnv = "cyberSource.environment.SANDBOX";
         $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
         

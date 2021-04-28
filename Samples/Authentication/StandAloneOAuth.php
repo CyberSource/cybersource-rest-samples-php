@@ -1,6 +1,36 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
+
+//creating merchant config object
+function merchantConfigObject()
+{     
+	$config = new \CyberSource\Authentication\Core\MerchantConfiguration();
+	$runEnv = "cyberSource.environment.mutualauth.SANDBOX";
+	#OAuth related config
+	$enableClientCert = true;
+	$clientCertDirectory = "Resources/";
+	$clientCertFile = "certificate.p12";
+	$clientCertPassword = "password";
+	$clientId = "";
+	$clientSecret = "";
+	
+	$confiData = $config->setEnableClientCert($enableClientCert);
+	$confiData = $config->setClientCertDirectory($clientCertDirectory);
+	$confiData = $config->setClientCertFile($clientCertFile);
+	$confiData = $config->setClientCertPassword($clientCertPassword);
+	$confiData = $config->setClientId($clientId);
+	$confiData = $config->setClientSecret($clientSecret);
+	$confiData = $config->setRunEnvironment($runEnv);
+	return $config;
+}
+
+function ConnectionHost()
+{
+        $merchantConfig = merchantConfigObject();
+        $config = new \CyberSource\Configuration();
+        $config = $config->setHost($merchantConfig->getHost());
+        return $config;
+}
 
 $createUsingAuthCode = true;
 
@@ -64,9 +94,8 @@ function SimpleAuthorizationInternet($refreshToken, $accessToken)
 	$requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
 
 
-	$commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+	$config = ConnectionHost();
+	$merchantConfig = merchantConfigObject();
 
 	// Set AccessToken and RefreshToken
 	$merchantConfig->setAccessToken($accessToken);
@@ -92,9 +121,8 @@ function SimpleAuthorizationInternet($refreshToken, $accessToken)
 
 function postAccessTokenFromAuthCode($code, $grantType)
 {
-    $commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+    $config = ConnectionHost();
+	$merchantConfig = merchantConfigObject();
 
     $requestObj = [
         "code" => $code,
@@ -122,9 +150,8 @@ function postAccessTokenFromAuthCode($code, $grantType)
 
 function postAccessTokenFromRefreshToken($refreshToken, $grantType)
 {
-    $commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+    $config = ConnectionHost();
+	$merchantConfig = merchantConfigObject();
 
     $requestObj = [
         "refresh_token" => $refreshToken,
