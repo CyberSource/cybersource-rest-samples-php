@@ -27,7 +27,7 @@ class ExternalConfiguration
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
                 $this->keyDirectory = "Resources/";
-                $this->runEnv = "cyberSource.environment.SANDBOX";
+                $this->runEnv = "apitest.cybersource.com";
                 //OAuth related config
                 $this->enableClientCert = false;
                 $this->clientCertDirectory = "Resources/";
@@ -46,7 +46,7 @@ class ExternalConfiguration
 
                 $confiData = $config->setLogSize(trim($this->logSize));
                 $confiData = $config->setDebugFile(trim(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->logFile));
-				$confiData = $config->setLogFileName(trim($this->logFilename));
+                $confiData = $config->setLogFileName(trim($this->logFilename));
                 $confiData = $config->setauthenticationType(strtoupper(trim($this->authType)));
                 $confiData = $config->setMerchantID(trim($this->merchantID));
                 $confiData = $config->setApiKeyID($this->apiKeyID);

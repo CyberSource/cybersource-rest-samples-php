@@ -5,8 +5,8 @@
     "keywords": [
         "Authentication",
         "cybersource",
-		"payments",
-		"ecommerce",
+        "payments",
+        "ecommerce",
         "samplecodes",
         "restapisamples"
     ],
@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=5.6",
-	"cybersource/rest-client-php": "0.0.21",
-	"firebase/php-jwt": "^5.0.0"
+        "cybersource/rest-client-php": "0.0.21",
+        "firebase/php-jwt": "^5.0.0"
     }
 }

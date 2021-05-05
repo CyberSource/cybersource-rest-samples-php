@@ -25,7 +25,7 @@ class Configuration
                 $this->keyPass = "testrest";
                 $this->keyFilename = "testrest";
                 $this->keyDirectory = "Resources/";
-                $this->runEnv = "cyberSource.environment.SANDBOX";
+                $this->runEnv = "apitest.cybersource.com";
                 $this->merchantConfigObject();
         }
         //creating merchant config object
