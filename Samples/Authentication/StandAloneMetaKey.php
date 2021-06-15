@@ -11,7 +11,7 @@ function merchantConfigObject()
         $secretKey = "";
         $useMetaKey = true;
         $portfolioID = "";
-        $runEnv = "cyberSource.environment.SANDBOX";
+        $runEnv = "apitest.cybersource.com";
         $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
         
         $confiData = $config->setauthenticationType(strtoupper(trim($authType)));

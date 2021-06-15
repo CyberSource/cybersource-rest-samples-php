@@ -5,7 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 function merchantConfigObject()
 {     
 	$config = new \CyberSource\Authentication\Core\MerchantConfiguration();
-	$runEnv = "cyberSource.environment.mutualauth.SANDBOX";
+	$runEnv = "api-matest.cybersource.com";
 	#OAuth related config
 	$enableClientCert = true;
 	$clientCertDirectory = "Resources/";
