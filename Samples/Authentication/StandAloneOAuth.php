@@ -5,12 +5,12 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 function merchantConfigObject()
 {     
 	$config = new \CyberSource\Authentication\Core\MerchantConfiguration();
-	$runEnv = "cyberSource.environment.mutualauth.SANDBOX";
+	$runEnv = "api-matest.cybersource.com";
 	#OAuth related config
 	$enableClientCert = true;
 	$clientCertDirectory = "Resources/";
-	$clientCertFile = "certificate.p12";
-	$clientCertPassword = "password";
+	$clientCertFile = ""; // p12 certificate
+	$clientCertPassword = "";  // password used to encrypt p12
 	$clientId = "";
 	$clientSecret = "";
 	
@@ -183,7 +183,7 @@ if(!defined('DO_NOT_RUN_SAMPLES')){
 
     if($createUsingAuthCode)
     {
-        $code = "s";
+        $code = "";
         $grantType = "authorization_code";
         $result = postAccessTokenFromAuthCode($code, $grantType);
     }
