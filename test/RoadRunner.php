@@ -52,7 +52,6 @@ class Test extends PHPUnit\Framework\TestCase {
         $resp = $function_name(...$value_list);
         $data = $resp[0];
         
-		$assertions = $road['Assertions'];
         $storedFields = $road['storedResponseFields'];
         
 		//Storing all the stored response fields into the global map
@@ -76,39 +75,18 @@ class Test extends PHPUnit\Framework\TestCase {
 			self::$fieldmap[$name.$storedFields[$i]] = $body;
         }
 		
-        //Asserting for HTTP Status
-        if($assertions != null) {
-			if($assertions['httpStatus'] != '') {
-				$this->assertEquals($assertions['httpStatus'], $resp[1]);
-			} 
-			$expectedValues = $assertions['expectedValues'];
-			//Asserting for Expected Values
-			for($i = 0; $i < count($expectedValues); $i++) {
-				$body = $data;
-				$field_arr = explode(".", $expectedValues[$i]['field']);
-				
-				for($j = 0; $j < count($field_arr); $j++) {
-					$body = $body[$field_arr[$j]];
-				}
-				
-				$this->assertEquals($expectedValues[$i]['value'], $body, $function_name . ": " . $expectedValues[$i]['field'] . " not matching expected value.\n");
-			}
-			
-			$requiredFields = $assertions['requiredFields'];
 			
 			//Asserting for required fields
-			for($i = 0; $i < count($requiredFields); $i++) {
-				$body = $data;
-				$req_field_arr = explode(".", $requiredFields[$i]);
+		for($i = 0; $i < count($storedFields); $i++) {
+			$body = $data;
+			$req_field_arr = explode(".", $storedFields[$i]);
 				
-				for($j = 0; $j < count($req_field_arr); $j++) {
-					$body = $body[$req_field_arr[$j]];
-				}
-				
-				$this->assertNotNull($body, $requiredFields[$i]." is null.\n");
+			for($j = 0; $j < count($req_field_arr); $j++) {
+				$body = $body[$req_field_arr[$j]];
 			}
-		}
-		
+				
+			$this->assertNotNull($body, $storedFields[$i]." is null.\n");
+		}	
 		fwrite(STDOUT, print_r($end_line, TRUE));
     }
 
