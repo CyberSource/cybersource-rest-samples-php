@@ -1,5 +1,5 @@
 {
-    "name": "cybersource/samplecodes", 
+    "name": "cybersource/samplecodes",
     "version": "0.0.1",
     "description": "Sample code for REST api",
     "keywords": [
@@ -20,7 +20,8 @@
     ],
     "require": {
         "php": ">=5.6",
-	"cybersource/rest-client-php": "0.0.23",
-	"firebase/php-jwt": "^5.0.0"
+        "cybersource/rest-client-php": "0.0.23",
+        "firebase/php-jwt": "^5.0.0",
+        "monolog/monolog": "^1.25.0"
     }
 }

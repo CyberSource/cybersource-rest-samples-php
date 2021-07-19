@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
+use \CyberSource\Logging\LogFactory as LogFactory;
 
 function SimpleAuthorizationInternet($flag)
 {
@@ -70,8 +71,12 @@ function SimpleAuthorizationInternet($flag)
 	$config = $commonElement->ConnectionHost();
 	$merchantConfig = $commonElement->merchantConfigObject();
 
+	$logger = (new LogFactory())->getLogger(\CyberSource\Utilities\Helpers\ClassHelper::getClassName(__FUNCTION__), $merchantConfig->getLogConfiguration());
+
 	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\PaymentsApi($api_client);
+
+	$logger->info("HELLO SUHAIL!!!!!");
 
 	try {
 		$apiResponse = $api_instance->createPayment($requestObj);
