@@ -21,6 +21,7 @@ function merchantConfigObject()
 	$confiData = $config->setClientId($clientId);
 	$confiData = $config->setClientSecret($clientSecret);
 	$confiData = $config->setRunEnvironment($runEnv);
+	$config->validateMerchantData($confiData);
 	return $config;
 }
 
