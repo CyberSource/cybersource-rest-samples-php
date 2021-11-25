@@ -8,39 +8,39 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/cybersource/rest-clie
 
 class GetGeneratorHeader
 {
-    public function getMethod()
-    {        
-        $paymentID = "5246387105766473203529";
-        
-        $merObj            = new CyberSource\ExternalConfiguration();
-        $merchantConfigObj = $merObj->merchantConfigObject();
+	public function getMethod()
+	{
+		$paymentID = "5246387105766473203529";
 		
-        $requestTarget     = "/pts/v2/payments/" . $paymentID;
-        
-        if ($merchantConfigObj->getDebug()) {
-                error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
-							3, 
-							$merchantConfigObj->getDebugFile() . DIRECTORY_SEPARATOR . $merchantConfigObj->getLogFileName()
-						  );
-        }
+		$merObj            = new CyberSource\ExternalConfiguration();
+		$merchantConfigObj = $merObj->merchantConfigObject();
+
+		$requestTarget     = "/pts/v2/payments/" . $paymentID;
 		
-        $api_response = list($response, $statusCode, $httpHeader) = null;
-        try {
-            $auth         = new CyberSource\Authentication\Core\Authentication();
-            $authResponse = $auth->generateToken($requestTarget, "", "GET", $merchantConfigObj);
-			
-            if ($merchantConfigObj->getDebug()) {
-                error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
+		if ($merchantConfigObj->getLogConfiguration()->getEnableLogging()) {
+				error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
 							3, 
-							$merchantConfigObj->getDebugFile() . DIRECTORY_SEPARATOR . $merchantConfigObj->getLogFileName()
-						  );
-            }
-            print_r($authResponse);            
-        }
-        catch (Exception $e) {
-            print_r($e->getresponseBody()->details[0]);            
-        }
-    }
+							$merchantConfigObj->getLogConfiguration()->getDebugLogFile()
+						);
+		}
+
+		$api_response = list($response, $statusCode, $httpHeader) = null;
+		try {
+			$auth         = new CyberSource\Authentication\Core\Authentication();
+			$authResponse = $auth->generateToken($requestTarget, "", "GET", $merchantConfigObj);
+
+			if ($merchantConfigObj->getLogConfiguration()->getEnableLogging()) {
+				error_log(	"[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL, 
+							3, 
+							$merchantConfigObj->getLogConfiguration()->getDebugLogFile()
+						);
+			}
+			print_r($authResponse);
+		}
+		catch (Exception $e) {
+			print_r($e->getresponseBody()->details[0]);
+		}
+	}
 }
 
 $obj = new GetGeneratorHeader();

@@ -15,7 +15,7 @@ class DeleteMethod
         require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
         $merObj            = new CyberSource\ExternalConfiguration();
         $merchantConfigObj = $merObj->merchantConfigObject();
-		
+
         $requestTarget = "/reporting/v2/reportSubscriptions/TRRReport?organizationId=testrest";
 		
         $api_response  = list($response, $statusCode, $httpHeader) = null;
@@ -29,7 +29,7 @@ class DeleteMethod
             
         }
         catch (Exception $e) {
-            print_r($e->getresponseBody());            
+            print_r($e->getresponseBody());
         }
     }
 }
