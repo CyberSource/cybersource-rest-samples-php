@@ -4,38 +4,38 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 
 //creating merchant config object
 function merchantConfigObject()
-{     
-        $authType = "http_signature";
-        $merchantID = "";
-        $apiKeyID = "";
-        $secretKey = "";
-        $useMetaKey = true;
-        $portfolioID = "";
-        $runEnv = "apitest.cybersource.com";
-        $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
-        
-        $confiData = $config->setauthenticationType(strtoupper(trim($authType)));
-        $confiData = $config->setMerchantID(trim($merchantID));
-        $confiData = $config->setApiKeyID($apiKeyID);
-        $confiData = $config->setSecretKey($secretKey);
-        $confiData = $config->setUseMetaKey($useMetaKey);
-        $confiData = $config->setPortfolioID($portfolioID);
-        $confiData = $config->setRunEnvironment($runEnv);
-        $config->validateMerchantData($confiData);
-        return $config;
+{
+		$authType = "http_signature";
+		$merchantID = "";
+		$apiKeyID = "";
+		$secretKey = "";
+		$useMetaKey = true;
+		$portfolioID = "";
+		$runEnv = "apitest.cybersource.com";
+		$config = new \CyberSource\Authentication\Core\MerchantConfiguration();
+
+		$confiData = $config->setauthenticationType(strtoupper(trim($authType)));
+		$confiData = $config->setMerchantID(trim($merchantID));
+		$confiData = $config->setApiKeyID($apiKeyID);
+		$confiData = $config->setSecretKey($secretKey);
+		$confiData = $config->setUseMetaKey($useMetaKey);
+		$confiData = $config->setPortfolioID($portfolioID);
+		$confiData = $config->setRunEnvironment($runEnv);
+		$config->validateMerchantData($confiData);
+		return $config;
 }
 
 function ConnectionHost()
 {
-        $merchantConfig = merchantConfigObject();
-        $config = new \CyberSource\Configuration();
-        $config = $config->setHost($merchantConfig->getHost());
-        return $config;
+		$merchantConfig = merchantConfigObject();
+		$config = new \CyberSource\Configuration();
+		$config = $config->setHost($merchantConfig->getHost());
+		return $config;
 }
 
 function StandAloneMetaKey()
 {
-    SimplePaymentsUsingMetaKey("false");
+	SimplePaymentsUsingMetaKey("false");
 }
 
 function SimplePaymentsUsingMetaKey($flag)
@@ -101,13 +101,13 @@ function SimplePaymentsUsingMetaKey($flag)
 	];
 	$requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
 
-	$config = ConnectionHost();
-	$merchantConfig = merchantConfigObject();
-
-	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PaymentsApi($api_client);
-
 	try {
+		$config = ConnectionHost();
+		$merchantConfig = merchantConfigObject();
+
+		$api_client = new CyberSource\ApiClient($config, $merchantConfig);
+		$api_instance = new CyberSource\Api\PaymentsApi($api_client);
+
 		$apiResponse = $api_instance->createPayment($requestObj);
 		print_r(PHP_EOL);
 		print_r($apiResponse);
@@ -116,13 +116,15 @@ function SimplePaymentsUsingMetaKey($flag)
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
 		print_r($e->getMessage());
+	} catch(Cybersource\Authentication\Core\AuthException $e) {
+		print_r($e->getMessage());
 	}
 }
 
 if (!defined('DO_NOT_RUN_SAMPLES'))
 {
-    echo "StandAloneMetaKey Sample Code is running...\n";
-    StandAloneMetaKey();
+	echo "StandAloneMetaKey Sample Code is running...\n";
+	StandAloneMetaKey();
 }
 
 ?>
