@@ -20,7 +20,7 @@ function ElectronicCheckStandAloneCredits()
 			"account" => $paymentInformationBankAccount,
 			"routingNumber" => "071923284"
 	];
-	$paymentInformationBank = new CyberSource\Model\Ptsv2paymentsPaymentInformationBank($paymentInformationBankArr);
+	$paymentInformationBank = new CyberSource\Model\Ptsv2paymentsidrefundsPaymentInformationBank($paymentInformationBankArr);
 
 	$paymentInformationPaymentTypeArr = [
 			"name" => "CHECK"
