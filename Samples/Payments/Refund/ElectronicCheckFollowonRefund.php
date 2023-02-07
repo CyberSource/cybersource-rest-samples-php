@@ -9,7 +9,7 @@ function ElectronicCheckFollowonRefund()
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsidrefundsClientReferenceInformation($clientReferenceInformationArr);
 
 	$processingInformationArr = [
 	];
@@ -18,7 +18,7 @@ function ElectronicCheckFollowonRefund()
 	$paymentInformationPaymentTypeArr = [
 			"name" => "CHECK"
 	];
-	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
+	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsidrefundsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
 
 	$paymentInformationArr = [
 			"paymentType" => $paymentInformationPaymentType

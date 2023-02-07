@@ -13,7 +13,7 @@ function AuthorizationForIncrementalAuthorizationFlow()
 	$paymentInformationCardArr = [
 			"number" => "4111111111111111",
 			"expirationMonth" => "12",
-			"expirationYear" => "2021",
+			"expirationYear" => "2031",
 			"type" => "001"
 	];
 	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);

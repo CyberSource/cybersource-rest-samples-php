@@ -10,7 +10,7 @@ function RefundPayment()
 	$clientReferenceInformationArr = [
 			"code" => "TC50171_3"
 	];
-	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
+	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsidrefundsClientReferenceInformation($clientReferenceInformationArr);
 
 	$orderInformationAmountDetailsArr = [
 			"totalAmount" => "10",

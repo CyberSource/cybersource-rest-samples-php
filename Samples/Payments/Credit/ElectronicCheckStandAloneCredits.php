@@ -25,7 +25,7 @@ function ElectronicCheckStandAloneCredits()
 	$paymentInformationPaymentTypeArr = [
 			"name" => "CHECK"
 	];
-	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
+	$paymentInformationPaymentType = new CyberSource\Model\Ptsv2paymentsidrefundsPaymentInformationPaymentType($paymentInformationPaymentTypeArr);
 
 	$paymentInformationArr = [
 			"bank" => $paymentInformationBank,
