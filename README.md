@@ -1,6 +1,6 @@
 # PHP Sample Code for the CyberSource SDK
 
-[![Build Status](https://travis-ci.org/CyberSource/cybersource-rest-samples-php.svg?branch=master)](https://travis-ci.org/CyberSource/cybersource-rest-samples-php)
+[![Build Status](https://app.travis-ci.com/CyberSource/cybersource-rest-samples-php.svg?branch=master)](https://app.travis-ci.com/CyberSource/cybersource-rest-samples-php)
 
 This repository contains working code samples which demonstrate PHP integration with the CyberSource REST APIs through the [CyberSource PHP SDK](https://github.com/CyberSource/cybersource-rest-client-php).
  
