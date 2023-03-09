@@ -59,6 +59,11 @@ function IntermediateHostTesting()
 	$config = $commonElement->ConnectionHostForIntermediateHost();
     $merchantConfig = $commonElement->merchantConfigObjectForIntermediateHost();
 
+    // Optional default Axa/Client Headers- Client can add additional headers
+	$config->addDefaultHeader("Ocp-Apim-Subscription-Key","=fchgfchgvjhvjh5536hg");
+    $config->addDefaultHeader("Ocp-Apim-Trace","dfgcjgvjkhbkjkjhnkjvjgchdxh");
+    $config->addDefaultHeader("Host","manage.windowsazure.com");
+
 	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
 	$api_instance = new CyberSource\Api\CreditApi($api_client);
 
