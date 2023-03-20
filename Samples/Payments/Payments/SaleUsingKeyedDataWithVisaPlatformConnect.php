@@ -4,86 +4,96 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function SaleUsingKeyedDataWithVisaPlatformConnect()
 {
-	$clientReferenceInformationArr = [
-			"code" => "123456"
-	];
-	$clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformationArr = [
+            "code" => "123456"
+    ];
+    $clientReferenceInformation = new CyberSource\Model\Ptsv2paymentsClientReferenceInformation($clientReferenceInformationArr);
 
-	$processingInformationAuthorizationOptionsArr = [
-			"partialAuthIndicator" => true,
-			"ignoreAvsResult" => true,
-			"ignoreCvResult" => true
-	];
-	$processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptionsArr = [
+            "partialAuthIndicator" => true,
+            "ignoreAvsResult" => true,
+            "ignoreCvResult" => true
+    ];
+    $processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
-	$processingInformationArr = [
-			"capture" => true,
-			"commerceIndicator" => "retail",
-			"authorizationOptions" => $processingInformationAuthorizationOptions
-	];
-	$processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
+    $processingInformationArr = [
+            "capture" => true,
+            "commerceIndicator" => "retail",
+            "authorizationOptions" => $processingInformationAuthorizationOptions
+    ];
+    $processingInformation = new CyberSource\Model\Ptsv2paymentsProcessingInformation($processingInformationArr);
 
-	$paymentInformationCardArr = [
-			"number" => "4111111111111111",
-			"expirationMonth" => "12",
-			"expirationYear" => "2031",
-			"securityCode" => "123"
-	];
-	$paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCardArr = [
+            "number" => "4111111111111111",
+            "expirationMonth" => "12",
+            "expirationYear" => "2031",
+            "securityCode" => "123"
+    ];
+    $paymentInformationCard = new CyberSource\Model\Ptsv2paymentsPaymentInformationCard($paymentInformationCardArr);
 
-	$paymentInformationArr = [
-			"card" => $paymentInformationCard
-	];
-	$paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
+    $paymentInformationArr = [
+            "card" => $paymentInformationCard
+    ];
+    $paymentInformation = new CyberSource\Model\Ptsv2paymentsPaymentInformation($paymentInformationArr);
 
-	$orderInformationAmountDetailsArr = [
-			"totalAmount" => "100.00",
-			"currency" => "USD"
-	];
-	$orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+    $orderInformationAmountDetailsArr = [
+            "totalAmount" => "100.00",
+            "currency" => "USD"
+    ];
+    $orderInformationAmountDetails = new CyberSource\Model\Ptsv2paymentsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
-	$orderInformationArr = [
-			"amountDetails" => $orderInformationAmountDetails
-	];
-	$orderInformation = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInformationArr);
+    $orderInformationArr = [
+            "amountDetails" => $orderInformationAmountDetails
+    ];
+    $orderInformation = new CyberSource\Model\Ptsv2paymentsOrderInformation($orderInformationArr);
 
-	$pointOfSaleInformationArr = [
-			"entryMode" => "keyed",
-			"terminalCapability" => 2
-	];
-	$pointOfSaleInformation = new CyberSource\Model\Ptsv2paymentsPointOfSaleInformation($pointOfSaleInformationArr);
+    $pointOfSaleInformationArr = [
+            "entryMode" => "keyed",
+            "terminalCapability" => 2
+    ];
+    $pointOfSaleInformation = new CyberSource\Model\Ptsv2paymentsPointOfSaleInformation($pointOfSaleInformationArr);
 
-	$requestObjArr = [
-			"clientReferenceInformation" => $clientReferenceInformation,
-			"processingInformation" => $processingInformation,
-			"paymentInformation" => $paymentInformation,
-			"orderInformation" => $orderInformation,
-			"pointOfSaleInformation" => $pointOfSaleInformation
-	];
-	$requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
+    $requestObjArr = [
+            "clientReferenceInformation" => $clientReferenceInformation,
+            "processingInformation" => $processingInformation,
+            "paymentInformation" => $paymentInformation,
+            "orderInformation" => $orderInformation,
+            "pointOfSaleInformation" => $pointOfSaleInformation
+    ];
+    $requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
 
 
-	$commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+    $commonElement = new CyberSource\ExternalConfiguration();
+    $config = $commonElement->ConnectionHost();
+    $merchantConfig = $commonElement->merchantConfigObject();
 
-	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PaymentsApi($api_client);
+    $api_client = new CyberSource\ApiClient($config, $merchantConfig);
+    $api_instance = new CyberSource\Api\PaymentsApi($api_client);
 
-	try {
-		$apiResponse = $api_instance->createPayment($requestObj);
-		print_r(PHP_EOL);
-		print_r($apiResponse);
+    try {
+        $apiResponse = $api_instance->createPayment($requestObj);
+        print_r(PHP_EOL);
+        print_r($apiResponse);
 
-		return $apiResponse;
-	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-		print_r($e->getMessage());
-	}
+        WriteLogAudit($apiResponse[1]);
+        return $apiResponse;
+    } catch (Cybersource\ApiException $e) {
+        print_r($e->getResponseBody());
+        print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
+    }
+}
+
+if (!function_exists('WriteLogAudit')){
+    function WriteLogAudit($status){
+        $sampleCode = basename(__FILE__, '.php');
+        print_r("\n[Sample Code Testing] [$sampleCode] $status");
+    }
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSaleUsingKeyedDataWithVisaPlatformConnect Sample Code is Running..." . PHP_EOL;
-	SaleUsingKeyedDataWithVisaPlatformConnect();
+    echo "\nSaleUsingKeyedDataWithVisaPlatformConnect Sample Code is Running..." . PHP_EOL;
+    SaleUsingKeyedDataWithVisaPlatformConnect();
 }
 ?>

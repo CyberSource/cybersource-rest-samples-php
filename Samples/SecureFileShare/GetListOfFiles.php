@@ -4,32 +4,42 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function GetListOfFiles()
 {
-	$startDate = "2020-07-20";
-	$endDate = "2020-07-30";
-	$organizationId = "testrest";
-	$name = null;
+    $startDate = "2020-07-20";
+    $endDate = "2020-07-30";
+    $organizationId = "testrest";
+    $name = null;
 
-	$commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+    $commonElement = new CyberSource\ExternalConfiguration();
+    $config = $commonElement->ConnectionHost();
+    $merchantConfig = $commonElement->merchantConfigObject();
 
-	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\SecureFileShareApi($api_client);
+    $api_client = new CyberSource\ApiClient($config, $merchantConfig);
+    $api_instance = new CyberSource\Api\SecureFileShareApi($api_client);
 
-	try {
-		$apiResponse = $api_instance->getFileDetail($startDate, $endDate, $organizationId, $name);
-		print_r(PHP_EOL);
-		print_r($apiResponse);
+    try {
+        $apiResponse = $api_instance->getFileDetail($startDate, $endDate, $organizationId, $name);
+        print_r(PHP_EOL);
+        print_r($apiResponse);
 
-		return $apiResponse;
-	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-		print_r($e->getMessage());
-	}
+        WriteLogAudit($apiResponse[1]);
+        return $apiResponse;
+    } catch (Cybersource\ApiException $e) {
+        print_r($e->getResponseBody());
+        print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
+    }
+}
+
+if (!function_exists('WriteLogAudit')){
+    function WriteLogAudit($status){
+        $sampleCode = basename(__FILE__, '.php');
+        print_r("\n[Sample Code Testing] [$sampleCode] $status");
+    }
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nGetListOfFiles Sample Code is Running..." . PHP_EOL;
-	GetListOfFiles();
+    echo "\nGetListOfFiles Sample Code is Running..." . PHP_EOL;
+    GetListOfFiles();
 }
 ?>
