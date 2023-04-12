@@ -8,6 +8,7 @@ require_once __DIR__. DIRECTORY_SEPARATOR .'../vendor/autoload.php';
 class ExternalConfiguration
 {
     private $merchantConfig;
+    private $intermediateMerchantConfig;
 
     //initialize variable on constructor
     function __construct()
@@ -27,6 +28,10 @@ class ExternalConfiguration
         $this->keyFilename = "testrest";
         $this->keyDirectory = "Resources/";
         $this->runEnv = "apitest.cybersource.com";
+        
+        // new property has been added for user to configure the base path so that request can route the API calls via Azure Management URL.
+        // Example: If intermediate url is https://manage.windowsazure.com then in property input can be same url or manage.windowsazure.com.
+        $this->IntermediateHost = "https://manage.windowsazure.com";
 
         //OAuth related config
         $this->enableClientCert = false;
@@ -47,6 +52,7 @@ class ExternalConfiguration
         $this->enableMasking = true;
 
         $this->merchantConfigObject();
+        $this->merchantConfigObjectForIntermediateHost();
     }
 
     //creating merchant config object
@@ -85,12 +91,59 @@ class ExternalConfiguration
         }
     }
 
+    //creating merchant config for intermediate host object
+    function merchantConfigObjectForIntermediateHost()
+    {
+        if (!isset($this->intermediateMerchantConfig)) {
+            $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
+            $config->setauthenticationType(strtoupper(trim($this->authType)));
+            $config->setMerchantID(trim($this->merchantID));
+            $config->setApiKeyID($this->apiKeyID);
+            $config->setSecretKey($this->secretKey);
+            $config->setKeyFileName(trim($this->keyFilename));
+            $config->setKeyAlias($this->keyAlias);
+            $config->setKeyPassword($this->keyPass);
+            $config->setUseMetaKey($this->useMetaKey);
+            $config->setPortfolioID($this->portfolioID);
+            $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
+            $config->setRunEnvironment($this->runEnv);
+            $config->setIntermediateHost($this->IntermediateHost);
+
+            // New Logging
+            $logConfiguration = new \CyberSource\Logging\LogConfiguration();
+            $logConfiguration->enableLogging($this->enableLogging);
+            $logConfiguration->setDebugLogFile($this->debugLogFile);
+            $logConfiguration->setErrorLogFile($this->errorLogFile);
+            $logConfiguration->setLogDateFormat($this->logDateFormat);
+            $logConfiguration->setLogFormat($this->logFormat);
+            $logConfiguration->setLogMaxFiles($this->logMaxFiles);
+            $logConfiguration->setLogLevel($this->logLevel);
+            $logConfiguration->enableMasking($this->enableMasking);
+            $config->setLogConfiguration($logConfiguration);
+
+            $config->validateMerchantData();
+            $this->intermediateMerchantConfig = $config;
+        } else {
+            return $this->intermediateMerchantConfig;
+        }
+    }
+
+
     function ConnectionHost()
     {
         $merchantConf = $this->merchantConfigObject();
         $config = new Configuration();
         $config->setHost($merchantConf->getHost());
         $config->setLogConfiguration($merchantConf->getLogConfiguration());
+        return $config;
+    }
+
+    function ConnectionHostForIntermediateHost()
+    {
+        $intermediatemerchantConf = $this->merchantConfigObjectForIntermediateHost();
+        $config = new Configuration();
+        $config->setHost($intermediatemerchantConf->getHost());
+        $config->setLogConfiguration($intermediatemerchantConf->getLogConfiguration());
         return $config;
     }
 
