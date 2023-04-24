@@ -52,7 +52,7 @@ function ComplianceStatusCompleted()
             "company" => "def",
             "name" => "adb"
     ];
-    $exportComplianceInformationWeights = new CyberSource\Model\Riskv1exportcomplianceinquiriesExportComplianceInformationWeights($exportComplianceInformationWeightsArr);
+    $exportComplianceInformationWeights = new CyberSource\Model\Ptsv2paymentsWatchlistScreeningInformationWeights($exportComplianceInformationWeightsArr);
 
     $exportComplianceInformationSanctionLists = array();
     $exportComplianceInformationSanctionLists[0] = "abc";
