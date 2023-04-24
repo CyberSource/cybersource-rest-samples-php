@@ -21,14 +21,24 @@ function GetChargebackDetails()
         print_r(PHP_EOL);
         print_r($apiResponse);
 
+        WriteLogAudit($apiResponse[1]);
         return $apiResponse;
     } catch (Cybersource\ApiException $e) {
         print_r($e->getResponseBody());
         print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
     }
 }
 
-if (!defined('DO_NOT_RUN_SAMPLES')) {
+if (!function_exists('WriteLogAudit')){
+    function WriteLogAudit($status){
+        $sampleCode = basename(__FILE__, '.php');
+        print_r("\n[Sample Code Testing] [$sampleCode] $status");
+    }
+}
+
+if (!defined('DO_NOT_RUN_SAMPLES')){
     echo "\nGetChargebackDetails Sample Code is Running..." . PHP_EOL;
     GetChargebackDetails();
 }

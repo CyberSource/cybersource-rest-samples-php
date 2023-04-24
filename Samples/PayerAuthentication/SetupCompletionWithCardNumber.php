@@ -4,59 +4,69 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function SetupCompletionWithCardNumber()
 {
-	$clientReferenceInformationPartnerArr = [
-			"developerId" => "7891234",
-			"solutionId" => "89012345"
-	];
-	$clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+    $clientReferenceInformationPartnerArr = [
+            "developerId" => "7891234",
+            "solutionId" => "89012345"
+    ];
+    $clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
 
-	$clientReferenceInformationArr = [
-			"code" => "cybs_test",
-			"partner" => $clientReferenceInformationPartner
-	];
-	$clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformationArr = [
+            "code" => "cybs_test",
+            "partner" => $clientReferenceInformationPartner
+    ];
+    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
 
-	$paymentInformationCardArr = [
-			"type" => "001",
-			"expirationMonth" => "12",
-			"expirationYear" => "2025",
-			"number" => "4000000000000101"
-	];
-	$paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCardArr = [
+            "type" => "001",
+            "expirationMonth" => "12",
+            "expirationYear" => "2025",
+            "number" => "4000000000000101"
+    ];
+    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 
-	$paymentInformationArr = [
-			"card" => $paymentInformationCard
-	];
-	$paymentInformation = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformation($paymentInformationArr);
+    $paymentInformationArr = [
+            "card" => $paymentInformationCard
+    ];
+    $paymentInformation = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformation($paymentInformationArr);
 
-	$requestObjArr = [
-			"clientReferenceInformation" => $clientReferenceInformation,
-			"paymentInformation" => $paymentInformation
-	];
-	$requestObj = new CyberSource\Model\PayerAuthSetupRequest($requestObjArr);
+    $requestObjArr = [
+            "clientReferenceInformation" => $clientReferenceInformation,
+            "paymentInformation" => $paymentInformation
+    ];
+    $requestObj = new CyberSource\Model\PayerAuthSetupRequest($requestObjArr);
 
 
-	$commonElement = new CyberSource\ExternalConfiguration();
-	$config = $commonElement->ConnectionHost();
-	$merchantConfig = $commonElement->merchantConfigObject();
+    $commonElement = new CyberSource\ExternalConfiguration();
+    $config = $commonElement->ConnectionHost();
+    $merchantConfig = $commonElement->merchantConfigObject();
 
-	$api_client = new CyberSource\ApiClient($config, $merchantConfig);
-	$api_instance = new CyberSource\Api\PayerAuthenticationApi($api_client);
+    $api_client = new CyberSource\ApiClient($config, $merchantConfig);
+    $api_instance = new CyberSource\Api\PayerAuthenticationApi($api_client);
 
-	try {
-		$apiResponse = $api_instance->payerAuthSetup($requestObj);
-		print_r(PHP_EOL);
-		print_r($apiResponse);
+    try {
+        $apiResponse = $api_instance->payerAuthSetup($requestObj);
+        print_r(PHP_EOL);
+        print_r($apiResponse);
 
-		return $apiResponse;
-	} catch (Cybersource\ApiException $e) {
-		print_r($e->getResponseBody());
-		print_r($e->getMessage());
-	}
+        WriteLogAudit($apiResponse[1]);
+        return $apiResponse;
+    } catch (Cybersource\ApiException $e) {
+        print_r($e->getResponseBody());
+        print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
+    }
+}
+
+if (!function_exists('WriteLogAudit')){
+    function WriteLogAudit($status){
+        $sampleCode = basename(__FILE__, '.php');
+        print_r("\n[Sample Code Testing] [$sampleCode] $status");
+    }
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-	echo "\nSetupCompletionWithCardNumber Sample Code is Running..." . PHP_EOL;
-	SetupCompletionWithCardNumber();
+    echo "\nSetupCompletionWithCardNumber Sample Code is Running..." . PHP_EOL;
+    SetupCompletionWithCardNumber();
 }
 ?>
