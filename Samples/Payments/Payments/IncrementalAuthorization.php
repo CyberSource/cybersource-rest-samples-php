@@ -5,7 +5,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . './AuthorizationForIncrementalAutho
 
 function IncrementalAuthorization()
 {
-    $id = AuthorizationForIncrementalAuthorizationFlow()[0]['id'];
 
     $clientReferenceInformationArr = [
             "code" => "TC50171_3"
@@ -66,6 +65,7 @@ function IncrementalAuthorization()
     $api_instance = new CyberSource\Api\PaymentsApi($api_client);
 
     try {
+        $id = AuthorizationForIncrementalAuthorizationFlow()[0]['id'];
         $apiResponse = $api_instance->incrementAuth($id, $requestObj);
         print_r(PHP_EOL);
         print_r($apiResponse);

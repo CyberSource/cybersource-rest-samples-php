@@ -71,7 +71,7 @@ function MultipleSanctionLists()
             "company" => "exact",
             "name" => "exact"
     ];
-    $exportComplianceInformationWeights = new CyberSource\Model\Riskv1exportcomplianceinquiriesExportComplianceInformationWeights($exportComplianceInformationWeightsArr);
+    $exportComplianceInformationWeights = new CyberSource\Model\Ptsv2paymentsWatchlistScreeningInformationWeights($exportComplianceInformationWeightsArr);
 
     $exportComplianceInformationSanctionLists = array();
     $exportComplianceInformationSanctionLists[0] = "Bureau Of Industry and Security";
