@@ -13,7 +13,7 @@ You can also run each sample directly from the command line.
 
 ## Requirements
 
-* PHP 5.6+
+* PHP 8.0.0+
 * Enable cURL PHP Extension
 * Enable JSON PHP Extension
 * Enable PHP_APCU PHP Extension. You will need to download it for your platform (Windows/Linux/Mac) 
