@@ -1,24 +1,24 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../Plans/CreatePlan.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . './CreateDraftInvoice.php';
 
-function GetPlan()
+function CancelInvoice()
 {
-    $planId = CreatePlan()[0]['id'];
+    $invoiceId = CreateDraftInvoice()[0]['id'];
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
     $merchantConfig = $commonElement->merchantConfigObject();
 
     $api_client = new CyberSource\ApiClient($config, $merchantConfig);
-    $api_instance = new CyberSource\Api\PlansApi($api_client);
+    $api_instance = new CyberSource\Api\InvoicesApi($api_client);
 
     try {
-        $apiResponse = $api_instance->getPlan($planId);
+        $apiResponse = $api_instance->performCancelAction($invoiceId);
         print_r(PHP_EOL);
         print_r($apiResponse);
-        WriteLogAudit($apiResponse[1]);
 
+        WriteLogAudit($apiResponse[1]);
         return $apiResponse;
     } catch (Cybersource\ApiException $e) {
         print_r($e->getResponseBody());
@@ -35,8 +35,8 @@ if (!function_exists('WriteLogAudit')){
     }
 }
 
-if(!defined('DO_NOT_RUN_SAMPLES')) {
-    echo "\nGetPlan Sample Code is Running..." . PHP_EOL;
-    GetPlan();
+if(!defined('DO_NOT_RUN_SAMPLES')){
+    echo "\nCancelInvoice Sample Code is Running..." . PHP_EOL;
+    CancelInvoice();
 }
 ?>

@@ -4,6 +4,9 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function CreatePlan()
 {
+    // Required to make the sample code ActivatePlan.php work
+    $planStatus = "DRAFT";
+
     $planInformationBillingPeriodArr = [
             "length" => "1",
             "unit" => "M"
@@ -18,6 +21,7 @@ function CreatePlan()
     $planInformationArr = [
             "name" => "Gold Plan",
             "description" => "New Gold Plan",
+            "status" => $planStatus,
             "billingPeriod" => $planInformationBillingPeriod,
             "billingCycles" => $planInformationBillingCycles
     ];

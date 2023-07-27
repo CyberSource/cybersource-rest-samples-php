@@ -1,11 +1,15 @@
 <?php
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../Plans/CreatePlan.php';
 
-function GetPlan()
+function GetListOfPlans()
 {
-    $planId = CreatePlan()[0]['id'];
+    $offset = 0;
+    $limit = 10;
+    $code = null;
+    $status = null;
+    $name = null;
+
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
     $merchantConfig = $commonElement->merchantConfigObject();
@@ -14,7 +18,7 @@ function GetPlan()
     $api_instance = new CyberSource\Api\PlansApi($api_client);
 
     try {
-        $apiResponse = $api_instance->getPlan($planId);
+        $apiResponse = $api_instance->getPlans($offset, $limit, $code, $status, $name);
         print_r(PHP_EOL);
         print_r($apiResponse);
         WriteLogAudit($apiResponse[1]);
@@ -36,7 +40,7 @@ if (!function_exists('WriteLogAudit')){
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')) {
-    echo "\nGetPlan Sample Code is Running..." . PHP_EOL;
-    GetPlan();
+    echo "\nGetListOfPlans Sample Code is Running..." . PHP_EOL;
+    GetListOfPlans();
 }
 ?>
