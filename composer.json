@@ -18,6 +18,12 @@
             "homepage": "https://github.com/CyberSource/cybersource-rest-samples-php"
         }
     ],
+    "repositories" : [
+        {
+            "type" : "path",
+            "url": "C:\\work\\cybersource-rest-sdk\\cybersource-rest-client-php"
+        }
+    ],
     "require": {
         "php": ">=8.0.0",
         "cybersource/rest-client-php": "0.0.42",
