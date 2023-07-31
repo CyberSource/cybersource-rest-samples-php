@@ -13,12 +13,12 @@ function UpdateInvoice()
     $customerInformation = new CyberSource\Model\Invoicingv2invoicesCustomerInformation($customerInformationArr);
 
     $invoiceInformationArr = [
-        "description" => "This is a test invoice",
+        "description" => "This is after updating invoice",
         "dueDate" => "2019-07-11",
         "allowPartialPayments" => true,
         "deliveryMode" => "none"
     ];
-    $invoiceInformation = new CyberSource\Model\Invoicingv2invoicesInvoiceInformation($invoiceInformationArr);
+    $invoiceInformation = new CyberSource\Model\Invoicingv2invoicesidInvoiceInformation($invoiceInformationArr);
 
     $orderInformationAmountDetailsTaxDetailsArr = [
         "type" => "State Tax",
@@ -65,7 +65,7 @@ function UpdateInvoice()
         "invoiceInformation" => $invoiceInformation,
         "orderInformation" => $orderInformation
     ];
-    $requestObj = new CyberSource\Model\CreateInvoiceRequest($requestObjArr);
+    $requestObj = new CyberSource\Model\UpdateInvoiceRequest($requestObjArr);
 
 
     $commonElement = new CyberSource\ExternalConfiguration();
