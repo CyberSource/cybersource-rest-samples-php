@@ -34,6 +34,7 @@ class ExternalConfiguration
         $this->IntermediateHost = "https://manage.windowsazure.com";
 
         //PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
+        // It is optional property, require adding only during JWE decryption.
         $this -> jwePEMFileDirectory = "Resources/NetworkTokenCert.pem";
 
         //OAuth related config
