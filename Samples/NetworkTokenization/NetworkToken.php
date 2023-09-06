@@ -23,7 +23,7 @@ function NetworkTokenization() {
 
         //Step-III
         $decodedResponse = JWEUtility::decryptJWEResponse($encodedResponse, $merchantConfig);
-        print_r("Decoded Response");
+        print_r("Decoded Response".PHP_EOL);
         print_r($decodedResponse);
 
     } catch (Exception $e) {
