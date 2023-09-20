@@ -98,8 +98,8 @@ function GetHttpSignature($resourcePath, $httpMethod, $currentDate)
 
     if($httpMethod == "get")
     {
-        $signatureString = "host: " . $request_host . "\ndate: " . $currentDate . "\n(request-target): " . $httpMethod . " " . $resourcePath . "\nv-c-merchant-id: " . $merchant_id;
-        $headerString = "host date (request-target) v-c-merchant-id";
+        $signatureString = "host: " . $request_host . "\ndate: " . $currentDate . "\nrequest-target: " . $httpMethod . " " . $resourcePath . "\nv-c-merchant-id: " . $merchant_id;
+        $headerString = "host date request-target v-c-merchant-id";
 
     }
     else if($httpMethod == "post")
@@ -107,8 +107,8 @@ function GetHttpSignature($resourcePath, $httpMethod, $currentDate)
         //Get digest data
         $digest = GenerateDigest($payload);
 
-        $signatureString = "host: " . $request_host . "\ndate: " . $currentDate . "\n(request-target): " . $httpMethod . " " . $resourcePath . "\ndigest: SHA-256=" . $digest . "\nv-c-merchant-id: " . $merchant_id;
-        $headerString = "host date (request-target) digest v-c-merchant-id";
+        $signatureString = "host: " . $request_host . "\ndate: " . $currentDate . "\nrequest-target: " . $httpMethod . " " . $resourcePath . "\ndigest: SHA-256=" . $digest . "\nv-c-merchant-id: " . $merchant_id;
+        $headerString = "host date request-target digest v-c-merchant-id";
     }
 
     $signatureByteString = utf8_encode($signatureString);
