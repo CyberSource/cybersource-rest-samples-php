@@ -11,7 +11,7 @@ function UpdatePlan()
             "length" => "2",
             "unit" => "W"
     ];
-    $planInformationBillingPeriod = new CyberSource\Model\InlineResponse200PlanInformationBillingPeriod($planInformationBillingPeriodArr);
+    $planInformationBillingPeriod = new CyberSource\Model\GetAllPlansResponsePlanInformationBillingPeriod($planInformationBillingPeriodArr);
 
     $planInformationBillingCyclesArr = [
             "total" => "11"
@@ -41,12 +41,12 @@ function UpdatePlan()
             "billingAmount" => "11",
             "setupFee" => "2"
     ];
-    $orderInformationAmountDetails = new CyberSource\Model\InlineResponse200OrderInformationAmountDetails($orderInformationAmountDetailsArr);
+    $orderInformationAmountDetails = new CyberSource\Model\GetAllPlansResponseOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
     $orderInformationArr = [
             "amountDetails" => $orderInformationAmountDetails
     ];
-    $orderInformation = new CyberSource\Model\InlineResponse200OrderInformation($orderInformationArr);
+    $orderInformation = new CyberSource\Model\GetAllPlansResponseOrderInformation($orderInformationArr);
 
     $requestObjArr = [
             "planInformation" => $planInformation,
