@@ -33,6 +33,10 @@ class ExternalConfiguration
         // Example: If intermediate url is https://manage.windowsazure.com then in property input can be same url or manage.windowsazure.com.
         $this->IntermediateHost = "https://manage.windowsazure.com";
 
+        //PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
+        // It is optional property, require adding only during JWE decryption.
+        $this -> jwePEMFileDirectory = "Resources/NetworkTokenCert.pem";
+
         //OAuth related config
         $this->enableClientCert = false;
         $this->clientCertDirectory = "Resources/";
@@ -53,6 +57,7 @@ class ExternalConfiguration
 
         $this->merchantConfigObject();
         $this->merchantConfigObjectForIntermediateHost();
+        $this->jwePEMFileDirectory = "Resources".DIRECTORY_SEPARATOR."NetworkTokenCert.pem";
     }
 
     //creating merchant config object
@@ -70,6 +75,7 @@ class ExternalConfiguration
             $config->setUseMetaKey($this->useMetaKey);
             $config->setPortfolioID($this->portfolioID);
             $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
+            $config->setJwePEMFileDirectory($this -> jwePEMFileDirectory);
             $config->setRunEnvironment($this->runEnv);
 
             // New Logging

@@ -11,7 +11,7 @@ function CreatePlan()
             "length" => "1",
             "unit" => "M"
     ];
-    $planInformationBillingPeriod = new CyberSource\Model\InlineResponse200PlanInformationBillingPeriod($planInformationBillingPeriodArr);
+    $planInformationBillingPeriod = new CyberSource\Model\GetAllPlansResponsePlanInformationBillingPeriod($planInformationBillingPeriodArr);
 
     $planInformationBillingCyclesArr = [
             "total" => "12"
