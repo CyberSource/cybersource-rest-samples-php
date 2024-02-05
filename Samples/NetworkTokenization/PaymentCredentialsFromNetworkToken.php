@@ -19,8 +19,10 @@ function PaymentCredentialsFromNetworkToken($tokenID = null) {
     $api_client = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new TokenApi($api_client);
 
+    $postPaymentCredentialsRequest = new \CyberSource\Model\PostPaymentCredentialsRequest();
+
     try {
-        $apiResponse = $api_instance->postTokenPaymentCredentials($tokenID, $profileid);
+        $apiResponse = $api_instance->postTokenPaymentCredentials($tokenID, $postPaymentCredentialsRequest, $profileid);
         print_r(PHP_EOL);
         print_r($apiResponse);
 
