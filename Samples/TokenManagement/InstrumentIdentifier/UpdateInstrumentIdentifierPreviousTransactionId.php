@@ -10,22 +10,22 @@ function UpdateInstrumentIdentifierPreviousTransactionId()
     $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr = [
             "previousTransactionId" => "123456789012345"
     ];
-    $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction = new CyberSource\Model\Tmsv2customersEmbeddedMerchantInitiatedTransaction($processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr);
+    $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction = new CyberSource\Model\TmsAuthorizationOptionsInitiatorMerchantInitiatedTransaction($processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr);
 
     $processingInformationAuthorizationOptionsInitiatorArr = [
             "merchantInitiatedTransaction" => $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction
     ];
-    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierProcessingInformationAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
+    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\TmsAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
 
     $processingInformationAuthorizationOptionsArr = [
             "initiator" => $processingInformationAuthorizationOptionsInitiator
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\TmsAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationArr = [
             "authorizationOptions" => $processingInformationAuthorizationOptions
     ];
-    $processingInformation = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierProcessingInformation($processingInformationArr);
+    $processingInformation = new CyberSource\Model\TmsPaymentInstrumentProcessingInfo($processingInformationArr);
 
     $requestObjArr = [
             "processingInformation" => $processingInformation

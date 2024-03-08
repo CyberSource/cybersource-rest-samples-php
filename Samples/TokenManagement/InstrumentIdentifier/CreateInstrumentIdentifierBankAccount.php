@@ -10,7 +10,7 @@ function CreateInstrumentIdentifierBankAccount()
             "number" => "4100",
             "routingNumber" => "071923284"
     ];
-    $bankAccount = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBankAccount($bankAccountArr);
+    $bankAccount = new CyberSource\Model\TmsEmbeddedInstrumentIdentifierBankAccount($bankAccountArr);
 
     $requestObjArr = [
         "bankAccount" => $bankAccount
