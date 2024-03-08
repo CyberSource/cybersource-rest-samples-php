@@ -12,7 +12,7 @@ function EnrollInstrumentIdentifierForNetworkTokenization()
             "expirationYear" => "2031",
             "securityCode" => "123"
     ];
-    $card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard($cardArr);
+    $card = new CyberSource\Model\TmsEmbeddedInstrumentIdentifierCard($cardArr);
 
     $billToArr = [
             "address1" => "1 Market St",
@@ -21,7 +21,7 @@ function EnrollInstrumentIdentifierForNetworkTokenization()
             "postalCode" => "94105",
             "country" => "US"
     ];
-    $billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierBillTo($billToArr);
+    $billTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
 
     $requestObjArr = [
             "type" => "enrollable card",
