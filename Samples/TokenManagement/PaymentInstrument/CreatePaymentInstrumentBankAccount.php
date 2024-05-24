@@ -48,12 +48,12 @@ function CreatePaymentInstrumentBankAccount()
     $processingInformationBankTransferOptionsArr = [
         "seCCode" => "WEB"
     ];
-    $processingInformationBankTransferOptions = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformationBankTransferOptions($processingInformationBankTransferOptionsArr);
+    $processingInformationBankTransferOptions = new CyberSource\Model\TmsPaymentInstrumentProcessingInfoBankTransferOptions($processingInformationBankTransferOptionsArr);
 
     $processingInformationArr = [
         "bankTransferOptions" => $processingInformationBankTransferOptions
     ];
-    $processingInformation = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentProcessingInformation($processingInformationArr);
+    $processingInformation = new CyberSource\Model\TmsPaymentInstrumentProcessingInfo($processingInformationArr);
 
     $instrumentIdentifierArr = [
             "id" => "A7A91A2CA872B272E05340588D0A0699"

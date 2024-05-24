@@ -9,7 +9,7 @@ function CreateInstrumentIdentifierCard()
     $cardArr = [
             "number" => "4111111111111111"
     ];
-    $card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard($cardArr);
+    $card = new CyberSource\Model\TmsEmbeddedInstrumentIdentifierCard($cardArr);
 
     $requestObjArr = [
             "card" => $card
