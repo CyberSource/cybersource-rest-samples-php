@@ -11,7 +11,7 @@ function CreateInstrumentIdentifierCardEnrollForNetworkToken()
         "expirationMonth" => "12",
         "expirationYear" => "2025"
     ];
-    $card = new CyberSource\Model\Tmsv2customersEmbeddedDefaultPaymentInstrumentEmbeddedInstrumentIdentifierCard($cardArr);
+    $card = new CyberSource\Model\TmsEmbeddedInstrumentIdentifierCard($cardArr);
 
     $requestObjArr = [
         "type" => "enrollable card",

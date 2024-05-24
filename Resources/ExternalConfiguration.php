@@ -10,6 +10,34 @@ class ExternalConfiguration
     private $merchantConfig;
     private $intermediateMerchantConfig;
 
+    private $authType;
+    private $merchantID;
+    private $apiKeyID;
+    private $secretKey;
+    private $useMetaKey;
+    private $portfolioID;
+    private $keyAlias;
+    private $keyPass;
+    private $keyFilename;
+    private $keyDirectory;
+    private $runEnv;
+    private $IntermediateHost;
+    private $jwePEMFileDirectory;
+    private $enableClientCert;
+    private $clientCertDirectory;
+    private $clientCertFile;
+    private $clientCertPassword;
+    private $clientId;
+    private $clientSecret;
+    private $enableLogging;
+    private $debugLogFile;
+    private $errorLogFile;
+    private $logDateFormat;
+    private $logFormat;
+    private $logMaxFiles;
+    private $logLevel;
+    private $enableMasking;
+
     //initialize variable on constructor
     function __construct()
     {

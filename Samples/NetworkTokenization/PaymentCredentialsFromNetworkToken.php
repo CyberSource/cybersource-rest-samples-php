@@ -11,7 +11,7 @@ function PaymentCredentialsFromNetworkToken($tokenID = null) {
     if (!isset($tokenID)) {
         $tokenID = CreateInstrumentIdentifierCardEnrollForNetworkToken()[0]['id'];
     }
-    print_r($tokenID);
+    print_r($tokenID . PHP_EOL);
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
     $merchantConfig = $commonElement->merchantConfigObject();
