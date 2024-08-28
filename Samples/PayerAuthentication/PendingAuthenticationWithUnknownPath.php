@@ -7,7 +7,7 @@ function PendingAuthenticationWithUnknownPath()
     $clientReferenceInformationArr = [
             "code" => "UNKNOWN"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
             "currency" => "USD",
@@ -41,7 +41,7 @@ function PendingAuthenticationWithUnknownPath()
             "expirationYear" => "2025",
             "number" => "4012001037490014"
     ];
-    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 
     $paymentInformationArr = [
             "card" => $paymentInformationCard

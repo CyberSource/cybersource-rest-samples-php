@@ -14,7 +14,7 @@ function ValidateAuthenticationResults()
         "code" => "pavalidatecheck",
         "partner" => $clientReferenceInformationPartner
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
         "currency" => "USD",

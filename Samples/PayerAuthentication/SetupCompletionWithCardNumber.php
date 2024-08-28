@@ -14,7 +14,7 @@ function SetupCompletionWithCardNumber()
             "code" => "cybs_test",
             "partner" => $clientReferenceInformationPartner
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $paymentInformationCardArr = [
             "type" => "001",
