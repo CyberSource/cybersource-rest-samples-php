@@ -7,7 +7,7 @@ function SetupCompletionWithTokenizedCard()
     $clientReferenceInformationArr = [
             "code" => "cybs_test"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $paymentInformationTokenizedCardArr = [
             "transactionType" => "1",

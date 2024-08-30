@@ -7,7 +7,7 @@ function EnrollWithTransientToken()
     $clientReferenceInformationArr = [
             "code" => "UNKNOWN"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
             "currency" => "USD",

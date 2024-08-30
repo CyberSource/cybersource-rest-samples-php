@@ -14,7 +14,7 @@ function AuthenticationWithNORedirect()
             "code" => "cybs_test",
             "partner" => $clientReferenceInformationPartner
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
             "currency" => "USD",
@@ -48,7 +48,7 @@ function AuthenticationWithNORedirect()
             "expirationYear" => "2025",
             "number" => "4000990000000004"
     ];
-    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 
     $paymentInformationArr = [
             "card" => $paymentInformationCard

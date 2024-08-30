@@ -7,7 +7,7 @@ function SetupCompletionWithSecureStorageToken()
     $clientReferenceInformationArr = [
             "code" => "cybs_test"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $paymentInformationCustomerArr = [
             "customerId" => "5795045921830181636348"

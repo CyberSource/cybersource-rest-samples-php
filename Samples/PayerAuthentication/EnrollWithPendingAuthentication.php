@@ -7,7 +7,7 @@ function EnrollWithPendingAuthentication()
     $clientReferenceInformationArr = [
             "code" => "cybs_test"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
             "currency" => "USD",
@@ -41,7 +41,7 @@ function EnrollWithPendingAuthentication()
             "expirationYear" => "2025",
             "number" => "4000000000000101"
     ];
-    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 
     $paymentInformationArr = [
             "card" => $paymentInformationCard

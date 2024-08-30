@@ -7,7 +7,7 @@ function EnrollWithTravelInformation()
     $clientReferenceInformationArr = [
             "code" => "cybs_test"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Riskv1decisionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Riskv1authenticationsetupsClientReferenceInformation($clientReferenceInformationArr);
 
     $orderInformationAmountDetailsArr = [
             "currency" => "USD",
@@ -41,7 +41,7 @@ function EnrollWithTravelInformation()
             "expirationYear" => "2025",
             "number" => "5200340000000015"
     ];
-    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsPaymentInformationCard($paymentInformationCardArr);
+    $paymentInformationCard = new CyberSource\Model\Riskv1authenticationsetupsPaymentInformationCard($paymentInformationCardArr);
 
     $paymentInformationArr = [
             "card" => $paymentInformationCard
