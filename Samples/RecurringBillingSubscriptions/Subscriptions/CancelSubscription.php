@@ -5,7 +5,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '/CreateSubscription.php';
 
 function CancelSubscription()
 {
-    $subscriptionId = CreateSubscription()[0]['id'];
+    
     $commonElement = new CyberSource\ExternalConfiguration();
     $config = $commonElement->ConnectionHost();
     $merchantConfig = $commonElement->merchantConfigObject();
@@ -14,6 +14,7 @@ function CancelSubscription()
     $api_instance = new CyberSource\Api\SubscriptionsApi($api_client);
 
     try {
+        $subscriptionId = CreateSubscription()[0]['id'];
         $apiResponse = $api_instance->cancelSubscription($subscriptionId);
         print_r(PHP_EOL);
         print_r($apiResponse);
@@ -26,7 +27,15 @@ function CancelSubscription()
         $errorCode = $e->getCode();
         WriteLogAudit($errorCode);
     }
+    catch (Exception $e) {
+        // print_r($e->getResponseBody());
+        print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
+    }
 }
+
+
 
 if (!function_exists('WriteLogAudit')){
     function WriteLogAudit($status){
