@@ -17,7 +17,7 @@ function ListPaymentInstrumentsForInstrumentIdentifier()
     $api_instance = new CyberSource\Api\InstrumentIdentifierApi($api_client);
 
     try {
-        $apiResponse = $api_instance->getInstrumentIdentifierPaymentInstrumentsList($instrumentIdentifierTokenId, $profileid, $offset, $limit);
+        $apiResponse = $api_instance->getInstrumentIdentifierPaymentInstrumentsList($instrumentIdentifierTokenId, $profileid, false, $offset, $limit);
         print_r(PHP_EOL);
         print_r($apiResponse);
 

@@ -5,7 +5,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../Payments/ElectronicCheckDebits.
 
 function ElectronicCheckFollowonRefund()
 {
-    $id = ElectronicCheckDebits()[0]['id'];
     $clientReferenceInformationArr = [
             "code" => "TC50171_3"
     ];
@@ -53,6 +52,7 @@ function ElectronicCheckFollowonRefund()
     $api_instance = new CyberSource\Api\RefundApi($api_client);
 
     try {
+        $id = ElectronicCheckDebits()[0]['id'];
         $apiResponse = $api_instance->refundPayment($requestObj, $id);
         print_r(PHP_EOL);
         print_r($apiResponse);
@@ -61,6 +61,12 @@ function ElectronicCheckFollowonRefund()
         return $apiResponse;
     } catch (Cybersource\ApiException $e) {
         print_r($e->getResponseBody());
+        print_r($e->getMessage());
+        $errorCode = $e->getCode();
+        WriteLogAudit($errorCode);
+    }
+    catch (Exception $e) {
+        // print_r($e->getResponseBody());
         print_r($e->getMessage());
         $errorCode = $e->getCode();
         WriteLogAudit($errorCode);
