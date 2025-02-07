@@ -2,7 +2,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfiguration.php';
 
-function GenerateUnifiedCheckoutCaptureContext()
+function GenerateCaptureContextForClickToPayDropInUI()
 {
     $targetOrigins = array();
     $targetOrigins[0] = "https://yourCheckoutPage.com";
@@ -23,12 +23,7 @@ function GenerateUnifiedCheckoutCaptureContext()
     $allowedCardNetworks[13] = "MAESTRO";
     $allowedCardNetworks[14] = "MEEZA";
     $allowedPaymentTypes = array();
-    $allowedPaymentTypes[0] = "APPLEPAY";
-    $allowedPaymentTypes[1] = "CHECK";
-    $allowedPaymentTypes[2] = "CLICKTOPAY";
-    $allowedPaymentTypes[3] = "GOOGLEPAY";
-    $allowedPaymentTypes[4] = "PANENTRY";
-    $allowedPaymentTypes[5] = "PAZE";
+    $allowedPaymentTypes[0] = "CLICKTOPAY";
     $captureMandateShipToCountries = array();
     $captureMandateShipToCountries[0] = "US";
     $captureMandateShipToCountries[1] = "GB";
@@ -86,6 +81,6 @@ function GenerateUnifiedCheckoutCaptureContext()
 }
 
 if (!defined('DO_NOT_RUN_SAMPLES')) {
-    echo "\nGenerateUnifiedCheckoutCaptureContext Sample Code is Running..." . PHP_EOL;
-    GenerateUnifiedCheckoutCaptureContext();
+    echo "\GenerateCaptureContextForClickToPayDropInUI Sample Code is Running..." . PHP_EOL;
+    GenerateCaptureContextForClickToPayDropInUI();
 }
