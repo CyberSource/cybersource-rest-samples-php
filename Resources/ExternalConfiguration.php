@@ -37,6 +37,7 @@ class ExternalConfiguration
     private $logMaxFiles;
     private $logLevel;
     private $enableMasking;
+    private $defaultDeveloperId;
 
     //initialize variable on constructor
     function __construct()
@@ -64,6 +65,10 @@ class ExternalConfiguration
         //PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
         // It is optional property, require adding only during JWE decryption.
         $this -> jwePEMFileDirectory = "Resources/NetworkTokenCert.pem";
+
+        //Add the property if required to override the cybs default developerId in all request body
+        $this->defaultDeveloperId = "";
+
 
         //OAuth related config
         $this->enableClientCert = false;
@@ -105,6 +110,9 @@ class ExternalConfiguration
             $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
             $config->setJwePEMFileDirectory($this -> jwePEMFileDirectory);
             $config->setRunEnvironment($this->runEnv);
+
+            //Add the property if required to override the cybs default developerId in all request body
+            $config->setDefaultDeveloperId($this->defaultDeveloperId);
 
             // New Logging
             $logConfiguration = new \CyberSource\Logging\LogConfiguration();
