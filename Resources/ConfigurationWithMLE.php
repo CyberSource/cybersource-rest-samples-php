@@ -21,8 +21,6 @@ class ConfigurationWithMLE
     private $keyFilename;
     private $keyDirectory;
     private $runEnv;
-    private $IntermediateHost;
-    private $jwePEMFileDirectory;
     private $enableClientCert;
     private $clientCertDirectory;
     private $clientCertFile;
@@ -62,14 +60,6 @@ class ConfigurationWithMLE
         $this->runEnv = "apitest.cybersource.com";
         $this->useMLEGlobally = true;
         $this->mleKeyAlias  = "CyberSource_SJC_US"; //this is optional paramter, not required to set the parameter/value if custom value is not required for MLE key alias. Default value is "CyberSource_SJC_US".
-        
-        // new property has been added for user to configure the base path so that request can route the API calls via Azure Management URL.
-        // Example: If intermediate url is https://manage.windowsazure.com then in property input can be same url or manage.windowsazure.com.
-        $this->IntermediateHost = "https://manage.windowsazure.com";
-
-        //PEM Key file path for decoding JWE Response Enter the folder path where the .pem file is located.
-        // It is optional property, require adding only during JWE decryption.
-        $this -> jwePEMFileDirectory = "Resources/NetworkTokenCert.pem";
 
         //Add the property if required to override the cybs default developerId in all request body
         $this->defaultDeveloperId = "";
@@ -94,7 +84,6 @@ class ConfigurationWithMLE
         $this->enableMasking = true;
 
         $this->merchantConfigObjectWithMLE1();
-        $this->jwePEMFileDirectory = "Resources".DIRECTORY_SEPARATOR."NetworkTokenCert.pem";
     }
 
     //creating merchant config object with MLE
@@ -112,7 +101,6 @@ class ConfigurationWithMLE
             $config->setUseMetaKey($this->useMetaKey);
             $config->setPortfolioID($this->portfolioID);
             $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
-            $config->setJwePEMFileDirectory($this -> jwePEMFileDirectory);
             $config->setRunEnvironment($this->runEnv);
             $config->setUseMLEGlobally(true);  ////globally MLE will be enabled for all the MLE supported APIs by Cybs in SDK
             $config->setMleKeyAlias($this->mleKeyAlias);
@@ -154,7 +142,6 @@ class ConfigurationWithMLE
             $config->setUseMetaKey($this->useMetaKey);
             $config->setPortfolioID($this->portfolioID);
             $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
-            $config->setJwePEMFileDirectory($this -> jwePEMFileDirectory);
             $config->setRunEnvironment($this->runEnv);
             $config->setUseMLEGlobally(true);  //globally MLE will be enabled for all the MLE supported APIs by Cybs in SDK
             $config->setMapToControlMLEonAPI([
@@ -200,7 +187,6 @@ class ConfigurationWithMLE
             $config->setUseMetaKey($this->useMetaKey);
             $config->setPortfolioID($this->portfolioID);
             $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . $this->keyDirectory);
-            $config->setJwePEMFileDirectory($this -> jwePEMFileDirectory);
             $config->setRunEnvironment($this->runEnv);
             $config->setUseMLEGlobally(false);  //globally MLE will be disabled for all the MLE supported APIs by Cybs in SDK
             $config->setMapToControlMLEonAPI([

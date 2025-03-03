@@ -4,7 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ConfigurationWithMLE.php';
 
 
-function SimpleAuthorizationInternet($flag)
+function SimpleAuthorizationInternetWithGlobalMLE($flag)
 {
     if (isset($flag) && $flag == "true") {
         $capture = true;
@@ -98,7 +98,7 @@ if (!function_exists('WriteLogAudit')){
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "\nSimpleAuthorizationInternet Sample Code is Running..." . PHP_EOL;
-    SimpleAuthorizationInternet('false');
+    echo "\SimpleAuthorizationInternetWithGlobalMLE Sample Code is Running..." . PHP_EOL;
+    SimpleAuthorizationInternetWithGlobalMLE('false');
 }
 ?>
