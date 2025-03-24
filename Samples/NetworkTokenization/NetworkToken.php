@@ -1,6 +1,6 @@
 <?php
 
-use CyberSource\Utilities\JWEResponse\JWEUtility;
+use CyberSource\Utilities\JWE\JWEUtility;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '/../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '/../../Resources/ExternalConfiguration.php';
@@ -22,7 +22,14 @@ function NetworkTokenization() {
         $encodedResponse = PaymentCredentialsFromNetworkToken($tokenID)[0];
 
         //Step-III
-        $decodedResponse = JWEUtility::decryptJWEResponse($encodedResponse, $merchantConfig);
+
+        // The following method JWEUtility.decryptJWEResponse($encodedResponse, $merchantConfig) has been deprecated.
+        // $decodedResponse = JWEUtility::decryptJWEResponse($encodedResponse, $merchantConfig);
+
+        // Using the new method JWEUtility.decryptJWEResponseUsingPrivateKey($privateKey, $encodedResponse) instead
+        $privateKey = file_get_contents($merchantConfig->getJwePEMFileDirectory());
+        $decodedResponse = JWEUtility::decryptJWEResponseUsingPrivateKey($privateKey, $encodedResponse);
+
         print_r("Decoded Response".PHP_EOL);
         print_r($decodedResponse);
 

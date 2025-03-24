@@ -3,9 +3,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../Subscriptions/CreateSubscription.php';
 
-function UpdateSubscription($id)
+function UpdateSubscription()
 {
     $id = CreateSubscription()[0]['id'];
+
+    print_r($id);
 
     $clientReferenceInformationPartnerArr = [
             "developerId" => "ABCD1234",
@@ -36,7 +38,7 @@ function UpdateSubscription($id)
 
     $subscriptionInformationArr = [
             "planId" => "424242442",
-            "name" => "Gold subs",
+            "name" => "Gold subs" . generateRandomString(3),
             "startDate" => "2024-06-15"
     ];
     $subscriptionInformation = new CyberSource\Model\Rbsv1subscriptionsidSubscriptionInformation($subscriptionInformationArr);
@@ -92,6 +94,6 @@ if (!function_exists('WriteLogAudit')){
 
 if(!defined('DO_NOT_RUN_SAMPLES')) {
     echo "\nUpdateSubscription Sample Code is Running..." . PHP_EOL;
-    UpdateSubscription($id);
+    UpdateSubscription();
 }
 ?>

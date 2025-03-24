@@ -2,6 +2,18 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfiguration.php';
 
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
+}
+
 function CreateSubscription()
 {
     $clientReferenceInformationPartnerArr = [
@@ -36,8 +48,8 @@ function CreateSubscription()
 
     $subscriptionInformationArr = [
             "planId" => "6868912495476705603955",
-            "name" => "Subscription with PlanId",
-            "startDate" => "2024-06-11"
+            "name" => "Subscription with PlanId" . generateRandomString(3),
+            "startDate" => "2025-06-11"
     ];
     $subscriptionInformation = new CyberSource\Model\Rbsv1subscriptionsSubscriptionInformation($subscriptionInformationArr);
 
@@ -75,6 +87,7 @@ function CreateSubscription()
 
         return $apiResponse;
     } catch (Cybersource\ApiException $e) {
+        print_r("HELLO");
         print_r($e->getResponseBody());
         print_r($e->getMessage());
         $errorCode = $e->getCode();

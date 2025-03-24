@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function GetNetfundingInformationForAccountOrMerchant()
 {
-    $startTime = "2021-01-01T00:00:00Z";
-    $endTime = "2021-01-02T23:59:59Z";
+    $startTime = "2024-01-01T00:00:00Z";
+    $endTime = "2024-01-02T23:59:59Z";
     $organizationId = "testrest";
     $groupName = null;
 

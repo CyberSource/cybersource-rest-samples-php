@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function GetPurchaseAndRefundDetails()
 {
-    $startTime = "2021-10-01T12:00:00Z";
-    $endTime = "2021-10-30T12:00:00Z";
+    $startTime = "2024-10-01T12:00:00Z";
+    $endTime = "2024-10-30T12:00:00Z";
     $organizationId = "testrest";
     $paymentSubtype = "VI";
     $viewBy = "requestDate";

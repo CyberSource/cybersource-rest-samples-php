@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../../Resources/ExternalConfigu
 
 function GetConversionDetailTransactions()
 {
-    $startTime = "2020-10-21T00:00:00Z";
-    $endTime = "2020-10-21T23:00:00Z";
+    $startTime = "2024-10-21T00:00:00Z";
+    $endTime = "2024-10-21T23:00:00Z";
     $organizationId = "testrest";
 
     $commonElement = new CyberSource\ExternalConfiguration();

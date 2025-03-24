@@ -4,8 +4,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ExternalConfigurat
 
 function GetListOfFiles()
 {
-    $startDate = "2020-07-20";
-    $endDate = "2020-07-30";
+    $startDate = "2024-07-20";
+    $endDate = "2024-07-30";
     $organizationId = "testrest";
     $name = null;
 
