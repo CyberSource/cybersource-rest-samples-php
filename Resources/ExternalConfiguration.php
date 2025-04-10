@@ -38,6 +38,7 @@ class ExternalConfiguration
     private $logLevel;
     private $enableMasking;
     private $defaultDeveloperId;
+    private $merchantConfigObjectForBatchUpload;
 
     //initialize variable on constructor
     function __construct()
@@ -91,6 +92,7 @@ class ExternalConfiguration
         $this->merchantConfigObject();
         $this->merchantConfigObjectForIntermediateHost();
         $this->jwePEMFileDirectory = "Resources".DIRECTORY_SEPARATOR."NetworkTokenCert.pem";
+        $this->merchantConfigObjectForBatchUpload();
     }
 
     //creating merchant config object
@@ -170,6 +172,34 @@ class ExternalConfiguration
         }
     }
 
+function merchantConfigObjectForBatchUpload()
+{
+    if (!isset($this->batchUploadMerchantConfig)) {
+        $config = new \CyberSource\Authentication\Core\MerchantConfiguration();
+        $config->setauthenticationType("JWT");
+        $config->setMerchantID("qaebc2");
+        $config->setKeyAlias("qaebc2");
+        $config->setKeyPassword("?Test1234");
+        $config->setKeyFileName("qaebc2");
+        $config->setKeysDirectory(__DIR__);
+        $config->setRunEnvironment("apitest.cybersource.com");
+        $config->setUseMetaKey(false);
+        $config->setPortfolioID("");
+
+        // Logging configuration
+        $logConfiguration = new \CyberSource\Logging\LogConfiguration();
+        $logConfiguration->enableLogging(true);
+        $logConfiguration->setDebugLogFile(__DIR__ . DIRECTORY_SEPARATOR . "log" . DIRECTORY_SEPARATOR . "cybs_debug.log");
+        $logConfiguration->setErrorLogFile(__DIR__ . DIRECTORY_SEPARATOR . "log" . DIRECTORY_SEPARATOR . "cybs_error.log");
+        $logConfiguration->setLogMaximumSize("5M");
+        $config->setLogConfiguration($logConfiguration);
+
+        $config->validateMerchantData();
+        $this->batchUploadMerchantConfig = $config;
+    } else {
+        return $this->batchUploadMerchantConfig;
+    }
+}
 
     function ConnectionHost()
     {
