@@ -36,9 +36,9 @@ function CreateDraftInvoice()
             "totalAmount" => "2623.64",
             "currency" => "USD",
             "discountAmount" => "126.08",
-            "discountPercent" => 5.0,
-            "subAmount" => 2749.72,
-            "minimumPartialAmount" => 20.00,
+            "discountPercent" => "5.0",
+            "subAmount" => "2749.72",
+            "minimumPartialAmount" => "20.00",
             "taxDetails" => $orderInformationAmountDetailsTaxDetails,
             "freight" => $orderInformationAmountDetailsFreight
     ];
