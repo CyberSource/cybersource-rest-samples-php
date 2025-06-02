@@ -13,7 +13,7 @@ function UpdateSubscription()
             "developerId" => "ABCD1234",
             "solutionId" => "GEF1234"
     ];
-    $clientReferenceInformationPartner = new CyberSource\Model\Riskv1decisionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
+    $clientReferenceInformationPartner = new CyberSource\Model\Rbsv1subscriptionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
 
     $clientReferenceInformationArr = [
             "code" => "APGHU",
