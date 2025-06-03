@@ -109,6 +109,10 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
     ];
     $orderInformation = new CyberSource\Model\Upv1capturecontextsOrderInformation($orderInformationArr);
 
+    $completeMandate = new CyberSource\Model\Upv1capturecontextsCompleteMandate([
+        "type" => "CAPTURE",
+        "decisionManager" => false
+    ]); 
     $requestObjArr = [
             "clientVersion" => "0.23",
             "targetOrigins" => $targetOrigins,
@@ -117,7 +121,9 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
             "country" => "US",
             "locale" => "en_US",
             "captureMandate" => $captureMandate,
-            "orderInformation" => $orderInformation
+            "orderInformation" => $orderInformation,
+            "completeMandate" => $completeMandate
+
     ];
     $requestObj = new CyberSource\Model\GenerateUnifiedCheckoutCaptureContextRequest($requestObjArr);
 
