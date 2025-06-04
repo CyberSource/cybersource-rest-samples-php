@@ -36,7 +36,10 @@ function GenerateCaptureContextForClickToPayDropInUI()
             "showAcceptedNetworkIcons" => true
     ];
     $captureMandate = new CyberSource\Model\Upv1capturecontextsCaptureMandate($captureMandateArr);
-
+    $completeMandate = new CyberSource\Model\Upv1capturecontextsCompleteMandate([
+            "type" => "CAPTURE",
+            "decisionManager" => false
+    ]);    
     $orderInformationAmountDetailsArr = [
             "totalAmount" => "21.00",
             "currency" => "USD"
@@ -56,7 +59,9 @@ function GenerateCaptureContextForClickToPayDropInUI()
             "country" => "US",
             "locale" => "en_US",
             "captureMandate" => $captureMandate,
-            "orderInformation" => $orderInformation
+            "orderInformation" => $orderInformation,
+            "completeMandate" => $completeMandate,
+
     ];
     $requestObj = new CyberSource\Model\GenerateUnifiedCheckoutCaptureContextRequest($requestObjArr);
 
