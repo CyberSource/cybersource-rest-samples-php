@@ -18,8 +18,9 @@ function BatchUploadWithP12($flag)
     $logConfig = new \CyberSource\Logging\LogConfiguration();
 
     $logConfig->enableLogging(true);
-    $logConfig->setDebugLogFile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Log" . DIRECTORY_SEPARATOR . "debugTest.log");
-    $logConfig->setErrorLogFile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Log" . DIRECTORY_SEPARATOR . "errorTest.log");
+
+    $logConfig->setDebugLogFile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Log" . DIRECTORY_SEPARATOR . "debugTest.log");
+    $logConfig->setErrorLogFile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Log" . DIRECTORY_SEPARATOR . "errorTest.log");    
     $logConfig->setLogDateFormat("Y-m-d\TH:i:s");
     $logConfig->setLogFormat("[%datetime%] [%level_name%] [%channel%] : %message%\n");
     $logConfig->setLogMaxFiles(3);
