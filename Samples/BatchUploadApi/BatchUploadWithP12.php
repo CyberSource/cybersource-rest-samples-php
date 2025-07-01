@@ -34,7 +34,7 @@ function BatchUploadWithP12()
             $pgpEncryptionCertPath,
             $clientCertP12FilePath,
             $clientCertP12Password,
-            null,            
+            $serverTrustCertPath,            
             $verify_ssl
         );
 
