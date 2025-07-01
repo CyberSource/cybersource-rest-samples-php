@@ -1,13 +1,8 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-function BatchUploadWithP12($flag)
+function BatchUploadWithP12()
 {
-    if (isset($flag) && $flag == "true") {
-        $capture = true;
-    } else {
-        $capture = false;
-    }
     $inputFile = dirname(__DIR__, 2) . '/Resources/batchApiMTLS/batchapiTest.csv';
     $envHostName = 'https://secure-batch-test.cybersource.com';
     $pgpEncryptionCertPath = dirname(__DIR__, 2) . '/Resources/batchApiMTLS/bts-encryption-public.asc';
@@ -29,6 +24,7 @@ function BatchUploadWithP12($flag)
 
 
     $api_instance = new CyberSource\Api\BatchUploadApi($logConfig);
+    $verify_ssl = True;
 
     try {
         // Call the upload API with P12
@@ -38,13 +34,13 @@ function BatchUploadWithP12($flag)
             $pgpEncryptionCertPath,
             $clientCertP12FilePath,
             $clientCertP12Password,
-            $serverTrustCertPath
+            null,            
+            $verify_ssl
         );
 
         print_r(PHP_EOL);
         print_r("HTTP Status: $status\n");
         print_r("Response: $response\n");
-
         WriteLogAudit($status);
         return [$response, $status, $headers];
     } catch (Exception $e) {
@@ -62,6 +58,6 @@ if (!function_exists('WriteLogAudit')){
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
     echo "\BatchUploadWithP12 Sample Code is Running..." . PHP_EOL;
-    BatchUploadWithP12('false');
+    BatchUploadWithP12();
 }
 ?>
