@@ -44,7 +44,7 @@ function BatchUploadWithKeys()
 
         print_r(PHP_EOL);
         print_r("HTTP Status: $status\n");
-        print_r("Response: " . print_r($response, true) . "\n");
+        print_r("Response: $response\n");
         WriteLogAudit($status);
         return [$response, $status, $headers];
     } catch (Exception $e) {
