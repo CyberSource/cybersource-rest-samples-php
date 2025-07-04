@@ -31,7 +31,7 @@ function BatchUploadWithKeys()
 
     try {
         // Call the upload API with Keys and cert
-        list($response, $status, $headers) = $api_instance->uploadBatchWithKeyAndCert(
+        $response= $api_instance->uploadBatchWithKeyAndCert(
             $inputFile,
             $envHostName,
             $pgpEncryptionCertPath,
@@ -43,10 +43,9 @@ function BatchUploadWithKeys()
         );
 
         print_r(PHP_EOL);
-        print_r("HTTP Status: $status\n");
-        print_r("Response: $response\n");
-        WriteLogAudit($status);
-        return [$response, $status, $headers];
+        print_r($response);
+        WriteLogAudit($response[1]);
+        return $response;
     } catch (Exception $e) {
         print_r("\nError: " . $e->getMessage() . "\n");
         WriteLogAudit('Error');
