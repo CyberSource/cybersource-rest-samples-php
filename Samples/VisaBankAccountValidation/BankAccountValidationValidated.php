@@ -2,7 +2,7 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/BankAccountValidationConfiguration.php';
 
-function BankAccountValidation()
+function BankAccountValidationValidated()
 {
     if (isset($flag) && $flag == "true") {
         $capture = true;
@@ -75,6 +75,6 @@ if (!function_exists('WriteLogAudit')){
 
 if(!defined('DO_NOT_RUN_SAMPLES')) {
     echo "\nBankAccountValidation Sample Code is Running..." . PHP_EOL;
-    BankAccountValidation();
+    BankAccountValidationValidated();
 }
 ?>
