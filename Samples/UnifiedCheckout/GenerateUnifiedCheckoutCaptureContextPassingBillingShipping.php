@@ -137,8 +137,6 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
 
     try {
         $apiResponse = $apiInstance->generateUnifiedCheckoutCaptureContext($requestObj);
-        print_r(PHP_EOL);
-        print_r($apiResponse);
         $parsedCaptureContext = CyberSource\Utilities\CaptureContext\CaptureContextParser::parseCaptureContextResponse($apiResponse[0], $merchantConfig, true);
         echo PHP_EOL . "Parsed and Verified JWT Response:" . PHP_EOL;
         print_r($parsedCaptureContext);
