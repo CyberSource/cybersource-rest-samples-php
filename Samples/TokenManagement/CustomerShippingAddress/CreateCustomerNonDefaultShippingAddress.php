@@ -17,7 +17,7 @@ function CreateCustomerNonDefaultShippingAddress()
             "email" => "test@cybs.com",
             "phoneNumber" => "4158880000"
     ];
-    $shipTo = new CyberSource\Model\Tmsv2customersEmbeddedDefaultShippingAddressShipTo($shipToArr);
+    $shipTo = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultShippingAddressShipTo($shipToArr);
 
     $requestObjArr = [
             "_default" => false,

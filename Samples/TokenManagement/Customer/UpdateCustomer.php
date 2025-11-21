@@ -9,19 +9,19 @@ function UpdateCustomer()
             "merchantCustomerID" => "Your customer identifier",
             "email" => "test@cybs.com"
     ];
-    $buyerInformation = new CyberSource\Model\Tmsv2customersBuyerInformation($buyerInformationArr);
+    $buyerInformation = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerBuyerInformation($buyerInformationArr);
 
     $clientReferenceInformationArr = [
             "code" => "TC50171_3"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Tmsv2customersClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerClientReferenceInformation($clientReferenceInformationArr);
 
     $merchantDefinedInformation = array();
     $merchantDefinedInformation_0 = [
             "name" => "data1",
             "value" => "Your customer data"
     ];
-    $merchantDefinedInformation[0] = new CyberSource\Model\Tmsv2customersMerchantDefinedInformation($merchantDefinedInformation_0);
+    $merchantDefinedInformation[0] = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerMerchantDefinedInformation($merchantDefinedInformation_0);
 
     $requestObjArr = [
             "buyerInformation" => $buyerInformation,

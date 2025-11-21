@@ -8,7 +8,7 @@ function UpdateCustomersDefaultShippingAddress()
     $defaultShippingAddressArr = [
             "id" => "AB6A54B97C00FCB6E05341588E0A3935"
     ];
-    $defaultShippingAddress = new CyberSource\Model\Tmsv2customersDefaultShippingAddress($defaultShippingAddressArr);
+    $defaultShippingAddress = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerDefaultShippingAddress($defaultShippingAddressArr);
 
     $requestObjArr = [
             "defaultShippingAddress" => $defaultShippingAddress
