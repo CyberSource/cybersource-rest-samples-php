@@ -27,7 +27,7 @@ function GenerateCaptureContextAcceptCheck()
 
     try {
         $apiResponse = $apiInstance->generateCaptureContext($requestObj);
-        $parsedCaptureContext = CyberSource\Utilities\CaptureContext\CaptureContextParser::parseCaptureContextResponse($apiResponse[0], $merchantConfig, true);
+        $parsedCaptureContext = CyberSource\Utilities\CaptureContext\CaptureContextParser::parseCaptureContextResponse($apiResponse[0], $merchantConfig);
         echo PHP_EOL . "Parsed and Verified JWT Response:" . PHP_EOL;
         print_r($parsedCaptureContext);
         echo PHP_EOL;
