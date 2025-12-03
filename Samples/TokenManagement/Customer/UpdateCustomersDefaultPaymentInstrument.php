@@ -8,7 +8,7 @@ function UpdateCustomersDefaultPaymentInstrument()
     $defaultPaymentInstrumentArr = [
             "id" => "AB6A54B982A6FCB6E05341588E0A3935"
     ];
-    $defaultPaymentInstrument = new CyberSource\Model\Tmsv2customersDefaultPaymentInstrument($defaultPaymentInstrumentArr);
+    $defaultPaymentInstrument = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerDefaultPaymentInstrument($defaultPaymentInstrumentArr);
 
     $requestObjArr = [
             "defaultPaymentInstrument" => $defaultPaymentInstrument

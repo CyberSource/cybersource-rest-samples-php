@@ -75,8 +75,10 @@ function GenerateCaptureContextForClickToPayDropInUI()
 
     try {
         $apiResponse = $apiInstance->generateUnifiedCheckoutCaptureContext($requestObj);
-        print_r(PHP_EOL);
-        print_r($apiResponse);
+        $parsedCaptureContext = CyberSource\Utilities\CaptureContext\CaptureContextParser::parseCaptureContextResponse($apiResponse[0], $merchantConfig);
+        echo PHP_EOL . "Parsed and Verified JWT Response:" . PHP_EOL;
+        print_r($parsedCaptureContext);
+        echo PHP_EOL;
 
         return $apiResponse;
     } catch (Cybersource\ApiException $e) {
