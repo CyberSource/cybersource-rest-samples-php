@@ -48,7 +48,7 @@ function enrollCardWithMLE($flag = false)
 
         // Buyer Information
         $buyerInformationArr = [
-            // "language" => "en",
+            "language" => "en",
             "merchantCustomerId" => "3e1b7943-6567-4965-a32b-5aa93d057d35",
             "personalIdentification" => $buyerInformationPersonalIdentification
         ];
