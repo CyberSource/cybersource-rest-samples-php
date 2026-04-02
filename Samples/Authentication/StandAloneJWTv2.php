@@ -1,9 +1,7 @@
-
-<!-- This is old Sample Code for StandAloneJWT v1. Refer to StandAloneJWT v2 for the implementation of JWT v2. This code will be removed as part of newer releases-->
-
 <?php
 
 use Firebase\JWT\JWT as JWT;
+use Ramsey\Uuid\Uuid;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
 
@@ -96,64 +94,144 @@ function PemToDer($Pem)
     return implode("\n", $lines);
 }
 
-// Function to generate the JWT
-function GenerateJsonWebToken($jwtBody)
+// Function to extract serial number from X.509 certificate
+function ExtractSerialNumber($x509Certificate)
 {
-    $keyFileName = "testrest";
-    $filePath = __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/' . $keyFileName . ".p12";
+    try {
+        $certDetails = openssl_x509_parse($x509Certificate);
+        
+        if ($certDetails == null) {
+            throw new Exception("Failed to parse X.509 certificate.");
+        }
+        
+        if (!isset($certDetails['subject']) || $certDetails['subject'] == null) {
+            throw new Exception("Certificate subject field not found or is null.");
+        }
+        
+        if (!isset($certDetails['subject']['serialNumber']) || $certDetails['subject']['serialNumber'] == null) {
+            throw new Exception("Serial number not found in certificate subject field.");
+        }
+        
+        return $certDetails['subject']['serialNumber'];
+        
+    } catch (Exception $e) {
+        throw new Exception("Error extracting serial number from certificate: " . $e->getMessage());
+    }
+}
+
+// Function to extract resource path without query parameters
+function ExtractResourcePath($resourcePath)
+{
+    if (empty($resourcePath)) {
+        return "";
+    }
+    
+    // Split the string to remove the query params
+    $parts = explode('?', $resourcePath, 2);
+    return $parts[0];
+}
+
+function GetJWTv2HeaderClaimSet()
+{
+    $headerClaimSet = array();
+    // The 'typ' header claim is set to 'JWT' by default in the JWT::encode method, so there is no need to set it explicitly unless you want to use a different value.
+    // The 'alg' and 'kid' header can be set using the algorithm and key ID respectively in the JWT::encode method.
+    // Add any header claims to the $headerClaimSet array if needed.
+    // e.g. if you want to add a custom header claim, you can do it like this:
+    // $headerClaimSet["custom-header"] = "value";
+    return $headerClaimSet;
+}
+
+// Function to generate JWT v2 payload
+function GetJWTv2PayloadClaimSet($resourcePath, $payloadData, $method, $merchantId, $requestHost)
+{   
+    $method = strtoupper($method);
+    $jwtPayloadClaimSet = array();
+    
+    // Setting the JWT digest and digest Algorithm when a POST, PUT, or PATCH request is made
+    if ($method == 'POST' || $method == 'PUT' || $method == 'PATCH') {
+        $digest = GenerateDigest($payloadData);
+        $jwtPayloadClaimSet["digest"] = $digest;
+        $jwtPayloadClaimSet["digestAlgorithm"] = "SHA-256";
+    }
+    
+    // Set the iat and exp claims using epoch timestamps
+    $currentTime = time();
+    $jwtPayloadClaimSet["iat"] = $currentTime;
+    $jwtPayloadClaimSet["exp"] = $currentTime + 120; // The token is set to expire 2 minutes after creation
+    
+    // Set the request method, host and resource path in the JWT body.
+    $jwtPayloadClaimSet["request-method"] = strtoupper($method);
+    $jwtPayloadClaimSet["request-host"] = $requestHost;
+    $jwtPayloadClaimSet["request-resource-path"] = ExtractResourcePath($resourcePath);
+    
+    // Using merchant ID for non-metaKey implementation. (Use portfolio ID if metaKey is being used).
+    $jwtPayloadClaimSet["iss"] = $merchantId;
+    
+    // Generate unique JWT ID
+    $uuid = Uuid::uuid4();
+    $jwtPayloadClaimSet["jti"] = $uuid->toString();
+    
+    // Set JWT version and merchant ID
+    $jwtPayloadClaimSet["v-c-jwt-version"] = "2";
+    $jwtPayloadClaimSet["v-c-merchant-id"] = $merchantId;
+    
+    return $jwtPayloadClaimSet;
+}
+
+// Function to generate the JWT v2 token
+function GenerateJsonWebTokenv2($jwtPayloadClaimSet, $jwtHeaderClaimSet)
+{
+    $keyFileName = "testrest"; # This is the filename of the PKCS12 file without the .p12 extension. For example, if the file is named "testrest.p12", then the keyFileName variable should be set to "testrest".
+    $keyFilePath = '../../Resources/'; # This is the path to the directory where the PKCS12 file is located, relative to the current file. In this example, the PKCS12 file is located in the "Resources" directory which is two levels up from the current directory, hence the "../../Resources/" path. Please update this variable if your file is located in a different directory.
+    $filePath = __DIR__ . DIRECTORY_SEPARATOR . $keyFilePath . $keyFileName . ".p12";
     $keyPass = "testrest";
     $keyalias = "testrest";
-    $cacheKey = "";
-    $cert_store = "";
 
     $cert_store = file_get_contents($filePath);
 
-    if (openssl_pkcs12_read($cert_store, $cert_info, $keyPass))
-    {
-        $certdata = openssl_x509_parse($cert_info['cert'], 1);
+    if (openssl_pkcs12_read($cert_store, $cert_info, $keyPass)) {
         $privateKey = $cert_info['pkey'];
-        $publicKey = PemToDer($cert_info['cert']);
-        $x5cArray = array($publicKey);
-        $headers = array(
-            "v-c-merchant-id" => $keyalias,
-            "x5c" => $x5cArray
-        );
+        $x509Certificate = openssl_x509_read($cert_info['cert']);
+        
+        if (!$x509Certificate) {
+            throw new Exception("Failed to read X.509 certificate");
+        }
+        
+        // Extract serial number for kid value in header Claim Sets
+        $kid = strval(ExtractSerialNumber($x509Certificate));
 
-        return JWT::encode($jwtBody, $privateKey, "RS256", "", $headers);
+        return JWT::encode($jwtPayloadClaimSet, $privateKey, "RS256", $kid, $jwtHeaderClaimSet);
+    } else {
+        throw new Exception("Failed to read P12 certificate file");
     }
 }
 
-// Function to get the JWT
+// Function to get the JWT v2 token
 // param: resourcePath - denotes the resource being accessed
 // param: httpMethod - denotes the HTTP verb
-// param: currentDate - stores the current timestamp
-function GetJsonWebToken($resourcePath, $httpMethod, $currentDate)
+// param: payloadData - the request payload (for POST/PUT/PATCH requests)
+function GetJsonWebTokenv2($resourcePath, $httpMethod, $payloadData = null)
 {
-    global $payload;
     global $merchant_id;
     global $request_host;
-    global $merchant_secret_key;
-    global $merchant_key_id;
 
-    if($httpMethod == 'get')
-    {
-        $jwtBody = array("iat" => $currentDate);
-
+    try {
+        // Generate JWT v2 payload with all required claims
+        $jwtPayloadClaimSet = GetJWTv2PayloadClaimSet($resourcePath, $payloadData, $httpMethod, $merchant_id, $request_host);
+        //Generate the JWT v2 header claim set
+        $jwtHeaderClaimSet = GetJWTv2HeaderClaimSet();
+        // Generate the JWT v2 token
+        $tokenHeader = GenerateJsonWebTokenv2($jwtPayloadClaimSet, $jwtHeaderClaimSet);
+        return "Bearer " . $tokenHeader;
+        
+    } catch (Exception $e) {
+        echo PHP_EOL . " -- JWT v2 ERROR --" . PHP_EOL;
+        echo "Error generating JWT v2 token: " . $e->getMessage();
+        throw $e;
     }
-    else if($httpMethod == 'post')
-    {
-        $digest = GenerateDigest($payload);
-        $jwtBody = array("digest" => $digest, "digestAlgorithm" => "SHA-256", "iat" => $currentDate);
-
-    }
-
-    $tokenHeader = GenerateJsonWebToken($jwtBody);
-
-    echo PHP_EOL . " -- TOKEN --" . PHP_EOL;
-    echo $tokenHeader;
-
-    return "Bearer " . $tokenHeader;
 }
+
 
 // HTTP POST request
 function ProcessPost()
@@ -168,8 +246,6 @@ function ProcessPost()
     $url = "https://" . $request_host . $resource;
 
     $resource = utf8_encode($resource);
-
-    $date = date("D, d M Y G:i:s ") . "GMT";
 
     $signatureString ="";
 
@@ -190,7 +266,7 @@ function ProcessPost()
     echo "\tv-c-merchant-id : " . $merchant_id . PHP_EOL;
     echo "\tHost : " . $request_host . PHP_EOL;
 
-    $jsonWebToken = GetJsonWebToken($resource, $method, $date);
+    $jsonWebToken = GetJsonWebTokenv2($resource, $method, $payload);
     $authHeaders = array(
                 'Authorization:' . $jsonWebToken
             );
@@ -247,21 +323,19 @@ function ProcessGet()
     global $request_host;
     global $merchant_id;
 
-    $resource = '/reporting/v3/reports?startTime=2021-01-01T00:00:00.0Z&endTime=2021-01-02T23:59:59.0Z&timeQueryType=executedTime&reportMimeType=application/xml';
+    $resource = '/tms/v2/customers/AB695DA801DD1BB6E05341588E0A3BDC/shipping-addresses/AB6A54B97C00FCB6E05341588E0A3935';
     $method = "get";
     $statusCode = -1;
     $url = "https://" . $request_host . $resource;
 
     $resource = utf8_encode($resource);
 
-    $date = date("D, d M Y G:i:s ") . "GMT";
-
     $signatureString ="";
 
     $headerParams = [];
     $headers = [];
 
-    $headerParams['Accept'] = 'application/hal+json;charset=utf-8';
+    $headerParams['Accept'] = 'application/json;charset=utf-8';
     $headerParams['Content-Type'] = 'application/json;charset=utf-8';
 
     foreach ($headerParams as $key => $val) {
@@ -275,7 +349,7 @@ function ProcessGet()
     echo "\tv-c-merchant-id : " . $merchant_id . PHP_EOL;
     echo "\tHost : " . $request_host . PHP_EOL;
 
-    $jsonWebToken = GetJsonWebToken($resource, $method, $date);
+    $jsonWebToken = GetJsonWebTokenv2($resource, $method);
     $authHeaders = array(
                 'Authorization:' . $jsonWebToken
             );
