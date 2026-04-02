@@ -27,8 +27,8 @@ function NetworkTokenization() {
         // $decodedResponse = JWEUtility::decryptJWEResponse($encodedResponse, $merchantConfig);
 
         // Using the new method JWEUtility.decryptJWEResponseUsingPrivateKey($privateKey, $encodedResponse) instead
-        $privateKey = file_get_contents($merchantConfig->getJwePEMFileDirectory());
-        $decodedResponse = JWEUtility::decryptJWEUsingPrivateKey($privateKey, $encodedResponse);
+        // $privateKey = file_get_contents($merchantConfig->getJwePEMFileDirectory());
+        // $decodedResponse = JWEUtility::decryptJWEUsingPrivateKey($privateKey, $encodedResponse);
 
         print_r("Decoded Response".PHP_EOL);
         print_r($decodedResponse);

@@ -46,7 +46,7 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
             "totalAmount" => "21.00",
             "currency" => "USD"
     ];
-    $orderInformationAmountDetails = new CyberSource\Model\Upv1capturecontextsOrderInformationAmountDetails($orderInformationAmountDetailsArr);
+    $orderInformationAmountDetails = new CyberSource\Model\Upv1capturecontextsDataOrderInformationAmountDetails($orderInformationAmountDetailsArr);
 
     $orderInformationBillToCompanyArr = [
             "name" => "Visa Inc",
@@ -61,7 +61,7 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
             "locality" => "Foster City",
             "postalCode" => "94404"
     ];
-    $orderInformationBillToCompany = new CyberSource\Model\Upv1capturecontextsOrderInformationBillToCompany($orderInformationBillToCompanyArr);
+    $orderInformationBillToCompany = new CyberSource\Model\Upv1capturecontextsDataOrderInformationBillToCompany($orderInformationBillToCompanyArr);
 
     $orderInformationBillToArr = [
             "address1" => "277 Park Avenue",
@@ -84,7 +84,7 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
             "phoneNumber" => "1234567890",
             "phoneType" => "phoneType"
     ];
-    $orderInformationBillTo = new CyberSource\Model\Upv1capturecontextsOrderInformationBillTo($orderInformationBillToArr);
+    $orderInformationBillTo = new CyberSource\Model\Upv1capturecontextsDataOrderInformationBillTo($orderInformationBillToArr);
 
     $orderInformationShipToArr = [
             "address1" => "CyberSource",
@@ -100,14 +100,14 @@ function GenerateUnifiedCheckoutCaptureContextPassingBillingShipping()
             "firstName" => "Joe",
             "lastName" => "Soap"
     ];
-    $orderInformationShipTo = new CyberSource\Model\Upv1capturecontextsOrderInformationShipTo($orderInformationShipToArr);
+    $orderInformationShipTo = new CyberSource\Model\Upv1capturecontextsDataOrderInformationShipTo($orderInformationShipToArr);
 
     $orderInformationArr = [
             "amountDetails" => $orderInformationAmountDetails,
             "billTo" => $orderInformationBillTo,
             "shipTo" => $orderInformationShipTo
     ];
-    $orderInformation = new CyberSource\Model\Upv1capturecontextsOrderInformation($orderInformationArr);
+    $orderInformation = new CyberSource\Model\Upv1capturecontextsDataOrderInformation($orderInformationArr);
 
     $completeMandate = new CyberSource\Model\Upv1capturecontextsCompleteMandate([
         "type" => "CAPTURE",
