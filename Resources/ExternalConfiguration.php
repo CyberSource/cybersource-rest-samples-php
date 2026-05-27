@@ -1,6 +1,17 @@
 <?php
 /*
 * Purpose : passing Authentication config object to the configuration
+*
+* Note: If you are currently using HTTP Signature authentication and want to migrate
+* to JWT (required for MLE support), you can now use JWT with the SAME shared secret
+* credentials (apiKeyID + secretKey) you already have — no P12 certificate needed.
+* HTTP Signature is being deprecated; JWT with Shared Secret is the recommended
+* migration path.
+*
+* See JwtSharedSecretConfiguration.php for JWT with Shared Secret configuration,
+* which supports both Request MLE and Response MLE.
+*
+* @see Resources/JwtSharedSecretConfiguration.php
 */
 namespace CyberSource;
 require_once __DIR__. DIRECTORY_SEPARATOR .'../vendor/autoload.php';
@@ -44,9 +55,9 @@ class ExternalConfiguration
     {
         $this->authType = "http_signature";//http_signature/jwt
         $this->merchantID = "testrest";
+
         $this->apiKeyID = "08c94330-f618-42a3-b09d-e1e43be5efda";
         $this->secretKey = "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=";
-
         // MetaKey configuration [Start]
         $this->useMetaKey = false;
         $this->portfolioID = "";

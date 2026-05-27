@@ -1,4 +1,6 @@
 <?php
+/*
+// COMMENTED OUT: This file uses lib/SampleApiClient which has been removed.
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../lib/SampleApiClient/controller/apiController.php';
@@ -45,5 +47,4 @@ if (!function_exists('WriteLogAudit')){
 
 $obj = new PostMethod();
 $obj->postToServerMethod();
-
-?>
+*/

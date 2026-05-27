@@ -66,7 +66,7 @@ Then run `composer update` again. You might have to restart your machine before 
 
 ### To set your own sandbox credentials for an API request, configure the following information in Resources/ExternalConfiguration.php file:
 
-* Http
+* Http Signature (**Deprecated** — migrate to JWT with Shared Secret below)
 
 ```php
     $this->authType           = "http_signature";
@@ -75,7 +75,7 @@ Then run `composer update` again. You might have to restart your machine before 
     $this->secretKey          = "your_shared_secret";
 ```
 
-* Jwt
+* Jwt (with P12 certificate)
 
 ```php
     $this->authType           = "jwt";
@@ -86,7 +86,20 @@ Then run `composer update` again. You might have to restart your machine before 
     $this->keyDirectory       = "./Resources/";
 ```
 
-* MetaKey Http
+* Jwt with Shared Secret (**Recommended migration path from Http Signature**)
+
+  Uses the same `apiKeyID` and `secretKey` as Http Signature but authenticates via JWT, enabling MLE support.
+  For detailed migration guide, configuration, and sample code, see the [JWT Shared Secret Auth samples](Samples/JwtSharedSecretAuth/README.md).
+
+```php
+    $config->setAuthenticationType("JWT");
+    $config->setJwtKeyType("SHARED_SECRET");
+    $config->setMerchantID("your_merchant_id");
+    $config->setApiKeyID("your_key_id");
+    $config->setSecretKey("your_shared_secret");
+```
+
+* MetaKey Http (**Deprecated** — migrate to MetaKey JWT Shared Secret below)
 
 ```php
     $this->authType           = "http_Signature";
@@ -97,7 +110,7 @@ Then run `composer update` again. You might have to restart your machine before 
     $this->useMetaKey         = true;
 ```
 
-* MetaKey JWT
+* MetaKey JWT (P12)
 
 ```php
     $this->authType            = "jwt";
@@ -107,6 +120,20 @@ Then run `composer update` again. You might have to restart your machine before 
     $this->keyFilename         = "your_portfolio_id";
     $this->keyDirectory        = "./Resources/";
     $this->useMetaKey          = true;
+```
+
+* MetaKey JWT with Shared Secret (**Recommended migration from MetaKey Http**)
+
+  Uses the same MetaKey credentials as MetaKey Http but authenticates via JWT, enabling MLE support.
+
+```php
+    $config->setAuthenticationType("JWT");
+    $config->setJwtKeyType("SHARED_SECRET");
+    $config->setMerchantID("your_child_merchant_id");
+    $config->setApiKeyID("your_metakey_serial_number");
+    $config->setSecretKey("your_metakey_shared_secret");
+    $config->setUseMetaKey(true);
+    $config->setPortfolioID("your_portfolio_id");
 ```
 
 ## Run Environments
