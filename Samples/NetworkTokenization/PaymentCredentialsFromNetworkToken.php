@@ -1,6 +1,6 @@
 <?php
 
-use CyberSource\Api\TokenApi;
+use CyberSource\Api\NetworkTokensApi;
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '/../../vendor/autoload.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '/../../Resources/ExternalConfiguration.php';
@@ -17,7 +17,7 @@ function PaymentCredentialsFromNetworkToken($tokenID = null) {
     $merchantConfig = $commonElement->merchantConfigObject();
 
     $api_client = new CyberSource\ApiClient($config, $merchantConfig);
-    $api_instance = new TokenApi($api_client);
+    $api_instance = new NetworkTokensApi($api_client);
 
     $postPaymentCredentialsRequest = new \CyberSource\Model\PostPaymentCredentialsRequest();
 

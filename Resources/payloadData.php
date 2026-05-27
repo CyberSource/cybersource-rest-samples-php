@@ -1,8 +1,10 @@
 <?php
 /*
+* COMMENTED OUT: This file uses lib/SampleApiClient which has been removed.
+*
 * Purpose : Calling Authentication SDK
 * Create new Payment in cybersource 
-*/
+*
 namespace CybSource;
 use CybSource\SampleApiClient\Model as Cybscard;
 
@@ -130,4 +132,4 @@ class PayloadData
 }
 $obj = new PayloadData();
 $obj->payloadData();
-?>
+*/

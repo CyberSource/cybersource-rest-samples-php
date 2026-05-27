@@ -1,4 +1,6 @@
 <?php
+/*
+// COMMENTED OUT: This file uses lib/SampleApiClient which has been removed.
 
 use CybSource\SampleApiClient\Model as SampleModels;
 
@@ -136,5 +138,4 @@ if (!function_exists('WriteLogAudit')){
 
 $obj = new PostMethodJsonModel();
 $obj->postJsonModel();
-
-?>
+*/

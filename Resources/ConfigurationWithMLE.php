@@ -1,6 +1,18 @@
 <?php
 /*
-* Purpose : passing Authentication config object to the configuration
+* Purpose : MLE (Message Level Encryption) configuration examples using JWT with P12 certificate.
+*
+* MLE is only supported with JWT authentication. These examples use JWT with P12
+* (the default key type). However, MLE also works with JWT using Shared Secret
+* credentials (jwtKeyType=SHARED_SECRET). This means merchants currently using
+* HTTP Signature can migrate to JWT with the same apiKeyID and secretKey and gain
+* MLE support (both Request MLE and Response MLE) without managing a P12 certificate file.
+*
+* For MLE with Shared Secret configuration and sample code, see:
+*   - Resources/JwtSharedSecretConfiguration.php (configuration)
+*   - Samples/JwtSharedSecretAuth/MLEPaymentWithJwtSharedSecret.php (sample)
+*
+* @see Resources/JwtSharedSecretConfiguration.php
 */
 namespace CyberSource;
 require_once __DIR__. DIRECTORY_SEPARATOR .'../vendor/autoload.php';

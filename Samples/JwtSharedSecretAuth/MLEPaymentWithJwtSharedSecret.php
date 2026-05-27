@@ -1,26 +1,37 @@
 <?php
 /**
- * Payment with MLE using API-level control via mapToControlMLEonAPI.
+ * Simple Authorization using JWT with Shared Secret + MLE (Message Level Encryption).
  *
- * Note: MLE also works with JWT using Shared Secret credentials
- * (jwtKeyType=SHARED_SECRET), allowing merchants to migrate from HTTP Signature
- * and gain MLE support (both Request and Response MLE) using the same apiKeyID
- * and secretKey — no P12 file needed.
+ * This sample demonstrates the primary benefit of migrating from HTTP Signature
+ * to JWT with Shared Secret: MLE support. MLE encrypts the request payload
+ * at the application level before it is sent over the network, providing an
+ * additional layer of security beyond TLS.
  *
- * See Samples/JwtSharedSecretAuth/MLEPaymentWithJwtSharedSecret.php and
- * Resources/JwtSharedSecretConfiguration.php for an example.
+ * Key Difference from HTTP Signature:
+ *   HTTP Signature does not support MLE. By switching to JWT with Shared Secret,
+ *   you gain MLE capability using the SAME credentials you already have.
+ *
+ * MLE Certificate:
+ *   When using jwtKeyType=SHARED_SECRET, the MLE public certificate must be
+ *   provided via the mleForRequestPublicCertPath property. Download it from
+ *   the CyberSource Business Center:
+ *     Test: https://businesscentertest.cybersource.com/ebc2
+ *     Prod: https://businesscenter.cybersource.com/ebc2
+ *
+ * See Resources/JwtSharedSecretConfiguration.php for the full configuration.
  */
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/ConfigurationWithMLE.php';
 
-function SimpleAuthorizationInternetWithMapControlMLE($flag)
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/JwtSharedSecretConfiguration.php';
+
+function MLEPaymentWithJwtSharedSecret($flag)
 {
     if (isset($flag) && $flag == "true") {
         $capture = true;
     } else {
         $capture = false;
     }
-    
+
     $clientReferenceInformationArr = [
             "code" => "TC50171_3"
     ];
@@ -76,10 +87,10 @@ function SimpleAuthorizationInternetWithMapControlMLE($flag)
     ];
     $requestObj = new CyberSource\Model\CreatePaymentRequest($requestObjArr);
 
-
-    $commonElement = new CyberSource\ConfigurationWithMLE();
-    $config = $commonElement->ConnectionHost();
-    $merchantConfig = $commonElement->merchantConfigObjectWithMLE2();
+    /* Load JWT + Shared Secret + MLE configuration */
+    $commonElement = new CyberSource\JwtSharedSecretConfiguration();
+    $merchantConfig = $commonElement->merchantConfigObjectWithMLE();
+    $config = $commonElement->ConnectionHostFrom($merchantConfig);
 
     $api_client = new CyberSource\ApiClient($config, $merchantConfig);
     $api_instance = new CyberSource\Api\PaymentsApi($api_client);
@@ -107,7 +118,7 @@ if (!function_exists('WriteLogAudit')){
 }
 
 if(!defined('DO_NOT_RUN_SAMPLES')){
-    echo "\SimpleAuthorizationInternetWithMapControlMLE Sample Code is Running..." . PHP_EOL;
-    SimpleAuthorizationInternetWithMapControlMLE('false');
+    echo "\nMLEPaymentWithJwtSharedSecret Sample Code is Running..." . PHP_EOL;
+    MLEPaymentWithJwtSharedSecret('false');
 }
 ?>

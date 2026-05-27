@@ -5,7 +5,15 @@
  * with comprehensive device information, buyer information, assurance data, and consent data.
  * 
  * This example uses merchantConfigObjectWithRequestAndResponseMLE1() for full request and response MLE encryption.
- * You can change to merchantConfigObjectWithRequestAndResponseMLE2() for API-level control,
+ * You can change to merchantConfigObjectWithRequestAndResponseMLE2() for API-level control.
+ *
+ * Note: MLE also works with JWT using Shared Secret credentials
+ * (jwtKeyType=SHARED_SECRET), allowing merchants to migrate from HTTP Signature
+ * and gain MLE support (both Request and Response MLE) using the same apiKeyID
+ * and secretKey — no P12 file needed.
+ *
+ * See Samples/JwtSharedSecretAuth/MLEPaymentWithJwtSharedSecret.php and
+ * Resources/JwtSharedSecretConfiguration.php for an example.
  */
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../../vendor/autoload.php';
