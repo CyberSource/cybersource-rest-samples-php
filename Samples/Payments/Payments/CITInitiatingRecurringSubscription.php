@@ -12,14 +12,14 @@ function CITInitiatingRecurringSubscription()
     $processingInformationAuthorizationOptionsInitiatorArr = [
             "credentialStoredOnFile" => true
     ];
-    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
+    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\ProcessingInfoAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
 
     $processingInformationAuthorizationOptionsArr = [
             "ignoreAvsResult" => false,
             "ignoreCvResult" => false,
             "initiator" => $processingInformationAuthorizationOptionsInitiator
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\ProcessingInfoAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationRecurringOptionsArr = [
             "loanPayment" => false,

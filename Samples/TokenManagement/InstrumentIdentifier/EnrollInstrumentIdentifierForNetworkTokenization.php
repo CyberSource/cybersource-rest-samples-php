@@ -21,7 +21,7 @@ function EnrollInstrumentIdentifierForNetworkTokenization()
             "postalCode" => "94105",
             "country" => "US"
     ];
-    $billTo = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
+    $billTo = new CyberSource\Model\DefaultPaymentInstrumentBillTo($billToArr);
 
     $requestObjArr = [
             "type" => "enrollable card",

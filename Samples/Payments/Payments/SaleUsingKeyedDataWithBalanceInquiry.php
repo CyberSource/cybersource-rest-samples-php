@@ -20,7 +20,7 @@ function SaleUsingKeyedDataWithBalanceInquiry()
             "ignoreAvsResult" => true,
             "ignoreCvResult" => true
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\ProcessingInfoAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationArr = [
             "capture" => true,

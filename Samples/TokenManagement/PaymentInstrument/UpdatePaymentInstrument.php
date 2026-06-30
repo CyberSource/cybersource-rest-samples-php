@@ -12,7 +12,7 @@ function UpdatePaymentInstrument()
             "expirationYear" => "2031",
             "type" => "visa"
     ];
-    $card = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentCard($cardArr);
+    $card = new CyberSource\Model\DefaultPaymentInstrumentCard($cardArr);
 
     $billToArr = [
             "firstName" => "Jack",
@@ -26,12 +26,12 @@ function UpdatePaymentInstrument()
             "email" => "updatedemail@cybs.com",
             "phoneNumber" => "4158888674"
     ];
-    $billTo = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
+    $billTo = new CyberSource\Model\DefaultPaymentInstrumentBillTo($billToArr);
 
     $instrumentIdentifierArr = [
             "id" => "7010000000016241111"
     ];
-    $instrumentIdentifier = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
+    $instrumentIdentifier = new CyberSource\Model\DefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
     $requestObjArr = [
             "card" => $card,
