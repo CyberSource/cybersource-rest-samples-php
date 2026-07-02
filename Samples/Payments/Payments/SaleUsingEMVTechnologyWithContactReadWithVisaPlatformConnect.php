@@ -14,7 +14,7 @@ function SaleUsingEMVTechnologyWithContactReadWithVisaPlatformConnect()
             "ignoreAvsResult" => false,
             "ignoreCvResult" => false
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\ProcessingInfoAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationArr = [
             "capture" => false,

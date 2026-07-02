@@ -6,9 +6,9 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../../Resources/MerchantBoardingCo
 
 use CyberSource\Model\PostRegistrationBody;
 use CyberSource\Model\Boardingv1registrationsOrganizationInformation;
-use CyberSource\Model\Boardingv1registrationsOrganizationInformationBusinessInformation;
-use CyberSource\Model\Boardingv1registrationsOrganizationInformationBusinessInformationAddress;
-use CyberSource\Model\Boardingv1registrationsOrganizationInformationBusinessInformationBusinessContact;
+use CyberSource\Model\BoardingBusinessInformation;
+use CyberSource\Model\BoardingBusinessInformationAddress;
+use CyberSource\Model\BoardingBusinessInformationBusinessContact;
 use CyberSource\Model\Boardingv1registrationsProductInformation;
 use CyberSource\Model\Boardingv1registrationsProductInformationSelectedProducts;
 use CyberSource\Model\PaymentsProducts;

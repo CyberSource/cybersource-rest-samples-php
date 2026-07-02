@@ -9,27 +9,20 @@ function UpdateSubscription()
 
     print_r($id);
 
-    $clientReferenceInformationPartnerArr = [
-            "developerId" => "ABCD1234",
-            "solutionId" => "GEF1234"
-    ];
-    $clientReferenceInformationPartner = new CyberSource\Model\Rbsv1subscriptionsClientReferenceInformationPartner($clientReferenceInformationPartnerArr);
-
     $clientReferenceInformationArr = [
-            "code" => "APGHU",
-            "partner" => $clientReferenceInformationPartner
+            "code" => "APGHU"
     ];
-    $clientReferenceInformation = new CyberSource\Model\Rbsv1subscriptionsClientReferenceInformation($clientReferenceInformationArr);
+    $clientReferenceInformation = new CyberSource\Model\GetAllSubscriptionsResponseClientReferenceInformation($clientReferenceInformationArr);
 
     $processingInformationAuthorizationOptionsInitiatorArr = [
             "type" => "merchant"
     ];
-    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\Rbsv1subscriptionsProcessingInformationAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
+    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\RbsAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
 
     $processingInformationAuthorizationOptionsArr = [
             "initiator" => $processingInformationAuthorizationOptionsInitiator
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Rbsv1subscriptionsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\RbsAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationArr = [
             "authorizationOptions" => $processingInformationAuthorizationOptions

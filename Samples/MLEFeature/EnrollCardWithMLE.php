@@ -1,7 +1,7 @@
 <?php
 /**
  * Enroll a card using the Agentic Card Enrollment API with MLE support.
- * This sample demonstrates how to use the EnrollmentApi to enroll a card
+ * This sample demonstrates how to use the AgentCapabilitiesApi to enroll a card
  * with comprehensive device information, buyer information, assurance data, and consent data.
  * 
  * This example uses merchantConfigObjectWithRequestAndResponseMLE1() for full request and response MLE encryption.
@@ -32,7 +32,7 @@ function enrollCardWithMLE($flag = false)
             "brand" => "Apple",
             "model" => "iPhone 16 Pro Max"
         ];
-        $deviceInformationDeviceData = new CyberSource\Model\Acpv1tokensDeviceInformationDeviceData($deviceInformationDeviceDataArr);
+        $deviceInformationDeviceData = new CyberSource\Model\Iccv1tokensDeviceInformationDeviceData($deviceInformationDeviceDataArr);
 
         // Device Information
         $deviceInformationArr = [
@@ -44,7 +44,7 @@ function enrollCardWithMLE($flag = false)
             "ipAddress" => "192.168.0.100",
             "clientDeviceId" => "000b2767814e4416999f4ee2b099491d2087"
         ];
-        $deviceInformation = new CyberSource\Model\Acpv1tokensDeviceInformation($deviceInformationArr);
+        $deviceInformation = new CyberSource\Model\Iccv1tokensDeviceInformation($deviceInformationArr);
 
         // Buyer Information - Personal Identification
         $buyerInformationPersonalIdentification = array();
@@ -52,7 +52,7 @@ function enrollCardWithMLE($flag = false)
             "type" => "The identification type",
             "id" => "1"
         ];
-        $buyerInformationPersonalIdentification[0] = new CyberSource\Model\Acpv1tokensBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
+        $buyerInformationPersonalIdentification[0] = new CyberSource\Model\Iccv1tokensBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
 
         // Buyer Information
         $buyerInformationArr = [
@@ -60,7 +60,7 @@ function enrollCardWithMLE($flag = false)
             "merchantCustomerId" => "3e1b7943-6567-4965-a32b-5aa93d057d35",
             "personalIdentification" => $buyerInformationPersonalIdentification
         ];
-        $buyerInformation = new CyberSource\Model\Acpv1tokensBuyerInformation($buyerInformationArr);
+        $buyerInformation = new CyberSource\Model\Iccv1tokensBuyerInformation($buyerInformationArr);
 
         // Bill To Information
         $billToArr = [
@@ -73,7 +73,7 @@ function enrollCardWithMLE($flag = false)
             "numberIsVoiceOnly" => false,
             "country" => "US"
         ];
-        $billTo = new CyberSource\Model\Acpv1tokensBillTo($billToArr);
+        $billTo = new CyberSource\Model\Iccv1tokensBillTo($billToArr);
 
         // Consumer Identity
         $consumerIdentityArr = [
@@ -82,25 +82,25 @@ function enrollCardWithMLE($flag = false)
             "identityProvider" => "PARTNER",
             "identityProviderUrl" => "https://identity.partner.com"
         ];
-        $consumerIdentity = new CyberSource\Model\Acpv1tokensConsumerIdentity($consumerIdentityArr);
+        $consumerIdentity = new CyberSource\Model\Iccv1tokensConsumerIdentity($consumerIdentityArr);
 
         // Payment Information - Customer
         $paymentInformationCustomerArr = [
             "id" => ""
         ];
-        $paymentInformationCustomer = new CyberSource\Model\Acpv1tokensPaymentInformationCustomer($paymentInformationCustomerArr);
+        $paymentInformationCustomer = new CyberSource\Model\Iccv1tokensPaymentInformationCustomer($paymentInformationCustomerArr);
 
         // Payment Information - Payment Instrument
         $paymentInformationPaymentInstrumentArr = [
             "id" => ""
         ];
-        $paymentInformationPaymentInstrument = new CyberSource\Model\Acpv1tokensPaymentInformationPaymentInstrument($paymentInformationPaymentInstrumentArr);
+        $paymentInformationPaymentInstrument = new CyberSource\Model\Iccv1tokensPaymentInformationPaymentInstrument($paymentInformationPaymentInstrumentArr);
 
         // Payment Information - Instrument Identifier
         $paymentInformationInstrumentIdentifierArr = [
             "id" => "4044EB915C613A82E063AF598E0AE6EF"
         ];
-        $paymentInformationInstrumentIdentifier = new CyberSource\Model\Acpv1tokensPaymentInformationInstrumentIdentifier($paymentInformationInstrumentIdentifierArr);
+        $paymentInformationInstrumentIdentifier = new CyberSource\Model\Iccv1tokensPaymentInformationInstrumentIdentifier($paymentInformationInstrumentIdentifierArr);
 
         // Payment Information
         $paymentInformationArr = [
@@ -108,14 +108,14 @@ function enrollCardWithMLE($flag = false)
             "paymentInstrument" => $paymentInformationPaymentInstrument,
             "instrumentIdentifier" => $paymentInformationInstrumentIdentifier
         ];
-        $paymentInformation = new CyberSource\Model\Acpv1tokensPaymentInformation($paymentInformationArr);
+        $paymentInformation = new CyberSource\Model\Iccv1tokensPaymentInformation($paymentInformationArr);
 
         // Enrollment Reference Data
         $enrollmentReferenceDataArr = [
             "enrollmentReferenceType" => "TOKEN_REFERENCE_ID",
             "enrollmentReferenceProvider" => "VTS"
         ];
-        $enrollmentReferenceData = new CyberSource\Model\Acpv1tokensEnrollmentReferenceData($enrollmentReferenceDataArr);
+        $enrollmentReferenceData = new CyberSource\Model\Iccv1tokensEnrollmentReferenceData($enrollmentReferenceDataArr);
 
         // Assurance Data
         $assuranceData = array();
@@ -128,7 +128,7 @@ function enrollCardWithMLE($flag = false)
         $assuranceDataAuthenticationContext_0Arr = [
             "action" => "AUTHENTICATE"
         ];
-        $assuranceDataAuthenticationContext_0 = new CyberSource\Model\Acpv1tokensAuthenticationContext($assuranceDataAuthenticationContext_0Arr);
+        $assuranceDataAuthenticationContext_0 = new CyberSource\Model\Iccv1tokensAuthenticationContext($assuranceDataAuthenticationContext_0Arr);
 
         // Assurance Data - Authenticated Identities
         $assuranceDataAuthenticatedIdentities_0Arr = [
@@ -136,7 +136,7 @@ function enrollCardWithMLE($flag = false)
             "provider" => "VISA_PAYMENT_PASSKEY",
             "id" => "f48ac10b-58cc-4372-a567-0e02b2c3d489"
         ];
-        $assuranceDataAuthenticatedIdentities_0 = new CyberSource\Model\Acpv1tokensAuthenticatedIdentities($assuranceDataAuthenticatedIdentities_0Arr);
+        $assuranceDataAuthenticatedIdentities_0 = new CyberSource\Model\Iccv1tokensAuthenticatedIdentities($assuranceDataAuthenticatedIdentities_0Arr);
 
         // Assurance Data - Complete Object
         $assuranceData_0 = [
@@ -150,7 +150,7 @@ function enrollCardWithMLE($flag = false)
             "authenticatedIdentities" => $assuranceDataAuthenticatedIdentities_0,
             "additionalData" => ""
         ];
-        $assuranceData[0] = new CyberSource\Model\Acpv1tokensAssuranceData($assuranceData_0);
+        $assuranceData[0] = new CyberSource\Model\Iccv1tokensAssuranceData($assuranceData_0);
 
         // Consent Data
         $consentData = array();
@@ -161,7 +161,7 @@ function enrollCardWithMLE($flag = false)
             "acceptedTime" => "1719169800",
             "effectiveUntil" => "1750705800"
         ];
-        $consentData[0] = new CyberSource\Model\Acpv1tokensConsentData($consentData_0);
+        $consentData[0] = new CyberSource\Model\Iccv1tokensConsentData($consentData_0);
 
         // Create the main request object
         $requestObjArr = [
@@ -187,7 +187,7 @@ function enrollCardWithMLE($flag = false)
 
         // Create API instance and make the call
         $api_client = new CyberSource\ApiClient($config, $merchantConfig);
-        $api_instance = new CyberSource\Api\EnrollmentApi($api_client);
+        $api_instance = new CyberSource\Api\AgentCapabilitiesApi($api_client);
 
         $apiResponse = $api_instance->enrollCard($requestObj);
         

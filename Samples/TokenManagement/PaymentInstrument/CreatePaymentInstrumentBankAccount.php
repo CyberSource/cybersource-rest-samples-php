@@ -9,19 +9,19 @@ function CreatePaymentInstrumentBankAccount()
     $bankAccountArr = [
         "type" => "savings"
     ];
-    $bankAccount = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBankAccount($bankAccountArr);
+    $bankAccount = new CyberSource\Model\DefaultPaymentInstrumentBankAccount($bankAccountArr);
 
     $buyerInformationPersonalIdentification = array();
     $buyerInformationPersonalIdentificationIssuedBy_0Arr = [
         "administrativeArea" => "CA"
     ];
-    $buyerInformationPersonalIdentificationIssuedBy_0 = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationIssuedBy($buyerInformationPersonalIdentificationIssuedBy_0Arr);
+    $buyerInformationPersonalIdentificationIssuedBy_0 = new CyberSource\Model\DefaultPaymentInstrumentBuyerInformationIssuedBy($buyerInformationPersonalIdentificationIssuedBy_0Arr);
 
     $buyerInformationPersonalIdentification_0 = [
         "id" => "57684432111321",
         "type" => "driver license", "issuedBy" => $buyerInformationPersonalIdentificationIssuedBy_0
     ];
-    $buyerInformationPersonalIdentification[0] = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
+    $buyerInformationPersonalIdentification[0] = new CyberSource\Model\DefaultPaymentInstrumentBuyerInformationPersonalIdentification($buyerInformationPersonalIdentification_0);
 
     $buyerInformationArr = [
         "companyTaxID" => "12345",
@@ -29,7 +29,7 @@ function CreatePaymentInstrumentBankAccount()
         "dateOfBirth" => "2000-12-13",
         "personalIdentification" => $buyerInformationPersonalIdentification
     ];
-    $buyerInformation = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBuyerInformation($buyerInformationArr);
+    $buyerInformation = new CyberSource\Model\DefaultPaymentInstrumentBuyerInformation($buyerInformationArr);
 
     $billToArr = [
         "firstName" => "John",
@@ -43,7 +43,7 @@ function CreatePaymentInstrumentBankAccount()
         "email" => "test@cybs.com",
         "phoneNumber" => "4158880000"
     ];
-    $billTo = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentBillTo($billToArr);
+    $billTo = new CyberSource\Model\DefaultPaymentInstrumentBillTo($billToArr);
 
     $processingInformationBankTransferOptionsArr = [
         "seCCode" => "WEB"
@@ -58,7 +58,7 @@ function CreatePaymentInstrumentBankAccount()
     $instrumentIdentifierArr = [
             "id" => "A7A91A2CA872B272E05340588D0A0699"
     ];
-    $instrumentIdentifier = new CyberSource\Model\Tmsv2tokenizeTokenInformationCustomerEmbeddedDefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
+    $instrumentIdentifier = new CyberSource\Model\DefaultPaymentInstrumentInstrumentIdentifier($instrumentIdentifierArr);
 
     $requestObjArr = [
         "bankAccount" => $bankAccount,

@@ -12,21 +12,21 @@ function MITUnscheduledCredentialOnFile()
     $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr = [
             "previousTransactionId" => "123456789012345"
     ];
-    $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction($processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr);
+    $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction = new CyberSource\Model\ProcessingInfoAuthorizationOptionsInitiatorMerchantInitiatedTransaction($processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransactionArr);
 
     $processingInformationAuthorizationOptionsInitiatorArr = [
             "type" => "merchant",
             "storedCredentialUsed" => true,
             "merchantInitiatedTransaction" => $processingInformationAuthorizationOptionsInitiatorMerchantInitiatedTransaction
     ];
-    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
+    $processingInformationAuthorizationOptionsInitiator = new CyberSource\Model\ProcessingInfoAuthorizationOptionsInitiator($processingInformationAuthorizationOptionsInitiatorArr);
 
     $processingInformationAuthorizationOptionsArr = [
             "ignoreAvsResult" => false,
             "ignoreCvResult" => false,
             "initiator" => $processingInformationAuthorizationOptionsInitiator
     ];
-    $processingInformationAuthorizationOptions = new CyberSource\Model\Ptsv2paymentsProcessingInformationAuthorizationOptions($processingInformationAuthorizationOptionsArr);
+    $processingInformationAuthorizationOptions = new CyberSource\Model\ProcessingInfoAuthorizationOptions($processingInformationAuthorizationOptionsArr);
 
     $processingInformationArr = [
             "capture" => false,
