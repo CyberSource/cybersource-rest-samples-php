@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=8.0.0",
-        "cybersource/rest-client-php": "0.0.74",
+        "cybersource/rest-client-php": "0.0.75",
         "firebase/php-jwt": "^7.0.0",
         "ramsey/uuid": "^4.0"
     }
