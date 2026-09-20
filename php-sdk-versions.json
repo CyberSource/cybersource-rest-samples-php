@@ -1,0 +1,24 @@
+{
+  "latest_version": "0.0.69",
+  "minimum_supported_version": "0.0.50",
+  "versions": [
+    {
+      "version": "0.0.69",
+      "release_date": "2026-01-02",
+      "tag_name": "0.0.69",
+      "download_url": "https://github.com/CyberSource/cybersource-rest-client-php/archive/refs/tags/0.0.69.zip"
+    },
+    {
+      "version": "0.0.68",
+      "release_date": "2025-12-01",
+      "tag_name": "0.0.68",
+      "download_url": "https://github.com/CyberSource/cybersource-rest-client-php/archive/refs/tags/0.0.68.zip"
+    }
+  ],
+  "repository": {
+    "owner": "CyberSource",
+    "repo": "cybersource-rest-client-php",
+    "url": "https://github.com/CyberSource/cybersource-rest-client-php"
+  },
+  "last_updated": "2026-01-12T05:06:47Z"
+}
