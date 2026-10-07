@@ -272,7 +272,7 @@ class ConfigurationWithMLE
         $config->setMerchantID("agentic_mid_091225001");
         $config->setKeyFileName("agentic_mid_091225001");
         $config->setKeyAlias("agentic_mid_091225001");
-        $config->setKeyPassword("Changeit@123");
+        $config->setKeyPassword("Ap!C38tp12@");
         $config->setUseMetaKey(false);
         $config->setPortfolioID("");
         $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR);
@@ -284,8 +284,8 @@ class ConfigurationWithMLE
         // Response MLE Settings
         $config->setEnableResponseMleGlobally(true);  // Enables response MLE globally for all APIs that support MLE responses
         $config->setResponseMlePrivateKeyFilePath(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR . "agentic_mid_091225001_new_generated_mle.p12");
-        $config->setResponseMlePrivateKeyFilePassword("Changeit@123");
-        //$config->setResponseMleKID("1764104507829324018353");  // Optional
+        $config->setResponseMlePrivateKeyFilePassword("Ap!C38tp12@ML3");
+        //$config->setResponseMleKID("1764300612804157241592");  // Optional
         
         //Add the property if required to override the cybs default developerId in all request body
         $config->setDefaultDeveloperId("");
@@ -313,7 +313,7 @@ class ConfigurationWithMLE
         $config->setMerchantID("agentic_mid_091225001");
         $config->setKeyFileName("agentic_mid_091225001");
         $config->setKeyAlias("agentic_mid_091225001");
-        $config->setKeyPassword("Changeit@123");
+        $config->setKeyPassword("Ap!C38tp12@");
         $config->setUseMetaKey(false);
         $config->setPortfolioID("");
         $config->setKeysDirectory(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR);
@@ -327,8 +327,8 @@ class ConfigurationWithMLE
         
         // Since one of the API has Response MLE true, below fields are required for Response MLE
         $config->setResponseMlePrivateKeyFilePath(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR . "agentic_mid_091225001_new_generated_mle_private_key_encrypted.p8");
-        $config->setResponseMlePrivateKeyFilePassword("Changeit@123");
-        $config->setResponseMleKID("1764104507829324018353");  // Optional since p12 is Cybs Generated
+        $config->setResponseMlePrivateKeyFilePassword("Ap!C38tp12@ML3");
+        $config->setResponseMleKID("1764300612804157241592");  // Optional since p12 is Cybs Generated
         
         // Map to control MLE on API level (format: "requestMLE::responseMLE")
         $config->setMapToControlMLEonAPI([

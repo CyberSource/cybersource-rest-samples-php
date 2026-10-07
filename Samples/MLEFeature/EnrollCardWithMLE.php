@@ -1,7 +1,7 @@
 <?php
 /**
  * Enroll a card using the Agentic Card Enrollment API with MLE support.
- * This sample demonstrates how to use the AgentCapabilitiesApi to enroll a card
+ * This sample demonstrates how to use the EnrollmentApi to enroll a card
  * with comprehensive device information, buyer information, assurance data, and consent data.
  * 
  * This example uses merchantConfigObjectWithRequestAndResponseMLE1() for full request and response MLE encryption.
@@ -187,7 +187,7 @@ function enrollCardWithMLE($flag = false)
 
         // Create API instance and make the call
         $api_client = new CyberSource\ApiClient($config, $merchantConfig);
-        $api_instance = new CyberSource\Api\AgentCapabilitiesApi($api_client);
+        $api_instance = new CyberSource\Api\EnrollmentApi($api_client);
 
         $apiResponse = $api_instance->enrollCard($requestObj);
         
