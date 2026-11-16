@@ -72,6 +72,7 @@ function PinDebitPurchaseUsingSwipedTrackDataWithVisaPlatformConnect()
 	} catch (Cybersource\ApiException $e) {
 		print_r($e->getResponseBody());
 		print_r($e->getMessage());
+		$errorCode = $e->getCode();
 		WriteLogAudit($errorCode);
 	}
 }

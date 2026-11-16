@@ -52,7 +52,6 @@ function GenerateCaptureContextForClickToPayDropInUI()
     $orderInformation = new CyberSource\Model\Upv1capturecontextsOrderInformation($orderInformationArr);
 
     $requestObjArr = [
-            "clientVersion" => "0.23",
             "targetOrigins" => $targetOrigins,
             "allowedCardNetworks" => $allowedCardNetworks,
             "allowedPaymentTypes" => $allowedPaymentTypes,

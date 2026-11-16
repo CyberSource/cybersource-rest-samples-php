@@ -21,7 +21,7 @@ use CyberSource\Model\PayerAuthConfigCardTypesVerifiedByVisa;
 use CyberSource\Model\PayerAuthConfigCardTypesVerifiedByVisaCurrencies;
 use CyberSource\Model\PaymentsProductsCardProcessing;
 use CyberSource\Model\PaymentsProductsCardProcessingSubscriptionInformation;
-use CyberSource\Model\PaymentsProductsCardProcessingSubscriptionInformationFeatures;
+use CyberSource\Model\CardProessingFeatureSubscriptionItem;
 use CyberSource\Model\PaymentsProductsCardProcessingConfigurationInformation;
 use CyberSource\Model\CardProcessingConfig;
 use CyberSource\Model\CardProcessingConfigCommon;

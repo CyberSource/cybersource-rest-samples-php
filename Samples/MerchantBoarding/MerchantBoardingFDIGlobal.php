@@ -8,14 +8,14 @@ use CyberSource\Model\Boardingv1registrationsProductInformationSelectedProducts;
 use CyberSource\Model\PaymentsProducts;
 use CyberSource\Model\PaymentsProductsCardProcessing;
 use CyberSource\Model\PaymentsProductsCardProcessingSubscriptionInformation;
-use CyberSource\Model\PaymentsProductsCardProcessingSubscriptionInformationFeatures;
+use CyberSource\Model\CardProessingFeatureSubscriptionItem;
 use CyberSource\Model\PaymentsProductsCardProcessingConfigurationInformation;
 use CyberSource\Model\CardProcessingConfig;
 use CyberSource\Model\CardProcessingConfigCommon;
 use CyberSource\Model\CardProcessingConfigCommonMerchantDescriptorInformation;
 use CyberSource\Model\CardProcessingConfigCommonProcessors;
 use CyberSource\Model\CardProcessingConfigCommonAcquirer;
-use CyberSource\Model\CardProcessingConfigCommonCurrencies1;
+use CyberSource\Model\CurrencyUpdatedConfiguration;
 use CyberSource\Model\CardProcessingConfigCommonPaymentTypes;
 use CyberSource\Model\CardProcessingConfigFeatures;
 use CyberSource\Model\CardProcessingConfigFeaturesCardNotPresent;
@@ -33,7 +33,7 @@ use CyberSource\Model\Boardingv1registrationsOrganizationInformation;
 use CyberSource\Model\BoardingBusinessInformation;
 use CyberSource\Model\BoardingBusinessInformationAddress;
 use CyberSource\Model\BoardingBusinessInformationBusinessContact;
-use CyberSource\Model\CardProcessingConfigCommonCurrencies;
+use CyberSource\Model\CurrencyConfiguration;
 
 function MerchantBoardingFDIGlobal()
 {

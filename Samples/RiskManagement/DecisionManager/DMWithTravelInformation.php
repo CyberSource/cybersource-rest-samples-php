@@ -51,13 +51,13 @@ function DMWithTravelInformation()
             "origination" => "SFO",
             "destination" => "JFK"
     ];
-    $travelInformationLegs[0] = new CyberSource\Model\Riskv1decisionsTravelInformationLegs($travelInformationLegs_0);
+    $travelInformationLegs[0] = new CyberSource\Model\Riskv1decisionsBundledTravelInformationLegs($travelInformationLegs_0);
 
     $travelInformationLegs_1 = [
             "origination" => "JFK",
             "destination" => "BLR"
     ];
-    $travelInformationLegs[1] = new CyberSource\Model\Riskv1decisionsTravelInformationLegs($travelInformationLegs_1);
+    $travelInformationLegs[1] = new CyberSource\Model\Riskv1decisionsBundledTravelInformationLegs($travelInformationLegs_1);
 
     $travelInformationArr = [
             "completeRoute" => "SFO-JFK:JFK-BLR",

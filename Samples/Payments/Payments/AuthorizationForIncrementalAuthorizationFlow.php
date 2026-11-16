@@ -156,7 +156,7 @@ function AuthorizationForIncrementalAuthorizationFlow()
             "duration" => "3",
             "lodging" => $travelInformationLodging
     ];
-    $travelInformation = new CyberSource\Model\Ptsv2paymentsTravelInformation($travelInformationArr);
+    $travelInformation = new CyberSource\Model\Ptsv2paymentsTravelInformationExtended($travelInformationArr);
 
     $promotionInformationArr = [
             "additionalCode" => "999999.99"

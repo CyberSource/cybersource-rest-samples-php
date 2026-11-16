@@ -25,7 +25,7 @@ class PostGeneratorHeader
         $api_response      = list($response, $statusCode, $httpHeader) = null;
         try {
             $auth         = new CyberSource\Authentication\Core\Authentication();
-            $authResponse = $auth->generateToken($requestTarget, $payloadData, "GET", $merchantConfigObj, false);
+            $authResponse = $auth->generateToken($requestTarget, $payloadData, "GET", $merchantConfigObj, gmdate("D, d M Y H:i:s ")."GMT", false);
 
             if ($merchantConfigObj->getLogConfiguration()->getEnableLogging()) {
                 error_log(    "[DEBUG] HTTP Response body  ~BEGIN~" . PHP_EOL . "Request Target GET: " . $requestTarget . PHP_EOL . "~END~" . PHP_EOL,

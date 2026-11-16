@@ -63,7 +63,7 @@ function LevelIIIData($flag)
             "amountIncludesTax" => false,
             "discountApplied" => false
     ];
-    $orderInformationLineItems[0] = new CyberSource\Model\Ptsv2paymentsOrderInformationLineItems($orderInformationLineItems_0);
+    $orderInformationLineItems[0] = new CyberSource\Model\Ptsv2paymentsOrderInformationLineItemsExtended($orderInformationLineItems_0);
 
     $orderInformationInvoiceDetailsArr = [
             "purchaseOrderNumber" => "LevelIII Auth Po"
