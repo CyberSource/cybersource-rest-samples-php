@@ -26,7 +26,7 @@ function AmexRegistrationCustomerTokenBatch()
             "merchantReference" => "TC50171_3",
             "notificationEmail" => "test@cybs.com"
     ];
-    $requestObj = new CyberSource\Model\Body($requestObjArr);
+    $requestObj = new CyberSource\Model\PostBatchRequest($requestObjArr);
 
 
     $commonElement = new CyberSource\ExternalConfiguration();

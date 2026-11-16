@@ -38,7 +38,7 @@ function DMWithScoreExceedsThresholdResponse()
             "phoneNumber" => "7606160717",
             "postalCode" => "560056"
     ];
-    $orderInformationShipTo = new CyberSource\Model\Riskv1decisionsOrderInformationShipTo($orderInformationShipToArr);
+    $orderInformationShipTo = new CyberSource\Model\Riskv1decisionsBundledOrderInformationShipTo($orderInformationShipToArr);
 
     $orderInformationBillToArr = [
             "address1" => "96, powers street",

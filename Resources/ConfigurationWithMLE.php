@@ -283,7 +283,7 @@ class ConfigurationWithMLE
         
         // Response MLE Settings
         $config->setEnableResponseMleGlobally(true);  // Enables response MLE globally for all APIs that support MLE responses
-        $config->setResponseMlePrivateKeyFilePath(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR . "agentic_mid_091225001_new_generated_mle.p12");
+        $config->setResponseMlePrivateKeyFilePath(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Resources" . DIRECTORY_SEPARATOR . "agentic_mid_091225001_mle.p12");
         $config->setResponseMlePrivateKeyFilePassword("Ap!C38tp12@ML3");
         //$config->setResponseMleKID("1764300612804157241592");  // Optional
         

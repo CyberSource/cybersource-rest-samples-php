@@ -57,7 +57,6 @@ function GenerateUnifiedCheckoutCaptureContext()
         "decisionManager" => false
     ]); 
     $requestObjArr = [
-            "clientVersion" => "0.23",
             "targetOrigins" => $targetOrigins,
             "allowedCardNetworks" => $allowedCardNetworks,
             "allowedPaymentTypes" => $allowedPaymentTypes,

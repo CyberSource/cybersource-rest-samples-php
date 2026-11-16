@@ -48,7 +48,7 @@ function AuthorizationWithDecisionManagerTravelInformation()
 
     $travelInformationArr = [
     ];
-    $travelInformation = new CyberSource\Model\Ptsv2paymentsTravelInformation($travelInformationArr);
+    $travelInformation = new CyberSource\Model\Ptsv2paymentsTravelInformationExtended($travelInformationArr);
 
     $requestObjArr = [
             "clientReferenceInformation" => $clientReferenceInformation,

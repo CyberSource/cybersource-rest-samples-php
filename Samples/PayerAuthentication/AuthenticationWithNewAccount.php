@@ -56,7 +56,7 @@ function AuthenticationWithNewAccount()
     $riskInformationBuyerHistoryCustomerAccountArr = [
             "creationHistory" => "NEW_ACCOUNT"
     ];
-    $riskInformationBuyerHistoryCustomerAccount = new CyberSource\Model\Ptsv2paymentsRiskInformationBuyerHistoryCustomerAccount($riskInformationBuyerHistoryCustomerAccountArr);
+    $riskInformationBuyerHistoryCustomerAccount = new CyberSource\Model\RiskInformationBuyerHistoryCustomerAccount($riskInformationBuyerHistoryCustomerAccountArr);
 
     $riskInformationBuyerHistoryAccountHistoryArr = [
             "firstUseOfShippingAddress" => false
@@ -67,7 +67,7 @@ function AuthenticationWithNewAccount()
             "customerAccount" => $riskInformationBuyerHistoryCustomerAccount,
             "accountHistory" => $riskInformationBuyerHistoryAccountHistory
     ];
-    $riskInformationBuyerHistory = new CyberSource\Model\Ptsv2paymentsRiskInformationBuyerHistory($riskInformationBuyerHistoryArr);
+    $riskInformationBuyerHistory = new CyberSource\Model\Riskv1decisionsRiskInformationBuyerHistory($riskInformationBuyerHistoryArr);
 
     $riskInformationArr = [
             "buyerHistory" => $riskInformationBuyerHistory
